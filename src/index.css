@@ -1,5 +1,14 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,7 +16,71 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* REMOVE ALL TRANSITIONS AND EFFECTS */
+* {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Remove ALL focus/active/hover states */
+*,
+*::before,
+*::after {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Force buttons to have NO effects */
+button {
+  transition: none !important;
+  animation: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button:hover,
+button:focus,
+button:active {
+  transition: none !important;
+  animation: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Force links to have NO effects */
+a {
+  transition: none !important;
+  animation: none !important;
+  outline: none !important;
+}
+
+a:hover,
+a:focus,
+a:active {
+  transition: none !important;
+  outline: none !important;
+}
+
+/* Only allow text color change on hover for links/buttons */
+button:hover,
+a:hover {
+  color: inherit !important;
+}
+
+/* Remove input effects */
+input,
+textarea,
+select {
+  outline: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
