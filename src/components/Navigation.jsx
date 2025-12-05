@@ -43,8 +43,8 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <div 
-          className="text-2xl font-bold tracking-tight cursor-pointer" 
-          onClick={() => scrollToSection('home')}
+          className="text-xl font-bold cursor-pointer"
+          onClick={() => window.location.href = '/'}
         >
           <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
           <span style={{ color: 'var(--primary)' }}> STUDIO</span>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 const MaterialLibrary = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [lightboxIndex, setLightboxIndex] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -146,7 +146,10 @@ const MaterialLibrary = () => {
             <span>Back to Home</span>
           </button>
           
-          <div style={{ fontSize: '20px', fontWeight: 'bold' }}>
+          <div 
+            className="text-xl font-bold cursor-pointer"
+            onClick={() => window.location.href = '/'}
+          >
             <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
             <span style={{ color: 'var(--primary)' }}> STUDIO</span>
           </div>
@@ -401,8 +404,10 @@ const MaterialLibrary = () => {
                 <button
                   className="safe-hover-btn"
                   onClick={() => {
-                    setSelectedMaterial(null);
-                    window.location.href = '/#contact';
+                    navigate('/');
+                    setTimeout(() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
                   }}
                   style={{
                     padding: '16px 32px',

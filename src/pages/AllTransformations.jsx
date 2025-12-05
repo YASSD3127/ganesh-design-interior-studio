@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 const AllTransformations = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [lightboxImage, setLightboxImage] = useState(null);
-  
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -221,12 +221,14 @@ const AllTransformations = () => {
           ))}
         </div>
 
-        {/* Transformations Grid */}
+        {/* Transformations Grid - SINGLE COLUMN LAYOUT */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: '40px',
-          marginBottom: '60px'
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '60px',
+          marginBottom: '60px',
+          maxWidth: '1200px',
+          margin: '0 auto'
         }}>
           {filteredTransformations.map(project => (
             <div
@@ -236,24 +238,25 @@ const AllTransformations = () => {
                 backgroundColor: 'var(--surface)',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                boxShadow: '0 8px 25px rgba(0,0,0,0.1)',
+                width: '100%'
               }}
             >
-              {/* Before/After Images */}
+              {/* Before/After Images - LARGE SHOWCASE */}
               <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '2px',
-                backgroundColor: 'var(--border)'
+                display: 'flex',
+                gap: '3px',
+                backgroundColor: 'var(--border)',
+                minHeight: '450px'
               }}>
-                <div style={{ position: 'relative' }}>
+                <div style={{ position: 'relative', flex: 1 }}>
                   <img
                     src={project.before}
                     alt="Before"
                     onClick={() => setLightboxImage(project.before)}
                     style={{
                       width: '100%',
-                      height: '350px',
+                      height: '450px',
                       objectFit: 'cover',
                       display: 'block',
                       cursor: 'pointer'
@@ -261,27 +264,28 @@ const AllTransformations = () => {
                   />
                   <div style={{
                     position: 'absolute',
-                    top: '15px',
-                    left: '15px',
-                    backgroundColor: 'rgba(0,0,0,0.7)',
+                    top: '20px',
+                    left: '20px',
+                    backgroundColor: 'rgba(0,0,0,0.8)',
                     color: 'white',
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    fontSize: '0.9rem',
-                    fontWeight: '600'
+                    padding: '12px 24px',
+                    borderRadius: '30px',
+                    fontSize: '1rem',
+                    fontWeight: '700',
+                    letterSpacing: '1px'
                   }}>
                     BEFORE
                   </div>
                 </div>
                 
-                <div style={{ position: 'relative' }}>
+                <div style={{ position: 'relative', flex: 1 }}>
                   <img
                     src={project.after}
                     alt="After"
                     onClick={() => setLightboxImage(project.after)}
                     style={{
                       width: '100%',
-                      height: '350px',
+                      height: '450px',
                       objectFit: 'cover',
                       display: 'block',
                       cursor: 'pointer'
@@ -289,14 +293,15 @@ const AllTransformations = () => {
                   />
                   <div style={{
                     position: 'absolute',
-                    top: '15px',
-                    right: '15px',
+                    top: '20px',
+                    right: '20px',
                     backgroundColor: 'var(--primary)',
                     color: 'white',
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    fontSize: '0.9rem',
-                    fontWeight: '600'
+                    padding: '12px 24px',
+                    borderRadius: '30px',
+                    fontSize: '1rem',
+                    fontWeight: '700',
+                    letterSpacing: '1px'
                   }}>
                     AFTER
                   </div>
@@ -317,120 +322,150 @@ const AllTransformations = () => {
               </div>
 
               {/* Project Details */}
-              <div style={{ padding: '30px' }}>
+              <div style={{ padding: '40px' }}>
                 <h3 style={{
-                  fontSize: '1.5rem',
+                  fontSize: '2rem',
                   fontWeight: 'bold',
-                  marginBottom: '16px',
-                  color: 'var(--text-primary)'
+                  marginBottom: '20px',
+                  color: 'var(--text-primary)',
+                  textAlign: 'center'
                 }}>
                   {project.title}
                 </h3>
 
-                {/* Quick Stats */}
+                {/* Quick Stats - Horizontal Layout */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  gap: '20px',
+                  marginBottom: '32px',
+                  padding: '24px',
+                  backgroundColor: 'var(--background)',
+                  borderRadius: '16px',
+                  flexWrap: 'wrap'
+                }}>
+                  <div style={{ textAlign: 'center', minWidth: '120px' }}>
+                    <div style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>📍 Location</div>
+                    <div style={{ fontWeight: '700', color: 'var(--primary)', fontSize: '1.1rem' }}>{project.location}</div>
+                  </div>
+                  <div style={{ textAlign: 'center', minWidth: '120px' }}>
+                    <div style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>⏱️ Duration</div>
+                    <div style={{ fontWeight: '700', color: 'var(--primary)', fontSize: '1.1rem' }}>{project.duration}</div>
+                  </div>
+                  <div style={{ textAlign: 'center', minWidth: '120px' }}>
+                    <div style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '8px' }}>💰 Budget</div>
+                    <div style={{ fontWeight: '700', color: 'var(--primary)', fontSize: '1.1rem' }}>{project.budget}</div>
+                  </div>
+                </div>
+
+                {/* Content in Two Columns */}
                 <div style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-                  gap: '16px',
-                  marginBottom: '24px',
-                  padding: '16px',
-                  backgroundColor: 'var(--background)',
-                  borderRadius: '12px'
+                  gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+                  gap: '40px',
+                  marginBottom: '32px'
                 }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Duration</div>
-                    <div style={{ fontWeight: '600', color: 'var(--primary)' }}>{project.duration}</div>
-                  </div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Budget</div>
-                    <div style={{ fontWeight: '600', color: 'var(--primary)' }}>{project.budget}</div>
-                  </div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Location</div>
-                    <div style={{ fontWeight: '600', color: 'var(--primary)' }}>{project.location}</div>
-                  </div>
-                </div>
+                  {/* Left Column */}
+                  <div>
+                    {/* The Challenge */}
+                    <div style={{ marginBottom: '28px' }}>
+                      <h4 style={{
+                        fontSize: '1.3rem',
+                        fontWeight: '700',
+                        marginBottom: '12px',
+                        color: 'var(--text-primary)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}>
+                        🎯 The Challenge
+                      </h4>
+                      <p style={{
+                        color: 'var(--text-secondary)',
+                        lineHeight: '1.7',
+                        fontSize: '1.05rem'
+                      }}>
+                        {project.problem}
+                      </p>
+                    </div>
 
-                {/* The Challenge */}
-                <div style={{ marginBottom: '20px' }}>
-                  <h4 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    marginBottom: '8px',
-                    color: 'var(--text-primary)'
-                  }}>
-                    The Challenge
-                  </h4>
-                  <p style={{
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.6'
-                  }}>
-                    {project.problem}
-                  </p>
-                </div>
-
-                {/* Our Solution */}
-                <div style={{ marginBottom: '20px' }}>
-                  <h4 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    marginBottom: '8px',
-                    color: 'var(--text-primary)'
-                  }}>
-                    Our Solution
-                  </h4>
-                  <p style={{
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.6'
-                  }}>
-                    {project.solution}
-                  </p>
-                </div>
-
-                {/* The Results */}
-                <div style={{ marginBottom: '24px' }}>
-                  <h4 style={{
-                    fontSize: '1.1rem',
-                    fontWeight: '600',
-                    marginBottom: '8px',
-                    color: 'var(--text-primary)'
-                  }}>
-                    The Results
-                  </h4>
-                  <p style={{
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.6'
-                  }}>
-                    {project.results}
-                  </p>
-                </div>
-
-                {/* Client Testimonial */}
-                <div style={{
-                  padding: '20px',
-                  backgroundColor: 'var(--background)',
-                  borderRadius: '12px',
-                  borderLeft: `4px solid var(--primary)`
-                }}>
-                  <div style={{ display: 'flex', marginBottom: '8px' }}>
-                    {Array.from({ length: project.rating }).map((_, i) => (
-                      <Star key={i} size={16} fill="var(--primary)" color="var(--primary)" />
-                    ))}
+                    {/* Our Solution */}
+                    <div style={{ marginBottom: '28px' }}>
+                      <h4 style={{
+                        fontSize: '1.3rem',
+                        fontWeight: '700',
+                        marginBottom: '12px',
+                        color: 'var(--text-primary)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}>
+                        💡 Our Solution
+                      </h4>
+                      <p style={{
+                        color: 'var(--text-secondary)',
+                        lineHeight: '1.7',
+                        fontSize: '1.05rem'
+                      }}>
+                        {project.solution}
+                      </p>
+                    </div>
                   </div>
-                  <p style={{
-                    fontStyle: 'italic',
-                    marginBottom: '12px',
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.6'
-                  }}>
-                    "{project.testimonial}"
-                  </p>
-                  <p style={{
-                    fontWeight: '600',
-                    color: 'var(--text-primary)'
-                  }}>
-                    - {project.clientName}
-                  </p>
+
+                  {/* Right Column */}
+                  <div>
+                    {/* The Results */}
+                    <div style={{ marginBottom: '28px' }}>
+                      <h4 style={{
+                        fontSize: '1.3rem',
+                        fontWeight: '700',
+                        marginBottom: '12px',
+                        color: 'var(--text-primary)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}>
+                        🏆 The Results
+                      </h4>
+                      <p style={{
+                        color: 'var(--text-secondary)',
+                        lineHeight: '1.7',
+                        fontSize: '1.05rem'
+                      }}>
+                        {project.results}
+                      </p>
+                    </div>
+
+                    {/* Client Testimonial */}
+                    <div style={{
+                      padding: '24px',
+                      backgroundColor: 'var(--background)',
+                      borderRadius: '16px',
+                      borderLeft: `5px solid var(--primary)`
+                    }}>
+                      <div style={{ display: 'flex', marginBottom: '12px' }}>
+                        {Array.from({ length: project.rating }).map((_, i) => (
+                          <Star key={i} size={20} fill="var(--primary)" color="var(--primary)" />
+                        ))}
+                      </div>
+                      <p style={{
+                        fontStyle: 'italic',
+                        marginBottom: '16px',
+                        color: 'var(--text-secondary)',
+                        lineHeight: '1.6',
+                        fontSize: '1.05rem'
+                      }}>
+                        "{project.testimonial}"
+                      </p>
+                      <p style={{
+                        fontWeight: '700',
+                        color: 'var(--text-primary)',
+                        fontSize: '1.1rem'
+                      }}>
+                        — {project.clientName}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -464,8 +499,11 @@ const AllTransformations = () => {
           <button
             className="safe-hover-btn"
             onClick={() => {
-              window.location.href = '/#contact';
-            }}
+                    navigate('/');
+                    setTimeout(() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
             style={{
               padding: '15px 40px',
               fontSize: '1.1rem',

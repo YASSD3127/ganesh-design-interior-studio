@@ -49,7 +49,10 @@ const AllProjects = () => {
             <span>Back to Home</span>
           </button>
           
-          <div className="text-xl font-bold">
+          <div 
+            className="text-xl font-bold cursor-pointer"
+            onClick={() => window.location.href = '/'}
+          >
             <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
             <span style={{ color: 'var(--primary)' }}> STUDIO</span>
           </div>

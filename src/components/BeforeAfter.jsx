@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const BeforeAfter = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const categories = [
     {
@@ -50,19 +51,8 @@ const BeforeAfter = () => {
           location: 'Rajkot',
           duration: '2.5 months',
           budget: 'Mid-Range',
-          improvements: ['Child-friendly design', 'Storage solutions', 'Durable materials', 'Bright colors'],
-          savings: 'Storage space increased 50%'
-        },
-        {
-          id: 5,
-          title: 'Apartment Living Room',
-          before: 'https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=800',
-          after: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800',
-          location: 'Ahmedabad',
-          duration: '1 month',
-          budget: 'Budget-Friendly',
-          improvements: ['Space maximization', 'Smart storage', 'Light colors', 'Multipurpose furniture'],
-          savings: 'Saved 30% through smart choices'
+          improvements: ['Kid-friendly design', 'Storage solutions', 'Durable materials', 'Safety features'],
+          savings: 'Increased usable space by 30%'
         }
       ]
     },
@@ -70,59 +60,37 @@ const BeforeAfter = () => {
       title: 'Kitchen Renovations',
       projects: [
         {
-          id: 6,
-          title: 'Modern Modular Kitchen',
-          before: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800',
-          after: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800',
-          location: 'Surat',
-          duration: '1.5 months',
+          id: 5,
+          title: 'Modern Kitchen Design',
+          before: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
+          after: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
+          location: 'Mumbai',
+          duration: '3 months',
           budget: 'Premium',
-          improvements: ['Modular kitchen installation', 'Granite countertops', 'Modern appliances', 'Improved storage by 40%'],
-          savings: 'Space efficiency increased 40%'
+          improvements: ['L-shaped modular design', 'Premium granite countertops', 'Modern appliances', 'Chimney installation'],
+          savings: 'Cooking efficiency increased 60%'
+        },
+        {
+          id: 6,
+          title: 'Compact Kitchen Solution',
+          before: 'https://images.unsplash.com/photo-1556928617-1ddc4e17bb4e?w=800',
+          after: 'https://images.unsplash.com/photo-1556909049-39fadd4bdb8b?w=800',
+          location: 'Pune',
+          duration: '1.5 months',
+          budget: 'Budget-Friendly',
+          improvements: ['Space optimization', 'Smart storage', 'Cost-effective materials', 'Efficient layout'],
+          savings: 'Maximized 40% more storage'
         },
         {
           id: 7,
-          title: 'Compact Kitchen Design',
-          before: 'https://images.unsplash.com/photo-1556909114-f1e7e89f17be?w=800',
-          after: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800',
-          location: 'Vadodara',
-          duration: '3 weeks',
-          budget: 'Budget-Friendly',
-          improvements: ['Space optimization', 'Smart storage', 'New cabinets', 'Better lighting'],
-          savings: 'Under budget completion'
-        },
-        {
-          id: 8,
-          title: 'Luxury Kitchen',
-          before: 'https://images.unsplash.com/photo-1556909114-d5f7b9b1e9f2?w=800',
-          after: 'https://images.unsplash.com/photo-1600489000739-c0e3ca9e6f3f?w=800',
-          location: 'Ahmedabad',
-          duration: '2 months',
-          budget: 'Premium',
-          improvements: ['Imported materials', 'Island counter', 'High-end appliances', 'Custom cabinets'],
-          savings: 'Home value increased 35%'
-        },
-        {
-          id: 9,
           title: 'Traditional Kitchen Upgrade',
-          before: 'https://images.unsplash.com/photo-1556909212-03e25d99e07e?w=800',
-          after: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800',
-          location: 'Rajkot',
-          duration: '1 month',
+          before: 'https://images.unsplash.com/photo-1556909049-4bc9e5e42b79?w=800',
+          after: 'https://images.unsplash.com/photo-1556909048-c6c4d9b1c1f8?w=800',
+          location: 'Jaipur',
+          duration: '2 months',
           budget: 'Mid-Range',
-          improvements: ['Modern meets traditional', 'New countertops', 'Updated cabinets', 'Improved workflow'],
-          savings: 'Functionality improved 60%'
-        },
-        {
-          id: 10,
-          title: 'Open Kitchen Concept',
-          before: 'https://images.unsplash.com/photo-1556909114-f2d5d89f5ff5?w=800',
-          after: 'https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800',
-          location: 'Surat',
-          duration: '2.5 months',
-          budget: 'Premium',
-          improvements: ['Wall removal', 'Open layout', 'Breakfast counter', 'Seamless living integration'],
-          savings: 'Space feels 50% larger'
+          improvements: ['Traditional elements', 'Modern functionality', 'Wooden cabinets', 'Brass fittings'],
+          savings: 'Perfect blend of old and new'
         }
       ]
     },
@@ -130,86 +98,97 @@ const BeforeAfter = () => {
       title: 'Bedroom Transformations',
       projects: [
         {
-          id: 11,
+          id: 8,
           title: 'Master Bedroom Suite',
-          before: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800',
-          after: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800',
-          location: 'Vadodara',
-          duration: '3 weeks',
-          budget: 'Budget-Friendly',
-          improvements: ['Built-in wardrobe', 'Accent wall design', 'New flooring', 'Smart lighting'],
-          savings: 'Completed 15% under budget'
-        },
-        {
-          id: 12,
-          title: 'Kids Bedroom',
-          before: 'https://images.unsplash.com/photo-1556909114-44d3b6f07b55?w=800',
-          after: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800',
-          location: 'Ahmedabad',
-          duration: '2 weeks',
-          budget: 'Mid-Range',
-          improvements: ['Playful colors', 'Study area', 'Storage solutions', 'Safe materials'],
-          savings: 'Multifunctional space created'
-        },
-        {
-          id: 13,
-          title: 'Luxury Master Bedroom',
-          before: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800',
-          after: 'https://images.unsplash.com/photo-1600573472550-570e8b34f906?w=800',
-          location: 'Surat',
-          duration: '1.5 months',
-          budget: 'Premium',
-          improvements: ['Walk-in closet', 'Premium finishes', 'Automated lighting', 'En-suite bathroom'],
-          savings: 'Hotel-like luxury achieved'
-        },
-        {
-          id: 14,
-          title: 'Guest Bedroom',
           before: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800',
-          after: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800',
-          location: 'Vadodara',
-          duration: '2 weeks',
-          budget: 'Budget-Friendly',
-          improvements: ['Neutral design', 'Comfortable bed', 'Good storage', 'Welcoming ambiance'],
-          savings: 'Quick turnaround'
+          after: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800',
+          location: 'Bangalore',
+          duration: '2.5 months',
+          budget: 'Premium',
+          improvements: ['Walk-in wardrobe', 'En-suite bathroom', 'Ambient lighting', 'Reading nook'],
+          savings: 'Hotel-like luxury experience'
         },
         {
-          id: 15,
-          title: 'Teen Bedroom',
-          before: 'https://images.unsplash.com/photo-1556909114-f8dd8e68ae5e?w=800',
-          after: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800',
-          location: 'Rajkot',
-          duration: '3 weeks',
-          budget: 'Mid-Range',
-          improvements: ['Modern aesthetic', 'Study zone', 'Entertainment area', 'Smart storage'],
-          savings: 'Personalized design'
+          id: 9,
+          title: 'Kids Bedroom Design',
+          before: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800',
+          after: 'https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=800',
+          location: 'Chennai',
+          duration: '1 month',
+          budget: 'Budget-Friendly',
+          improvements: ['Colorful theme', 'Study area', 'Play zone', 'Safety features'],
+          savings: 'Fun learning environment'
+        }
+      ]
+    },
+    {
+      title: 'Bathroom Upgrades',
+      projects: [
+        {
+          id: 10,
+          title: 'Spa-Like Bathroom',
+          before: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800',
+          after: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
+          location: 'Delhi',
+          duration: '2 months',
+          budget: 'Premium',
+          improvements: ['Jacuzzi installation', 'Premium tiles', 'Ambient lighting', 'Ventilation system'],
+          savings: 'Daily spa experience at home'
+        },
+        {
+          id: 11,
+          title: 'Compact Bathroom Solution',
+          before: 'https://images.unsplash.com/photo-1584622781564-1d987d7c2c2d?w=800',
+          after: 'https://images.unsplash.com/photo-1584622650163-3a136b1d5e78?w=800',
+          location: 'Kolkata',
+          duration: '1 month',
+          budget: 'Budget-Friendly',
+          improvements: ['Space optimization', 'Modern fixtures', 'Storage solutions', 'Waterproofing'],
+          savings: 'Feels 50% larger than before'
         }
       ]
     }
   ];
 
+  // Get current category and project
   const currentCategory = categories[activeCategory];
   const current = currentCategory.projects[activeProjectIndex];
   const totalProjects = currentCategory.projects.length;
 
+  // Navigation functions
   const nextProject = () => {
-    setActiveProjectIndex((prev) => (prev + 1) % totalProjects);
+    setActiveProjectIndex((prev) => 
+      prev === totalProjects - 1 ? 0 : prev + 1
+    );
   };
 
   const prevProject = () => {
-    setActiveProjectIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
+    setActiveProjectIndex((prev) => 
+      prev === 0 ? totalProjects - 1 : prev - 1
+    );
+  };
+
+  const goToProject = (index) => {
+    setActiveProjectIndex(index);
+  };
+
+  const switchCategory = (categoryIndex) => {
+    setActiveCategory(categoryIndex);
+    setActiveProjectIndex(0);
   };
 
   return (
     <section style={{ 
-      padding: '96px 24px',
-      backgroundColor: 'var(--surface)' 
+      backgroundColor: 'var(--background)', 
+      padding: '80px 20px',
+      color: 'var(--text-primary)'
     }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <h2 style={{ 
-            fontSize: 'clamp(2.5rem, 5vw, 3rem)', 
+            fontSize: 'clamp(2rem, 4vw, 3rem)', 
             fontWeight: 'bold', 
             marginBottom: '16px',
             color: 'var(--text-primary)'
@@ -217,58 +196,57 @@ const BeforeAfter = () => {
             Before & After Transformations
           </h2>
           <p style={{ 
-            fontSize: '18px', 
+            fontSize: '1.2rem', 
             color: 'var(--text-secondary)', 
-            maxWidth: '672px', 
+            maxWidth: '600px', 
             margin: '0 auto' 
           }}>
-            See the dramatic difference our interior design makes. Real projects, real results.
+            See how we've transformed spaces across Gujarat and beyond
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '16px',
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
           marginBottom: '48px',
-          flexWrap: 'wrap'
+          flexWrap: 'wrap',
+          gap: '12px'
         }}>
-          {categories.map((cat, index) => (
+          {categories.map((category, index) => (
             <button
               key={index}
-              onClick={() => {
-                setActiveCategory(index);
-                setActiveProjectIndex(0);
-              }}
+              onClick={() => switchCategory(index)}
+              className="safe-hover-btn"
               style={{
                 padding: '12px 24px',
-                borderRadius: '9999px',
-                fontWeight: 600,
-                backgroundColor: activeCategory === index ? 'var(--primary)' : 'var(--background)',
-                color: activeCategory === index ? 'white' : 'var(--text-primary)',
-                border: 'none',
+                borderRadius: '30px',
+                border: activeCategory === index 
+                  ? 'none' 
+                  : '2px solid var(--border)',
+                backgroundColor: activeCategory === index 
+                  ? 'var(--primary)' 
+                  : 'var(--surface)',
+                color: activeCategory === index 
+                  ? 'white' 
+                  : 'var(--text-primary)',
                 cursor: 'pointer',
-                fontSize: '16px',
-                boxShadow: activeCategory === index ? '0 10px 15px rgba(0,0,0,0.1)' : 'none'
+                fontSize: '1rem',
+                fontWeight: '500'
               }}
             >
-              {cat.title}
+              {category.title}
             </button>
           ))}
         </div>
 
-        {/* Main Comparison */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1fr', 
-          gap: '32px', 
-          marginBottom: '32px' 
-        }}>
+        {/* Before/After Images */}
+        <div style={{ marginBottom: '48px' }}>
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: window.innerWidth >= 1024 ? '1fr 1fr' : '1fr',
-            gap: '32px' 
+            gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+            gap: '32px',
+            marginBottom: '32px'
           }}>
             {/* Before Image */}
             <div style={{ position: 'relative' }}>
@@ -276,7 +254,7 @@ const BeforeAfter = () => {
                 position: 'absolute',
                 top: '16px',
                 left: '16px',
-                backgroundColor: '#1F2937',
+                backgroundColor: 'rgba(0,0,0,0.8)',
                 color: 'white',
                 padding: '8px 16px',
                 borderRadius: '9999px',
@@ -289,12 +267,19 @@ const BeforeAfter = () => {
                 aspectRatio: '4/3', 
                 borderRadius: '12px', 
                 overflow: 'hidden', 
-                boxShadow: '0 25px 50px rgba(0,0,0,0.15)' 
+                boxShadow: '0 25px 50px rgba(0,0,0,0.15)',
+                cursor: 'pointer'
               }}>
                 <img
                   src={current.before}
                   alt="Before transformation"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onClick={() => setLightboxImage(current.before)}
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover',
+                    cursor: 'pointer'
+                  }}
                 />
               </div>
             </div>
@@ -318,15 +303,33 @@ const BeforeAfter = () => {
                 aspectRatio: '4/3', 
                 borderRadius: '12px', 
                 overflow: 'hidden', 
-                boxShadow: '0 25px 50px rgba(0,0,0,0.15)' 
+                boxShadow: '0 25px 50px rgba(0,0,0,0.15)',
+                cursor: 'pointer'
               }}>
                 <img
                   src={current.after}
                   alt="After transformation"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  onClick={() => setLightboxImage(current.after)}
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover',
+                    cursor: 'pointer'
+                  }}
                 />
               </div>
             </div>
+          </div>
+          
+          {/* Click to Enlarge Instruction */}
+          <div style={{
+            textAlign: 'center',
+            padding: '12px',
+            color: 'var(--text-secondary)',
+            fontSize: '14px',
+            fontStyle: 'italic'
+          }}>
+            💡 Click on any image above to enlarge and view details
           </div>
         </div>
 
@@ -340,113 +343,102 @@ const BeforeAfter = () => {
         }}>
           <button
             onClick={prevProject}
+            className="safe-hover-btn"
             style={{
               backgroundColor: 'var(--background)',
               padding: '12px',
               borderRadius: '9999px',
-              border: 'none',
-              cursor: 'pointer'
+              border: '2px solid var(--border)',
+              cursor: 'pointer',
+              color: 'var(--text-primary)'
             }}
           >
-            <ChevronLeft size={24} style={{ color: 'var(--text-primary)' }} />
+            <ChevronLeft size={20} />
           </button>
-
-          {/* Dots */}
+          
           <div style={{ display: 'flex', gap: '8px' }}>
             {currentCategory.projects.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setActiveProjectIndex(index)}
+                onClick={() => goToProject(index)}
                 style={{
                   width: '12px',
                   height: '12px',
                   borderRadius: '9999px',
-                  backgroundColor: activeProjectIndex === index ? 'var(--primary)' : 'var(--border)',
                   border: 'none',
-                  cursor: 'pointer',
-                  padding: 0
+                  backgroundColor: index === activeProjectIndex 
+                    ? 'var(--primary)' 
+                    : 'var(--border)',
+                  cursor: 'pointer'
                 }}
               />
             ))}
           </div>
-
+          
           <button
             onClick={nextProject}
+            className="safe-hover-btn"
             style={{
               backgroundColor: 'var(--background)',
               padding: '12px',
               borderRadius: '9999px',
-              border: 'none',
-              cursor: 'pointer'
+              border: '2px solid var(--border)',
+              cursor: 'pointer',
+              color: 'var(--text-primary)'
             }}
           >
-            <ChevronRight size={24} style={{ color: 'var(--text-primary)' }} />
+            <ChevronRight size={20} />
           </button>
         </div>
 
         {/* Project Details */}
-        <div style={{
-          backgroundColor: 'var(--background)',
-          borderRadius: '16px',
-          padding: '32px'
-        }}>
+        <div style={{ marginBottom: '48px' }}>
           <h3 style={{ 
-            fontSize: '30px', 
+            fontSize: '1.8rem', 
             fontWeight: 'bold', 
-            marginBottom: '16px',
+            textAlign: 'center', 
+            marginBottom: '32px',
             color: 'var(--text-primary)'
           }}>
             {current.title}
           </h3>
-          
+
+          {/* Project Stats */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-            gap: '16px',
-            marginBottom: '24px'
+            gridTemplateColumns: window.innerWidth >= 768 ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)',
+            gap: '24px',
+            marginBottom: '32px',
+            backgroundColor: 'var(--surface)',
+            padding: '24px',
+            borderRadius: '16px'
           }}>
-            <div>
-              <div style={{ 
-                fontSize: '14px', 
-                color: 'var(--text-secondary)', 
-                marginBottom: '4px' 
-              }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
                 Location
               </div>
-              <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+              <div style={{ fontWeight: 600, color: 'var(--primary)' }}>
                 {current.location}
               </div>
             </div>
-            <div>
-              <div style={{ 
-                fontSize: '14px', 
-                color: 'var(--text-secondary)', 
-                marginBottom: '4px' 
-              }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
                 Duration
               </div>
-              <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+              <div style={{ fontWeight: 600, color: 'var(--primary)' }}>
                 {current.duration}
               </div>
             </div>
-            <div>
-              <div style={{ 
-                fontSize: '14px', 
-                color: 'var(--text-secondary)', 
-                marginBottom: '4px' 
-              }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
                 Budget
               </div>
-              <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+              <div style={{ fontWeight: 600, color: 'var(--primary)' }}>
                 {current.budget}
               </div>
             </div>
-            <div>
-              <div style={{ 
-                fontSize: '14px', 
-                color: 'var(--text-secondary)', 
-                marginBottom: '4px' 
-              }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
                 Result
               </div>
               <div style={{ fontWeight: 600, color: 'var(--primary)' }}>
@@ -487,12 +479,115 @@ const BeforeAfter = () => {
         {/* Project Counter */}
         <div style={{ 
           textAlign: 'center', 
-          marginTop: '24px', 
+          marginBottom: '48px', 
           color: 'var(--text-secondary)' 
         }}>
           Project {activeProjectIndex + 1} of {totalProjects} in {currentCategory.title}
         </div>
+
+        {/* CTA Buttons */}
+        <div style={{
+          display: 'flex',
+          flexDirection: window.innerWidth >= 768 ? 'row' : 'column',
+          gap: '16px',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <button
+            className="safe-hover-btn"
+            onClick={() => {
+              window.location.href = '/all-transformations';
+            }}
+            style={{
+              padding: '16px 32px',
+              fontSize: '1.1rem',
+              backgroundColor: 'transparent',
+              color: 'var(--primary)',
+              border: '2px solid var(--primary)',
+              borderRadius: '30px',
+              cursor: 'pointer',
+              fontWeight: '600'
+            }}
+          >
+            View All Transformations
+          </button>
+          
+          <button
+            className="safe-hover-btn"
+            onClick={() => {
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            style={{
+              padding: '16px 32px',
+              fontSize: '1.1rem',
+              backgroundColor: 'var(--primary)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '30px',
+              cursor: 'pointer',
+              fontWeight: '600'
+            }}
+          >
+            Start Your Transformation
+          </button>
+        </div>
       </div>
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div 
+          onClick={() => setLightboxImage(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.95)',
+            zIndex: 60,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255,255,255,0.2)',
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '24px',
+              zIndex: 10
+            }}
+          >
+            <X size={30} />
+          </button>
+
+          {/* Main Image */}
+          <img
+            src={lightboxImage}
+            alt="Enlarged view"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: '8px'
+            }}
+          />
+        </div>
+      )}
     </section>
   );
 };

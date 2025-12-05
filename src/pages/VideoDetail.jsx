@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 const VideoDetail = ({ videoId }) => {
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [videoId]);
-
+  const navigate = useNavigate();
   // Video data - in real app, fetch by videoId
   const allVideos = [
     {
@@ -119,7 +119,10 @@ const VideoDetail = ({ videoId }) => {
             <span>Back to Videos</span>
           </button>
           
-          <div style={{ fontSize: '20px', fontWeight: 'bold' }}>
+          <div 
+            className="text-xl font-bold cursor-pointer"
+            onClick={() => window.location.href = '/'}
+          >
             <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
             <span style={{ color: 'var(--primary)' }}> STUDIO</span>
           </div>
@@ -336,7 +339,7 @@ const VideoDetail = ({ videoId }) => {
               </p>
               <button
                 onClick={() => {
-                  window.location.href = '/';
+                  navigate('/');
                   setTimeout(() => {
                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                   }, 100);
