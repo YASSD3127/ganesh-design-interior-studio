@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Play } from 'lucide-react';
 import VideoSection from '../components/VideoSection';
+import { useEffect } from 'react';
 
 const AllVideos = () => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedVideo, setSelectedVideo] = useState(null);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const allVideos = {
     residential: [
@@ -40,24 +45,24 @@ const AllVideos = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white pt-32 pb-16">
+    <div className="min-h-screen pt-32 pb-16"
+    style={{ backgroundColor: 'var(--background)' }}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
+      <nav className="fixed top-0 w-full z-50 shadow-sm"
+      style={{ backgroundColor: 'var(--surface)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-gray-700 font-medium"
-            style={{ transition: 'color 0.2s ease' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#111827'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#374151'}
+            className="flex items-center gap-2 font-medium"
+            style={{ color: 'var(--text-primary)' }}
           >
             <ArrowLeft size={20} />
             <span>Back to Home</span>
           </button>
           
           <div className="text-xl font-bold">
-            <span className="text-gray-900">GANESH</span>
-            <span className="text-orange-600"> STUDIO</span>
+            <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
+            <span style={{ color: 'var(--primary)' }}> STUDIO</span>
           </div>
         </div>
       </nav>
@@ -67,10 +72,8 @@ const AllVideos = () => {
           <div>
             <button
               onClick={() => setSelectedVideo(null)}
-              className="mb-6 text-orange-600 font-semibold"
-              style={{ transition: 'color 0.2s ease' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#c2410c'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#ea580c'}
+              className="mb-6 font-semibold"
+              style={{ color: 'var(--primary)' }}
             >
               ← Back to all videos
             </button>
@@ -83,7 +86,8 @@ const AllVideos = () => {
         ) : (
           <>
             <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">Video Gallery</h1>
-            <p className="text-center text-gray-600 mb-12">
+            <p className="text-center mb-12"
+            style={{ color: 'var(--text-secondary)' }}>
               Explore {getAllVideos().length}+ project walkthroughs and design showcases
             </p>
 
@@ -95,19 +99,13 @@ const AllVideos = () => {
                   onClick={() => setActiveFilter(filter.id)}
                   className={`px-6 py-3 rounded-full font-semibold ${
                     activeFilter === filter.id
-                      ? 'bg-orange-600 text-white shadow-lg'
-                      : 'bg-gray-200 text-gray-700'
+                      ? 'text-white shadow-lg'
+                      : ''
                   }`}
-                  style={{ transition: 'background-color 0.2s ease' }}
-                  onMouseEnter={(e) => {
-                    if (activeFilter !== filter.id) {
-                      e.currentTarget.style.backgroundColor = '#d1d5db';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (activeFilter !== filter.id) {
-                      e.currentTarget.style.backgroundColor = '#e5e7eb';
-                    }
+                  style={{
+                    backgroundColor: activeFilter === filter.id ? 'var(--primary)' : 'var(--surface)',
+                    color: activeFilter === filter.id ? 'white' : 'var(--text-primary)',
+                    border: activeFilter === filter.id ? 'none' : '2px solid var(--border)'
                   }}
                 >
                   {filter.label}
@@ -128,12 +126,10 @@ const AllVideos = () => {
                       src={video.thumbnail}
                       alt={video.title}
                       className="w-full h-full object-cover"
-                      style={{ transition: 'transform 0.5s ease' }}
-                      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                      <div className="bg-orange-600 rounded-full p-4">
+                      <div className="rounded-full p-4"
+                      style={{ backgroundColor: 'var(--primary)' }}>
                         <Play size={32} className="text-white fill-white ml-1" />
                       </div>
                     </div>

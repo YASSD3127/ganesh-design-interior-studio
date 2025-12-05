@@ -41,31 +41,69 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Why Choose Ganesh Studio</h2>
-        <p className="text-center text-gray-600 mb-16 text-lg max-w-2xl mx-auto">
+    <section style={{
+      padding: '96px 24px',
+      backgroundColor: 'var(--surface)'
+    }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        <h2 style={{
+          fontSize: 'clamp(2.5rem, 5vw, 3rem)',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginBottom: '16px',
+          color: 'var(--text-primary)'
+        }}>
+          Why Choose Ganesh Studio
+        </h2>
+        <p style={{
+          textAlign: 'center',
+          color: 'var(--text-secondary)',
+          marginBottom: '64px',
+          fontSize: '18px',
+          maxWidth: '672px',
+          margin: '0 auto 64px auto'
+        }}>
           We combine expertise, innovation, and attention to detail to create spaces that truly reflect your vision
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '32px'
+        }}>
           {benefits.map((benefit) => (
             <div 
               key={benefit.id}
-              className="group bg-gray-50 rounded-xl p-8 hover:bg-orange-600 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="card"
+              style={{
+                backgroundColor: 'var(--background)',
+                borderRadius: '12px',
+                padding: '32px'
+              }}
             >
               {/* Icon */}
-              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+              <div style={{
+                fontSize: '48px',
+                marginBottom: '16px'
+              }}>
                 {benefit.icon}
               </div>
               
               {/* Title */}
-              <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-white transition-colors">
+              <h3 style={{
+                fontSize: '20px',
+                fontWeight: 'bold',
+                marginBottom: '12px',
+                color: 'var(--text-primary)'
+              }}>
                 {benefit.title}
               </h3>
               
               {/* Description */}
-              <p className="text-gray-600 group-hover:text-white/90 transition-colors leading-relaxed">
+              <p style={{
+                color: 'var(--text-secondary)',
+                lineHeight: '1.7'
+              }}>
                 {benefit.description}
               </p>
             </div>
@@ -73,21 +111,63 @@ const WhyChooseUs = () => {
         </div>
         
         {/* Additional Info */}
-        <div className="mt-16 bg-gray-900 rounded-2xl p-12 text-white text-center">
-          <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Space?</h3>
-          <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">
+        <div style={{
+          marginTop: '64px',
+          backgroundColor: 'var(--charcoal-wood)',
+          borderRadius: '16px',
+          padding: '48px',
+          textAlign: 'center',
+          color: 'white'
+        }}>
+          <h3 style={{
+            fontSize: '30px',
+            fontWeight: 'bold',
+            marginBottom: '16px'
+          }}>
+            Ready to Transform Your Space?
+          </h3>
+          <p style={{
+            color: '#E5E5E5',
+            marginBottom: '32px',
+            fontSize: '18px',
+            maxWidth: '672px',
+            margin: '0 auto 32px auto'
+          }}>
             Join 200+ satisfied clients who trusted us with their interior design projects
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div style={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}>
             <button 
               onClick={() => document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all"
+              style={{
+                backgroundColor: 'white',
+                color: 'var(--charcoal-wood)',
+                padding: '16px 32px',
+                borderRadius: '9999px',
+                fontWeight: 600,
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '16px'
+              }}
             >
               View Our Work
             </button>
             <button 
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-              className="bg-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-700 hover:shadow-2xl hover:-translate-y-1 transition-all"
+              style={{
+                backgroundColor: 'var(--primary)',
+                color: 'white',
+                padding: '16px 32px',
+                borderRadius: '9999px',
+                fontWeight: 600,
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '16px'
+              }}
             >
               Get Free Consultation
             </button>

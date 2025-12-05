@@ -2,36 +2,115 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-12 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer style={{
+      backgroundColor: '#000000',
+      color: 'white',
+      padding: '48px 24px'
+    }}>
+      <div style={{
+          paddingTop: '32px',
+          borderTop: '1px solid #374151',
+          textAlign: 'center'
+        }}></div>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '32px',
+          marginBottom: '32px'
+        }}>
           {/* Brand */}
           <div>
-            <div className="text-2xl font-bold mb-4">
-              <span className="text-white">GANESH</span>
-              <span className="text-orange-600"> STUDIO</span>
+            <div style={{
+              fontSize: '24px',
+              fontWeight: 'bold',
+              marginBottom: '16px'
+            }}>
+              <span style={{ color: 'white' }}>GANESH</span>
+              <span style={{ color: 'var(--primary)' }}> STUDIO</span>
             </div>
-            <p className="text-gray-400 mb-4">
+            <p style={{
+              color: '#9CA3AF',
+              marginBottom: '16px'
+            }}>
               Transforming spaces with expert interior design and execution services across Gujarat.
             </p>
           </div>
           
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="#home" className="text-gray-400 hover:text-orange-600 transition-colors">Home</a></li>
-              <li><a href="#portfolio" className="text-gray-400 hover:text-orange-600 transition-colors">Our Work</a></li>
-              <li><a href="#services" className="text-gray-400 hover:text-orange-600 transition-colors">Services</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-orange-600 transition-colors">About</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-orange-600 transition-colors">Contact</a></li>
+            <h3 style={{
+              fontWeight: 'bold',
+              marginBottom: '16px'
+            }}>
+              Quick Links
+            </h3>
+            <ul style={{
+              listStyle: 'none',
+              padding: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px'
+            }}>
+              <li>
+                <a href="#home" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#portfolio" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  Our Work
+                </a>
+              </li>
+              <li>
+                <a href="#services" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#about" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#contact" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
           
           {/* Services */}
           <div>
-            <h3 className="font-bold mb-4">Our Services</h3>
-            <ul className="space-y-2 text-gray-400">
+            <h3 style={{
+              fontWeight: 'bold',
+              marginBottom: '16px'
+            }}>
+              Our Services
+            </h3>
+            <ul style={{
+              listStyle: 'none',
+              padding: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+              color: '#9CA3AF'
+            }}>
               <li>Residential Interiors</li>
               <li>Commercial Spaces</li>
               <li>3D Visualization</li>
@@ -43,27 +122,66 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h3 className="font-bold mb-4">Get In Touch</h3>
-            <ul className="space-y-2 text-gray-400">
+            <h3 style={{
+              fontWeight: 'bold',
+              marginBottom: '16px'
+            }}>
+              Get In Touch
+            </h3>
+            <ul style={{
+              listStyle: 'none',
+              padding: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+              color: '#9CA3AF'
+            }}>
               <li>📞 +91 XXXXX XXXXX</li>
               <li>✉️ info@ganeshstudio.com</li>
               <li>📍 Gujarat, India</li>
             </ul>
             
-            <div className="mt-4">
-              <h4 className="font-semibold mb-2">Follow Us</h4>
-              <div className="flex gap-3">
-                <a href="#" className="hover:text-orange-600 transition-colors">Instagram</a>
-                <a href="#" className="hover:text-orange-600 transition-colors">Facebook</a>
-                <a href="#" className="hover:text-orange-600 transition-colors">LinkedIn</a>
+            <div style={{ marginTop: '16px' }}>
+              <h4 style={{
+                fontWeight: 600,
+                marginBottom: '8px'
+              }}>
+                Follow Us
+              </h4>
+              <div style={{
+                display: 'flex',
+                gap: '12px'
+              }}>
+                <a href="#" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  Instagram
+                </a>
+                <a href="#" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  Facebook
+                </a>
+                <a href="#" style={{
+                  color: '#9CA3AF',
+                  textDecoration: 'none'
+                }}>
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>
         </div>
         
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-800 text-center">
-          <p className="text-gray-400">
+        <div style={{
+          paddingTop: '32px',
+          borderTop: '1px solid #374151',
+          textAlign: 'center'
+        }}>
+          <p style={{ color: '#9CA3AF' }}>
             &copy; 2025 Ganesh Studio. All rights reserved. | Designed with passion for beautiful spaces
           </p>
         </div>

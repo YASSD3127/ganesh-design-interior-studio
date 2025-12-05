@@ -1,6 +1,42 @@
+/* No Oozing Nuclear - Fixed with Safe Hover */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Light Mode Colors */
+  --chalk-white: #F9F7F4;
+  --putty-beige: #D7CEC7;
+  --dusty-clay: #BC8A73;
+  --muted-sage: #A9B2A3;
+  --charcoal-wood: #5F5C57;
+  
+  /* Derived Colors */
+  --primary: var(--dusty-clay);
+  --secondary: var(--muted-sage);
+  --background: var(--chalk-white);
+  --surface: #FFFFFF;
+  --text-primary: var(--charcoal-wood);
+  --text-secondary: #6B6863;
+  --border: var(--putty-beige);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Colors */
+  --chalk-white: #1A1918;
+  --putty-beige: #2A2826;
+  --dusty-clay: #BC8A73;
+  --muted-sage: #A9B2A3;
+  --charcoal-wood: #E8E6E3;
+  
+  --primary: var(--dusty-clay);
+  --secondary: var(--muted-sage);
+  --background: #1A1918;
+  --surface: #252321;
+  --text-primary: var(--charcoal-wood);
+  --text-secondary: #B8B5B0;
+  --border: #3A3836;
+}
 
 * {
   margin: 0;
@@ -14,6 +50,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--text-primary);
 }
 
 /* REMOVE ALL TRANSITIONS AND EFFECTS */
@@ -31,17 +69,41 @@ body {
   -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Force buttons to have NO effects */
-button {
+/* SAFE BUTTON HOVER EFFECTS - TRANSFORM ONLY */
+/* Only allow transform on specific button classes to avoid oozing */
+.safe-hover-btn {
+  transition: transform 0.15s ease !important;
+}
+
+.safe-hover-btn:hover {
+  transform: translateY(-1px) !important;
+}
+
+.safe-hover-btn:active {
+  transform: translateY(0px) scale(0.98) !important;
+}
+
+/* Safe card hover effects */
+.safe-hover-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.safe-hover-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Force all other buttons to have NO effects */
+button:not(.safe-hover-btn) {
   transition: none !important;
   animation: none !important;
   outline: none !important;
   box-shadow: none !important;
 }
 
-button:hover,
-button:focus,
-button:active {
+button:not(.safe-hover-btn):hover,
+button:not(.safe-hover-btn):focus,
+button:not(.safe-hover-btn):active {
   transition: none !important;
   animation: none !important;
   outline: none !important;
@@ -63,12 +125,6 @@ a:active {
   outline: none !important;
 }
 
-/* Only allow text color change on hover for links/buttons */
-button:hover,
-a:hover {
-  color: inherit !important;
-}
-
 /* Remove input effects */
 input,
 textarea,
@@ -83,4 +139,10 @@ textarea:focus,
 select:focus {
   outline: none !important;
   box-shadow: none !important;
+  border-color: var(--primary) !important;
+}
+
+/* Smooth scroll only */
+html {
+  scroll-behavior: smooth;
 }

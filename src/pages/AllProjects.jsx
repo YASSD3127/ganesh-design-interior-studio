@@ -11,6 +11,10 @@ const AllProjects = () => {
   const [activeFilter, setActiveFilter] = useState(
     location.state?.filterCategory || 'all'
   );
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const filteredProjects = activeFilter === 'all'
     ? projectsData
@@ -30,28 +34,31 @@ const AllProjects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-32 pb-16">
+    <div className="min-h-screen pt-32 pb-16"
+    style={{ backgroundColor: 'var(--background)', color: 'var(--text-primary)' }}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
+      <nav className="fixed top-0 w-full z-50 shadow-sm"
+      style={{ backgroundColor: 'var(--surface)' }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors font-medium"
+            className="flex items-center gap-2 font-medium"
+            style={{ color: 'var(--text-primary)' }}
           >
             <ArrowLeft size={20} />
             <span>Back to Home</span>
           </button>
           
           <div className="text-xl font-bold">
-            <span className="text-gray-900">GANESH</span>
-            <span className="text-orange-600"> STUDIO</span>
+            <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
+            <span style={{ color: 'var(--primary)' }}> STUDIO</span>
           </div>
         </div>
       </nav>
 
       <div className="max-w-7xl mx-auto px-6">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">All Projects</h1>
-        <p className="text-center text-gray-600 mb-12">
+        <p className="text-center mb-12" style={{ color: 'var(--text-secondary)' }}>
           Explore our complete portfolio of {projectsData.length}+ completed projects
         </p>
 

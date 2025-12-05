@@ -26,7 +26,8 @@
 //   if (!isVisible) return null;
 
 //   return (
-//     <div className="fixed top-0 left-0 right-0 bg-orange-600 text-white py-2 px-4 z-50 shadow-md">
+//     <div className="fixed top-0 left-0 right-0 text-white py-2 px-4 z-50 shadow-md"
+// style={{ backgroundColor: 'var(--primary)' }}>
 //       <div className="max-w-7xl mx-auto flex items-center justify-between">
 //         {/* Update Text */}
 //         <div className="flex items-center gap-3 flex-1 justify-center">
@@ -39,7 +40,7 @@
 //         {/* Close Button */}
 //         <button
 //           onClick={() => setIsVisible(false)}
-//           className="ml-4 hover:bg-orange-700 p-1 rounded transition-colors"
+//           className="ml-4 p-1 rounded transition-colors"
 //           aria-label="Close banner"
 //         >
 //           <X size={18} />

@@ -27,10 +27,12 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-24 px-6 bg-gray-50">
+    <section className="py-24 px-6" style={{ backgroundColor: 'var(--surface)' }}>
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">What Our Clients Say</h2>
-        <p className="text-center text-gray-600 mb-16 text-lg">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4"
+        style={{ color: 'var(--text-primary)' }}>What Our Clients Say</h2>
+        <p className="text-center mb-16 text-lg"
+        style={{ color: 'var(--text-secondary)' }}>
           Don't just take our word for it - hear from our satisfied clients
         </p>
         
@@ -38,34 +40,27 @@ const Testimonials = () => {
           {displayedTestimonials.map((testimonial) => (
             <div 
               key={testimonial.id} 
-              className="bg-white rounded-xl p-8 shadow-lg h-full flex flex-col"
-              style={{ transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 25px 50px rgba(0,0,0,0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.12)';
-              }}
+              className="rounded-xl p-8 shadow-lg h-full flex flex-col"
+              style={{ backgroundColor: 'var(--background)' }}
             >
               {/* Stars */}
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-orange-600 text-xl">★</span>
+                  <span key={i} className="text-xl" style={{ color: 'var(--primary)' }}>★</span>
                 ))}
               </div>
               
               {/* Quote */}
-              <p className="text-gray-700 mb-6 leading-relaxed italic flex-1">
+              <p className="mb-6 leading-relaxed italic flex-1"
+              style={{ color: 'var(--text-secondary)' }}>
                 "{testimonial.text}"
               </p>
               
               {/* Client Info */}
-              <div className="border-t border-gray-100 pt-4">
-                <div className="font-bold text-gray-900">{testimonial.name}</div>
-                <div className="text-sm text-gray-600">{testimonial.location}</div>
-                <div className="text-sm text-orange-600 mt-1">{testimonial.project}</div>
+              <div className="border-t pt-4" style={{ borderColor: 'var(--border)' }}>
+                <div className="font-bold" style={{ color: 'var(--text-primary)' }}>{testimonial.name}</div>
+                <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{testimonial.location}</div>
+                <div className="text-sm mt-1" style={{ color: 'var(--primary)' }}>{testimonial.project}</div>
               </div>
             </div>
           ))}
@@ -75,44 +70,34 @@ const Testimonials = () => {
         <div className="flex items-center justify-center gap-6">
           <button
             onClick={prevPage}
-            className="bg-white p-3 rounded-full shadow-lg"
-            style={{ transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.1)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-            }}
+            className="p-3 rounded-full shadow-lg"
+            style={{ backgroundColor: 'var(--background)' }}
           >
             <ChevronLeft size={24} />
           </button>
 
-          <div className="flex gap-2">
+          <div style={{ display: 'flex', gap: '8px' }}>
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full ${
-                  currentIndex === index ? 'bg-orange-600' : 'bg-gray-300'
-                }`}
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '9999px',
+                  backgroundColor: currentIndex === index ? 'var(--primary)' : 'var(--border)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0
+                }}
               />
             ))}
           </div>
 
           <button
             onClick={nextPage}
-            className="bg-white p-3 rounded-full shadow-lg"
-            style={{ transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.1)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-            }}
+            className="p-3 rounded-full shadow-lg"
+            style={{ backgroundColor: 'var(--background)' }}
           >
             <ChevronRight size={24} />
           </button>

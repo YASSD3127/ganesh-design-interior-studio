@@ -39,12 +39,29 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-24 px-6">
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Our Portfolio</h2>
+    <section id="portfolio" style={{
+      padding: '96px 24px',
+      backgroundColor: 'var(--background)'
+    }}>
+      <h2 style={{
+        fontSize: 'clamp(2.5rem, 5vw, 3rem)',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: '48px',
+        color: 'var(--text-primary)'
+      }}>
+        Our Portfolio
+      </h2>
       
       <PortfolioFilter activeFilter={activeFilter} onFilterChange={setActiveFilter} />
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+        gap: '32px'
+      }}>
         {displayedProjects.map((project) => (
           <PortfolioItem key={project.id} project={project} />
         ))}
@@ -52,10 +69,20 @@ const Portfolio = () => {
 
       {/* View All Button */}
       {hasMore && (
-        <div className="text-center mt-12">
+        <div style={{ textAlign: 'center', marginTop: '48px' }}>
           <button
             onClick={handleViewAll}
-            className="bg-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-orange-700 transition-colors shadow-lg"
+            style={{
+              backgroundColor: 'var(--primary)',
+              color: 'white',
+              padding: '16px 32px',
+              borderRadius: '9999px',
+              fontWeight: 600,
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '16px',
+              // boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+            }}
           >
             View All {filteredProjects.length} Projects →
           </button>

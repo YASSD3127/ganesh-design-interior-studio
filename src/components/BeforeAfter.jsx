@@ -201,18 +201,39 @@ const BeforeAfter = () => {
   };
 
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section style={{ 
+      padding: '96px 24px',
+      backgroundColor: 'var(--surface)' 
+    }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Before & After Transformations</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(2.5rem, 5vw, 3rem)', 
+            fontWeight: 'bold', 
+            marginBottom: '16px',
+            color: 'var(--text-primary)'
+          }}>
+            Before & After Transformations
+          </h2>
+          <p style={{ 
+            fontSize: '18px', 
+            color: 'var(--text-secondary)', 
+            maxWidth: '672px', 
+            margin: '0 auto' 
+          }}>
             See the dramatic difference our interior design makes. Real projects, real results.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex justify-center gap-4 mb-12 flex-wrap">
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '16px',
+          marginBottom: '48px',
+          flexWrap: 'wrap'
+        }}>
           {categories.map((cat, index) => (
             <button
               key={index}
@@ -220,11 +241,17 @@ const BeforeAfter = () => {
                 setActiveCategory(index);
                 setActiveProjectIndex(0);
               }}
-              className={`px-6 py-3 rounded-full font-semibold transition-colors ${
-                activeCategory === index
-                  ? 'bg-orange-600 text-white shadow-lg'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+              style={{
+                padding: '12px 24px',
+                borderRadius: '9999px',
+                fontWeight: 600,
+                backgroundColor: activeCategory === index ? 'var(--primary)' : 'var(--background)',
+                color: activeCategory === index ? 'white' : 'var(--text-primary)',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '16px',
+                boxShadow: activeCategory === index ? '0 10px 15px rgba(0,0,0,0.1)' : 'none'
+              }}
             >
               {cat.title}
             </button>
@@ -232,97 +259,225 @@ const BeforeAfter = () => {
         </div>
 
         {/* Main Comparison */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          {/* Before Image */}
-          <div className="relative group">
-            <div className="absolute top-4 left-4 bg-gray-900 text-white px-4 py-2 rounded-full font-semibold z-10">
-              BEFORE
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '1fr', 
+          gap: '32px', 
+          marginBottom: '32px' 
+        }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: window.innerWidth >= 1024 ? '1fr 1fr' : '1fr',
+            gap: '32px' 
+          }}>
+            {/* Before Image */}
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                position: 'absolute',
+                top: '16px',
+                left: '16px',
+                backgroundColor: '#1F2937',
+                color: 'white',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                fontWeight: 600,
+                zIndex: 10
+              }}>
+                BEFORE
+              </div>
+              <div style={{ 
+                aspectRatio: '4/3', 
+                borderRadius: '12px', 
+                overflow: 'hidden', 
+                boxShadow: '0 25px 50px rgba(0,0,0,0.15)' 
+              }}>
+                <img
+                  src={current.before}
+                  alt="Before transformation"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
             </div>
-            <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
-              <img
-                src={current.before}
-                alt="Before transformation"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
 
-          {/* After Image */}
-          <div className="relative group">
-            <div className="absolute top-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full font-semibold z-10">
-              AFTER
-            </div>
-            <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
-              <img
-                src={current.after}
-                alt="After transformation"
-                className="w-full h-full object-cover"
-              />
+            {/* After Image */}
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                position: 'absolute',
+                top: '16px',
+                left: '16px',
+                backgroundColor: 'var(--primary)',
+                color: 'white',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                fontWeight: 600,
+                zIndex: 10
+              }}>
+                AFTER
+              </div>
+              <div style={{ 
+                aspectRatio: '4/3', 
+                borderRadius: '12px', 
+                overflow: 'hidden', 
+                boxShadow: '0 25px 50px rgba(0,0,0,0.15)' 
+              }}>
+                <img
+                  src={current.after}
+                  alt="After transformation"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Navigation Arrows & Dots */}
-        <div className="flex items-center justify-center gap-4 mb-8">
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          gap: '16px', 
+          marginBottom: '32px' 
+        }}>
           <button
             onClick={prevProject}
-            className="bg-gray-200 hover:bg-gray-300 p-3 rounded-full transition-colors"
+            style={{
+              backgroundColor: 'var(--background)',
+              padding: '12px',
+              borderRadius: '9999px',
+              border: 'none',
+              cursor: 'pointer'
+            }}
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={24} style={{ color: 'var(--text-primary)' }} />
           </button>
 
           {/* Dots */}
-          <div className="flex gap-2">
+          <div style={{ display: 'flex', gap: '8px' }}>
             {currentCategory.projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveProjectIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  activeProjectIndex === index ? 'bg-orange-600' : 'bg-gray-300'
-                }`}
+                style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '9999px',
+                  backgroundColor: activeProjectIndex === index ? 'var(--primary)' : 'var(--border)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0
+                }}
               />
             ))}
           </div>
 
           <button
             onClick={nextProject}
-            className="bg-gray-200 hover:bg-gray-300 p-3 rounded-full transition-colors"
+            style={{
+              backgroundColor: 'var(--background)',
+              padding: '12px',
+              borderRadius: '9999px',
+              border: 'none',
+              cursor: 'pointer'
+            }}
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={24} style={{ color: 'var(--text-primary)' }} />
           </button>
         </div>
 
         {/* Project Details */}
-        <div className="bg-gray-50 rounded-2xl p-8">
-          <h3 className="text-3xl font-bold mb-4">{current.title}</h3>
+        <div style={{
+          backgroundColor: 'var(--background)',
+          borderRadius: '16px',
+          padding: '32px'
+        }}>
+          <h3 style={{ 
+            fontSize: '30px', 
+            fontWeight: 'bold', 
+            marginBottom: '16px',
+            color: 'var(--text-primary)'
+          }}>
+            {current.title}
+          </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+            gap: '16px',
+            marginBottom: '24px'
+          }}>
             <div>
-              <div className="text-sm text-gray-500 mb-1">Location</div>
-              <div className="font-semibold">{current.location}</div>
+              <div style={{ 
+                fontSize: '14px', 
+                color: 'var(--text-secondary)', 
+                marginBottom: '4px' 
+              }}>
+                Location
+              </div>
+              <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+                {current.location}
+              </div>
             </div>
             <div>
-              <div className="text-sm text-gray-500 mb-1">Duration</div>
-              <div className="font-semibold">{current.duration}</div>
+              <div style={{ 
+                fontSize: '14px', 
+                color: 'var(--text-secondary)', 
+                marginBottom: '4px' 
+              }}>
+                Duration
+              </div>
+              <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+                {current.duration}
+              </div>
             </div>
             <div>
-              <div className="text-sm text-gray-500 mb-1">Budget</div>
-              <div className="font-semibold">{current.budget}</div>
+              <div style={{ 
+                fontSize: '14px', 
+                color: 'var(--text-secondary)', 
+                marginBottom: '4px' 
+              }}>
+                Budget
+              </div>
+              <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>
+                {current.budget}
+              </div>
             </div>
             <div>
-              <div className="text-sm text-gray-500 mb-1">Result</div>
-              <div className="font-semibold text-orange-600">{current.savings}</div>
+              <div style={{ 
+                fontSize: '14px', 
+                color: 'var(--text-secondary)', 
+                marginBottom: '4px' 
+              }}>
+                Result
+              </div>
+              <div style={{ fontWeight: 600, color: 'var(--primary)' }}>
+                {current.savings}
+              </div>
             </div>
           </div>
 
           {/* Improvements */}
           <div>
-            <h4 className="font-bold text-lg mb-3">Key Improvements:</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <h4 style={{ 
+              fontWeight: 'bold', 
+              fontSize: '18px', 
+              marginBottom: '12px',
+              color: 'var(--text-primary)'
+            }}>
+              Key Improvements:
+            </h4>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr',
+              gap: '12px'
+            }}>
               {current.improvements.map((improvement, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <span className="text-orange-600 text-lg mt-0.5">✓</span>
-                  <span className="text-gray-700">{improvement}</span>
+                <div key={index} style={{ display: 'flex', alignItems: 'start', gap: '8px' }}>
+                  <span style={{ color: 'var(--primary)', fontSize: '18px', marginTop: '2px' }}>
+                    ✓
+                  </span>
+                  <span style={{ color: 'var(--text-secondary)' }}>
+                    {improvement}
+                  </span>
                 </div>
               ))}
             </div>
@@ -330,7 +485,11 @@ const BeforeAfter = () => {
         </div>
 
         {/* Project Counter */}
-        <div className="text-center mt-6 text-gray-600">
+        <div style={{ 
+          textAlign: 'center', 
+          marginTop: '24px', 
+          color: 'var(--text-secondary)' 
+        }}>
           Project {activeProjectIndex + 1} of {totalProjects} in {currentCategory.title}
         </div>
       </div>

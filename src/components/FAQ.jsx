@@ -44,42 +44,86 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-24 px-6 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+    <section id="faq" style={{
+      padding: '96px 24px',
+      backgroundColor: 'var(--background)'
+    }}>
+      <div style={{ maxWidth: '896px', margin: '0 auto' }}>
+        <h2 style={{
+          fontSize: 'clamp(2.5rem, 5vw, 3rem)',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginBottom: '16px',
+          color: 'var(--text-primary)'
+        }}>
           Frequently Asked Questions
         </h2>
-        <p className="text-center text-gray-600 mb-12 text-lg">
+        <p style={{
+          textAlign: 'center',
+          color: 'var(--text-secondary)',
+          marginBottom: '48px',
+          fontSize: '18px'
+        }}>
           Got questions? We've got answers. Can't find what you're looking for? Contact us!
         </p>
 
-        <div className="space-y-4">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+              style={{
+                backgroundColor: 'var(--surface)',
+                borderRadius: '12px',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
+                overflow: 'hidden'
+              }}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                style={{
+                  width: '100%',
+                  padding: '20px 24px',
+                  textAlign: 'left',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: 'var(--text-primary)'
+                }}
               >
-                <span className="font-semibold text-lg pr-8">{faq.question}</span>
+                <span style={{
+                  fontWeight: 600,
+                  fontSize: '18px',
+                  paddingRight: '32px'
+                }}>
+                  {faq.question}
+                </span>
                 <ChevronDown
                   size={24}
-                  className={`text-orange-600 flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
+                  style={{
+                    color: 'var(--primary)',
+                    flexShrink: 0,
+                    transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease'
+                  }}
                 />
               </button>
               
               <div
-                className={`transition-all duration-300 ease-in-out ${
-                  openIndex === index
-                    ? 'max-h-96 opacity-100'
-                    : 'max-h-0 opacity-0'
-                }`}
+                style={{
+                  maxHeight: openIndex === index ? '400px' : '0',
+                  opacity: openIndex === index ? 1 : 0,
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease'
+                }}
               >
-                <div className="px-6 pb-5 text-gray-700 leading-relaxed">
+                <div style={{
+                  padding: '0 24px 20px 24px',
+                  color: 'var(--text-secondary)',
+                  lineHeight: '1.7'
+                }}>
                   {faq.answer}
                 </div>
               </div>
@@ -88,14 +132,40 @@ const FAQ = () => {
         </div>
 
         {/* Contact CTA */}
-        <div className="text-center mt-12 p-8 bg-orange-50 rounded-xl">
-          <h3 className="text-2xl font-bold mb-4">Still have questions?</h3>
-          <p className="text-gray-700 mb-6">
+        <div style={{
+          textAlign: 'center',
+          marginTop: '48px',
+          padding: '32px',
+          backgroundColor: 'var(--surface)',
+          borderRadius: '12px',
+          border: `2px solid var(--primary)`
+        }}>
+          <h3 style={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            marginBottom: '16px',
+            color: 'var(--text-primary)'
+          }}>
+            Still have questions?
+          </h3>
+          <p style={{
+            color: 'var(--text-secondary)',
+            marginBottom: '24px'
+          }}>
             We're here to help! Get in touch with our team for personalized answers.
           </p>
           <button
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            className="bg-orange-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-700 transition-all"
+            style={{
+              backgroundColor: 'var(--primary)',
+              color: 'white',
+              padding: '12px 32px',
+              borderRadius: '9999px',
+              fontWeight: 600,
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
           >
             Contact Us
           </button>

@@ -1,8 +1,10 @@
 import React from 'react';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 px-6 bg-gray-50">
+    <section id="about" className="py-24 px-6"
+    style={{ backgroundColor: 'var(--background)' }}>
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">About Ganesh Studio</h2>
         
@@ -17,7 +19,8 @@ const About = () => {
               />
             </div>
             {/* Decorative Element */}
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-orange-600/10 rounded-lg -z-10"></div>
+            <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-lg -z-10"
+            style={{ backgroundColor: 'var(--primary)' }}></div>
           </div>
           
           {/* Content */}
@@ -37,15 +40,23 @@ const About = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 mb-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">200+</div>
+                <div className="text-4xl font-bold mb-2" style={{ color: 'var(--primary)' }}>
+                  <AnimatedCounter end={200} suffix="+" />
+                </div>
                 <div className="text-sm text-gray-600">Projects Completed</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">150+</div>
+                <div className="text-4xl font-bold  mb-2"
+                style={{ color: 'var(--primary)' }}>
+                  <AnimatedCounter end={150} suffix="+" />
+                </div>
                 <div className="text-sm text-gray-600">Happy Clients</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-orange-600 mb-2">10+</div>
+                <div className="text-4xl font-bold mb-2"
+                style={{ color: 'var(--primary)' }}>
+                  <AnimatedCounter end={10} suffix="+" />
+                </div>
                 <div className="text-sm text-gray-600">Years Experience</div>
               </div>
             </div>
@@ -53,19 +64,23 @@ const About = () => {
             {/* Key Points */}
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <span className="text-orange-600 text-xl mt-1">✓</span>
+                <span className="text-xl mt-1"
+                style={{ color: 'var(--primary)' }}>✓</span>
                 <span className="text-gray-700">Complete design to execution services</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-orange-600 text-xl mt-1">✓</span>
+                <span className="text-xl mt-1"
+                style={{ color: 'var(--primary)' }}>✓</span>
                 <span className="text-gray-700">3D visualization for all projects</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-orange-600 text-xl mt-1">✓</span>
+                <span className="text-xl mt-1"
+                style={{ color: 'var(--primary)' }}>✓</span>
                 <span className="text-gray-700">Budget-flexible solutions</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-orange-600 text-xl mt-1">✓</span>
+                <span className="text-xl mt-1"
+                style={{ color: 'var(--primary)' }}>✓</span>
                 <span className="text-gray-700">Remote consultations available</span>
               </div>
             </div>

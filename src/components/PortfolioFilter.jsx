@@ -14,10 +14,11 @@ const PortfolioFilter = ({ activeFilter, onFilterChange }) => {
         <button
           key={filter.id}
           onClick={() => onFilterChange(filter.id)}
+          
           className={`px-6 py-3 rounded-full font-semibold transition-all ${
             activeFilter === filter.id
               ? 'bg-gray-900 text-white shadow-lg'
-              : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-orange-600 hover:text-orange-600'
+              : 'border-2 border-gray-200 text-gray-700'
           }`}
         >
           {filter.label}

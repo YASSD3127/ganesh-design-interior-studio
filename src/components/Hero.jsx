@@ -16,41 +16,95 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" style={{ 
+      position: 'relative', 
+      height: '100vh', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      overflow: 'hidden' 
+    }}>
       {/* Background Image */}
-      <div className="absolute inset-0">
+      <div style={{ position: 'absolute', inset: 0 }}>
         <img 
           src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920" 
           alt="Interior Design"
-          className="w-full h-full object-cover"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </div>
       
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-gray-900/40"></div>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.4))'
+      }}></div>
       
-      <div className="relative z-10 text-center text-white px-6 max-w-5xl">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6">
+      <div style={{
+        position: 'relative',
+        zIndex: 10,
+        textAlign: 'center',
+        color: 'white',
+        padding: '0 24px',
+        maxWidth: '1280px'
+      }}>
+        <h1 style={{
+          fontSize: 'clamp(3rem, 7vw, 4.5rem)',
+          fontWeight: 'bold',
+          marginBottom: '24px'
+        }}>
           Transform Your Space
         </h1>
-        <p className="text-xl md:text-2xl mb-4 font-light">
+        <p style={{
+          fontSize: 'clamp(1.25rem, 2vw, 1.5rem)',
+          marginBottom: '16px',
+          fontWeight: 300
+        }}>
           Expert Interior Design & Execution
         </p>
-        <p className="text-lg md:text-xl mb-8 text-gray-200">
+        <p style={{
+          fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
+          marginBottom: '32px',
+          color: '#E5E5E5'
+        }}>
           Residential & Commercial Projects | Serving Gujarat & Beyond
         </p>
         
-        {/* CTA Buttons - ZERO EFFECTS */}
-        <div className="flex gap-4 justify-center flex-wrap">
+        {/* CTA Buttons */}
+        <div style={{
+          display: 'flex',
+          gap: '16px',
+          justifyContent: 'center',
+          flexWrap: 'wrap'
+        }}>
           <button
+            safe-hover-btn
             onClick={scrollToPortfolio}
-            className="bg-orange-600 text-white px-8 py-4 rounded-full font-semibold"
+            style={{
+              backgroundColor: 'var(--primary)',
+              color: 'white',
+              padding: '16px 32px',
+              borderRadius: '9999px',
+              fontWeight: 600,
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
           >
             View Our Work
           </button>
           <button
             onClick={scrollToContact}
-            className="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold"
+            style={{
+              backgroundColor: 'white',
+              color: 'var(--charcoal-wood)',
+              padding: '16px 32px',
+              borderRadius: '9999px',
+              fontWeight: 600,
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
           >
             Get Free Consultation
           </button>

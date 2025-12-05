@@ -109,6 +109,26 @@ export const projectsData = [
     size: '1,800 sq ft',
     image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800',
     type: '3D Render'
+  },
+    { 
+    id: 12, 
+    title: 'Apartment Plan', 
+    category: '3d-renders', 
+    description: 'Complete makeover visualization',
+    location: 'Vadodara',
+    size: '1,800 sq ft',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800',
+    type: '3D Render'
+  },
+    { 
+    id: 13, 
+    title: 'Redesign Plan', 
+    category: '3d-renders', 
+    description: 'Complete makeover visualization',
+    location: 'Vadodara',
+    size: '1,800 sq ft',
+    image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800',
+    type: '3D Render'
   }
 ];
 

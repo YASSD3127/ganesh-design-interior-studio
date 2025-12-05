@@ -16,9 +16,10 @@ const VideoSection = ({ videoUrl, thumbnail, title }) => {
 
   if (!videoUrl) {
     return (
-      <div className="bg-gray-100 rounded-xl p-12 text-center">
+      <div className="rounded-xl p-12 text-center"
+      style={{ backgroundColor: 'var(--surface)' }}>
         <div className="text-6xl mb-4">🎬</div>
-        <p className="text-gray-600">Video coming soon for this project</p>
+        <p style={{ color: 'var(--text-secondary)' }}>Video coming soon for this project</p>
       </div>
     );
   }
@@ -32,14 +33,12 @@ const VideoSection = ({ videoUrl, thumbnail, title }) => {
               src={thumbnail || 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200'}
               alt={title}
               className="w-full h-full object-cover"
-              style={{ transition: 'transform 0.5s ease' }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
           </div>
           
           <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-            <div className="bg-orange-600 rounded-full p-6 shadow-2xl">
+            <div className="rounded-full p-6 shadow-2xl"
+            style={{ backgroundColor: 'var(--primary)' }}>
               <Play size={48} className="text-white fill-white ml-1" />
             </div>
           </div>
@@ -54,7 +53,8 @@ const VideoSection = ({ videoUrl, thumbnail, title }) => {
         <div className="relative">
           <button
             onClick={() => setIsPlaying(false)}
-            className="absolute -top-12 right-0 bg-white rounded-full p-2 shadow-lg"
+            className="absolute -top-12 right-0 rounded-full p-2 shadow-lg"
+            style={{ backgroundColor: 'var(--surface)' }}
           >
             <X size={24} />
           </button>
@@ -117,12 +117,14 @@ export const FeaturedVideos = () => {
   };
 
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-24 px-6" style={{ backgroundColor: 'var(--background)' }}>
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4"
+        style={{ color: 'var(--text-primary)' }}>
           See Our Work in Action
         </h2>
-        <p className="text-center text-gray-600 mb-12 text-lg">
+        <p className="text-center mb-12 text-lg"
+        style={{ color: 'var(--text-secondary)' }}>
           Virtual walkthroughs and project showcases
         </p>
 
@@ -135,10 +137,8 @@ export const FeaturedVideos = () => {
             />
             <button
               onClick={() => setSelectedVideo(null)}
-              className="mt-4 text-orange-600 font-semibold"
-              style={{ transition: 'color 0.2s ease' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#c2410c'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#ea580c'}
+              className="mt-4 font-semibold"
+              style={{ color: 'var(--primary)' }}
             >
               ← Back to all videos
             </button>
@@ -157,12 +157,10 @@ export const FeaturedVideos = () => {
                       src={video.thumbnail}
                       alt={video.title}
                       className="w-full h-full object-cover"
-                      style={{ transition: 'transform 0.5s ease' }}
-                      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                      <div className="bg-orange-600 rounded-full p-4">
+                      <div className="rounded-full p-4"
+                      style={{ backgroundColor: 'var(--primary)' }}>
                         <Play size={32} className="text-white fill-white ml-1" />
                       </div>
                     </div>
@@ -179,32 +177,34 @@ export const FeaturedVideos = () => {
             <div className="flex items-center justify-center gap-6 mb-8">
               <button
                 onClick={prevPage}
-                className="bg-gray-200 p-3 rounded-full"
-                style={{ transition: 'background-color 0.2s ease' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#d1d5db'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#e5e7eb'}
+                className="p-3 rounded-full"
+                style={{ backgroundColor: 'var(--surface)' }}
               >
                 <ChevronLeft size={24} />
               </button>
 
-              <div className="flex gap-2">
+              <div style={{ display: 'flex', gap: '8px' }}>
                 {Array.from({ length: totalPages }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentPage(index)}
-                    className={`w-3 h-3 rounded-full ${
-                      currentPage === index ? 'bg-orange-600' : 'bg-gray-300'
-                    }`}
+                    style={{
+                      width: '12px',
+                      height: '12px',
+                      borderRadius: '9999px',
+                      backgroundColor: currentPage === index ? 'var(--primary)' : 'var(--border)',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0
+                    }}
                   />
                 ))}
               </div>
 
               <button
                 onClick={nextPage}
-                className="bg-gray-200 p-3 rounded-full"
-                style={{ transition: 'background-color 0.2s ease' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#d1d5db'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#e5e7eb'}
+                className="p-3 rounded-full"
+                style={{ backgroundColor: 'var(--surface)' }}
               >
                 <ChevronRight size={24} />
               </button>
@@ -214,16 +214,8 @@ export const FeaturedVideos = () => {
             <div className="text-center">
               <button
                 onClick={() => navigate('/all-videos')}
-                className="bg-orange-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg"
-                style={{ transition: 'transform 0.2s ease, box-shadow 0.2s ease' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
-                }}
+                className="text-white px-8 py-4 rounded-full font-semibold shadow-lg"
+                style={{ backgroundColor: 'var(--primary)' }}
               >
                 View All {videos.length} Videos →
               </button>

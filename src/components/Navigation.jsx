@@ -38,23 +38,25 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
+    <nav className="fixed top-0 w-full backdrop-blur-md z-50 shadow-sm"
+    style={{ backgroundColor: 'var(--surface)' }}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <div 
           className="text-2xl font-bold tracking-tight cursor-pointer" 
           onClick={() => scrollToSection('home')}
         >
-          <span className="text-gray-900">GANESH</span>
-          <span className="text-orange-600"> STUDIO</span>
+          <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
+          <span style={{ color: 'var(--primary)' }}> STUDIO</span>
         </div>
         
-        {/* Desktop Menu - NO HOVER EFFECTS */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 items-center">
           <li>
             <button
               onClick={() => scrollToSection('home')}
-              className="text-gray-700 font-medium"
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
             >
               Home
             </button>
@@ -68,35 +70,44 @@ const Navigation = () => {
           >
             <button
               onClick={() => scrollToSection('portfolio')}
-              className="text-gray-700 font-medium"
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
             >
               Our Work
             </button>
             
-            {/* Dropdown Menu - NO HOVER EFFECTS */}
+            {/* Dropdown Menu */}
             {showPortfolioDropdown && (
-              <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg py-2 min-w-[180px] border border-gray-100">
+              <div className="absolute top-full left-0 mt-2 shadow-lg rounded-lg py-2 min-w-[180px] border"
+              style={{ 
+                backgroundColor: 'var(--surface)',
+                borderColor: 'var(--border)'
+              }}>
                 <button 
                   onClick={() => handlePortfolioFilter('all')}
-                  className="block w-full text-left px-4 py-2 text-gray-700"
+                  className="block w-full text-left px-4 py-2"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   All Projects
                 </button>
                 <button 
                   onClick={() => handlePortfolioFilter('residential')}
-                  className="block w-full text-left px-4 py-2 text-gray-700"
+                  className="block w-full text-left px-4 py-2"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   Residential
                 </button>
                 <button 
                   onClick={() => handlePortfolioFilter('commercial')}
-                  className="block w-full text-left px-4 py-2 text-gray-700"
+                  className="block w-full text-left px-4 py-2"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   Commercial
                 </button>
                 <button 
                   onClick={() => handlePortfolioFilter('3d-renders')}
-                  className="block w-full text-left px-4 py-2 text-gray-700"
+                  className="block w-full text-left px-4 py-2"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   3D Designs
                 </button>
@@ -107,7 +118,8 @@ const Navigation = () => {
           <li>
             <button
               onClick={() => scrollToSection('services')}
-              className="text-gray-700 font-medium"
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
             >
               Services
             </button>
@@ -115,23 +127,53 @@ const Navigation = () => {
           <li>
             <button
               onClick={() => scrollToSection('process')}
-              className="text-gray-700 font-medium"
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
             >
               Design Process
             </button>
           </li>
           <li>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-gray-700 font-medium"
+            <button 
+              onClick={() => navigate('/about-designer')}
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
             >
-              About
+              About Bhargav
+            </button>
+          </li>
+          <li>
+            <button 
+              onClick={() => navigate('/materials')}
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Materials
+            </button>
+          </li>
+          <li>
+            <button 
+              onClick={() => navigate('/all-transformations')}
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Transformations
+            </button>
+          </li>
+          <li>
+            <button 
+              onClick={() => navigate('/behind-the-scenes')}
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Behind The Scenes
             </button>
           </li>
           <li>
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-gray-700 font-medium"
+              className="font-medium"
+              style={{ color: 'var(--text-secondary)' }}
             >
               Contact
             </button>
@@ -140,21 +182,24 @@ const Navigation = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-900"
+          className="md:hidden"
           onClick={() => setIsOpen(!isOpen)}
+          style={{ color: 'var(--text-primary)' }}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - NOW WITH ALL ITEMS */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t">
+        <div className="md:hidden border-t"
+        style={{ backgroundColor: 'var(--surface)', borderColor: 'var(--border)' }}>
           <ul className="flex flex-col gap-4 p-6">
             <li>
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-gray-700 font-medium capitalize"
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Home
               </button>
@@ -162,7 +207,8 @@ const Navigation = () => {
             <li>
               <button
                 onClick={() => scrollToSection('portfolio')}
-                className="text-gray-700 font-medium capitalize"
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Our Work
               </button>
@@ -170,7 +216,8 @@ const Navigation = () => {
             <li>
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-gray-700 font-medium capitalize"
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Services
               </button>
@@ -178,23 +225,65 @@ const Navigation = () => {
             <li>
               <button
                 onClick={() => scrollToSection('process')}
-                className="text-gray-700 font-medium capitalize"
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Design Process
               </button>
             </li>
             <li>
               <button
-                onClick={() => scrollToSection('about')}
-                className="text-gray-700 font-medium capitalize"
+                onClick={() => {
+                  navigate('/about-designer');
+                  setIsOpen(false);
+                }}
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
               >
-                About
+                About Bhargav
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => {
+                  navigate('/materials');
+                  setIsOpen(false);
+                }}
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                Materials
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => {
+                  navigate('/all-transformations');
+                  setIsOpen(false);
+                }}
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                Transformations
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => {
+                  navigate('/behind-the-scenes');
+                  setIsOpen(false);
+                }}
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                Behind The Scenes
               </button>
             </li>
             <li>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-700 font-medium capitalize"
+                className="font-medium w-full text-left"
+                style={{ color: 'var(--text-secondary)' }}
               >
                 Contact
               </button>

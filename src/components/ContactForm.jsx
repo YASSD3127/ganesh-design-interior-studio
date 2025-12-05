@@ -34,10 +34,11 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-gray-900 text-white">
+    <section id="contact" className="py-24 px-6 text-white"
+    style={{ backgroundColor: '#000000' }}>
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Get In Touch</h2>
-        <p className="text-center text-gray-400 mb-12 text-lg">
+        <p className="text-center mb-12 text-lg opacity-90">
           Let's discuss your project and bring your vision to life
         </p>
         
@@ -45,56 +46,59 @@ const ContactForm = () => {
           {/* Contact Information */}
           <div>
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-            <p className="text-gray-300 mb-8 leading-relaxed">
+            <p className="mb-8 leading-relaxed opacity-90">
               Ready to transform your space? Reach out to us for a free consultation. We serve clients across Gujarat and offer remote design services.
             </p>
             
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="bg-orange-600 p-3 rounded-lg">
+                <div className="p-3 rounded-lg"
+                style={{ backgroundColor: 'var(--primary)' }}>
                   <Phone size={24} />
                 </div>
                 <div>
                   <div className="font-semibold mb-1">Phone</div>
-                  <div className="text-gray-300">+91 XXXXX XXXXX</div>
-                  <div className="text-sm text-gray-400 mt-1">Mon-Sat, 9:00 AM - 7:00 PM</div>
+                  <div className="opacity-90">+91 XXXXX XXXXX</div>
+                  <div className="text-sm opacity-75 mt-1">Mon-Sat, 9:00 AM - 7:00 PM</div>
                 </div>
               </div>
               
               <div className="flex items-start gap-4">
-                <div className="bg-orange-600 p-3 rounded-lg">
+                <div className="p-3 rounded-lg"
+                style={{ backgroundColor: 'var(--primary)' }}>
                   <Mail size={24} />
                 </div>
                 <div>
                   <div className="font-semibold mb-1">Email</div>
-                  <div className="text-gray-300">info@ganeshstudio.com</div>
-                  <div className="text-sm text-gray-400 mt-1">We'll respond within 24 hours</div>
+                  <div className="opacity-90">info@ganeshstudio.com</div>
+                  <div className="text-sm opacity-75 mt-1">We'll respond within 24 hours</div>
                 </div>
               </div>
               
               <div className="flex items-start gap-4">
-                <div className="bg-orange-600 p-3 rounded-lg">
+                <div className="p-3 rounded-lg"
+                style={{ backgroundColor: 'var(--primary)' }}>
                   <MapPin size={24} />
                 </div>
                 <div>
                   <div className="font-semibold mb-1">Location</div>
-                  <div className="text-gray-300">Gujarat, India</div>
-                  <div className="text-sm text-gray-400 mt-1">Serving across Gujarat & remote consultations</div>
+                  <div className="opacity-90">Gujarat, India</div>
+                  <div className="text-sm opacity-75 mt-1">Serving across Gujarat & remote consultations</div>
                 </div>
               </div>
             </div>
             
             {/* Social Links */}
-            <div className="mt-8 pt-8 border-t border-gray-800">
+            <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               <div className="font-semibold mb-4">Follow Us</div>
               <div className="flex gap-4">
-                <a href="#" className="bg-gray-800 hover:bg-orange-600 p-3 rounded-lg transition-colors">
+                <a href="#" className="p-3 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
                   Instagram
                 </a>
-                <a href="#" className="bg-gray-800 hover:bg-orange-600 p-3 rounded-lg transition-colors">
+                <a href="#" className="p-3 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
                   Facebook
                 </a>
-                <a href="#" className="bg-gray-800 hover:bg-orange-600 p-3 rounded-lg transition-colors">
+                <a href="#" className="p-3 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
                   LinkedIn
                 </a>
               </div>
@@ -103,7 +107,7 @@ const ContactForm = () => {
           
           {/* Contact Form */}
           <div>
-            <div className="bg-gray-800 rounded-xl p-8">
+            <div className="rounded-xl p-8" style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}>
               <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
               
               <div className="space-y-4">
@@ -117,7 +121,11 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 rounded-lg focus:border-orange-600 focus:outline-none transition-colors text-white"
+                    className="w-full px-4 py-3 border-2 rounded-lg text-white"
+                    style={{ 
+                      backgroundColor: 'rgba(0,0,0,0.5)',
+                      borderColor: 'rgba(255,255,255,0.2)'
+                    }}
                     placeholder="Your full name"
                   />
                 </div>
@@ -133,7 +141,11 @@ const ContactForm = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 rounded-lg focus:border-orange-600 focus:outline-none transition-colors text-white"
+                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
+                      style={{ 
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        borderColor: 'rgba(255,255,255,0.2)'
+                      }}
                       placeholder="your@email.com"
                     />
                   </div>
@@ -147,7 +159,11 @@ const ContactForm = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 rounded-lg focus:border-orange-600 focus:outline-none transition-colors text-white"
+                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
+                      style={{ 
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        borderColor: 'rgba(255,255,255,0.2)'
+                      }}
                       placeholder="+91 XXXXX XXXXX"
                     />
                   </div>
@@ -162,7 +178,11 @@ const ContactForm = () => {
                     value={formData.projectType}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 rounded-lg focus:border-orange-600 focus:outline-none transition-colors text-white"
+                    className="w-full px-4 py-3 border-2 rounded-lg text-white"
+                    style={{ 
+                      backgroundColor: 'rgba(0,0,0,0.5)',
+                      borderColor: 'rgba(255,255,255,0.2)'
+                    }}
                   >
                     <option value="">Select project type</option>
                     <option value="residential">Residential</option>
@@ -181,7 +201,11 @@ const ContactForm = () => {
                       name="propertyType"
                       value={formData.propertyType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 rounded-lg focus:border-orange-600 focus:outline-none transition-colors text-white"
+                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
+                      style={{ 
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        borderColor: 'rgba(255,255,255,0.2)'
+                      }}
                     >
                       <option value="">Select type</option>
                       <option value="apartment">Apartment</option>
@@ -200,7 +224,11 @@ const ContactForm = () => {
                       name="budgetRange"
                       value={formData.budgetRange}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 rounded-lg focus:border-orange-600 focus:outline-none transition-colors text-white"
+                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
+                      style={{ 
+                        backgroundColor: 'rgba(0,0,0,0.5)',
+                        borderColor: 'rgba(255,255,255,0.2)'
+                      }}
                     >
                       <option value="">Select budget</option>
                       <option value="budget">Budget-Friendly</option>
@@ -221,7 +249,11 @@ const ContactForm = () => {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 bg-gray-900 border-2 border-gray-700 rounded-lg focus:border-orange-600 focus:outline-none transition-colors resize-none text-white"
+                    className="w-full px-4 py-3 border-2 rounded-lg resize-none text-white"
+                    style={{ 
+                      backgroundColor: 'rgba(0,0,0,0.5)',
+                      borderColor: 'rgba(255,255,255,0.2)'
+                    }}
                     placeholder="Tell us about your project..."
                   />
                 </div>
@@ -229,7 +261,8 @@ const ContactForm = () => {
                 {/* Submit Button */}
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-orange-600 text-white py-4 rounded-lg font-semibold hover:bg-orange-700 hover:shadow-2xl hover:-translate-y-1 transition-all"
+                  className="w-full text-white py-4 rounded-lg font-semibold"
+                  style={{ backgroundColor: 'var(--primary)' }}
                 >
                   Send Message
                 </button>
