@@ -92,14 +92,14 @@ const ContactForm = () => {
             <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               <div className="font-semibold mb-4">Follow Us</div>
               <div className="flex gap-4">
-                <a href="#" className="p-3 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                  Instagram
+                <a href="#" className="safe-hover-btn p-3 rounded-lg flex items-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+                  <span>📷</span> Instagram
                 </a>
-                <a href="#" className="p-3 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                  Facebook
+                <a href="#" className="safe-hover-btn p-3 rounded-lg flex items-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+                  <span>📘</span> Facebook
                 </a>
-                <a href="#" className="p-3 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                  LinkedIn
+                <a href="#" className="safe-hover-btn p-3 rounded-lg flex items-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
+                  <span>💼</span> LinkedIn
                 </a>
               </div>
             </div>
