@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ganesh-design-interior-studio/static/css/main.5741e52c.css",
+    "main.js": "/ganesh-design-interior-studio/static/js/main.0a4890b2.js",
+    "index.html": "/ganesh-design-interior-studio/index.html",
+    "main.5741e52c.css.map": "/ganesh-design-interior-studio/static/css/main.5741e52c.css.map",
+    "main.0a4890b2.js.map": "/ganesh-design-interior-studio/static/js/main.0a4890b2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5741e52c.css",
+    "static/js/main.0a4890b2.js"
+  ]
+}
