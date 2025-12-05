@@ -2,7 +2,7 @@
   "name": "ganesh-design",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YASSD3127.github.io/ganesh-design-interior-studio",
+  "homepage": "https://yassd3127.github.io/ganesh-design-interior-studio",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
