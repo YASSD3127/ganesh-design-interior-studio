@@ -1,12 +1,14 @@
-import { useEffect } from 'react';
-import React, { useState } from 'react';
-import { Star, ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Star, ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const AllTransformations = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-      useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const transformations = [
     {
       id: 1,
@@ -48,69 +50,72 @@ const AllTransformations = () => {
       after: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800',
       problem: 'The master bedroom lacked personality and storage. The couple wanted a relaxing retreat with a spa-like en-suite bathroom.',
       solution: 'Created a calming palette with soft grays and blues, added a custom walk-in wardrobe, upgraded the bathroom with Italian marble, and installed ambient lighting throughout.',
-      results: 'The clients report better sleep quality, organized storage for all belongings, and a luxurious bathroom experience.',
-      clientName: 'Anjali & Vikram Reddy',
-      testimonial: 'Our bedroom is now a true sanctuary. The attention to lighting and materials created the perfect ambiance. Worth every rupee!',
+      results: 'Sleep quality improved significantly, and the space now feels like a luxury hotel suite.',
+      clientName: 'Anita & Suresh Gupta',
+      testimonial: 'Our bedroom is now our sanctuary. The design is timeless and the execution was flawless. We recommend Ganesh Studio without hesitation.',
       rating: 5,
-      location: 'Hyderabad',
-      duration: '7 weeks',
-      budget: '₹5.2L'
+      location: 'Delhi',
+      duration: '10 weeks',
+      budget: '₹8.2L'
     },
     {
       id: 4,
-      category: 'living-room',
-      title: 'Traditional Meets Modern Living Space',
+      category: 'bathroom',
+      title: 'Luxury Spa-Inspired Bathroom',
       before: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800',
-      after: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800',
-      problem: 'The client wanted to preserve traditional Indian aesthetics while incorporating modern functionality and comfort.',
-      solution: 'Blended traditional carved wooden elements with contemporary furniture, used rich fabrics with modern silhouettes, and integrated smart home technology discreetly.',
-      results: 'A perfect fusion that honors heritage while meeting modern lifestyle needs. Featured in Home & Design magazine.',
-      clientName: 'Meera Iyer',
-      testimonial: 'Bhargav understood our vision perfectly. The space honors our culture while being incredibly functional for our modern family.',
+      after: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
+      problem: 'Small bathroom with poor ventilation and outdated fixtures. The space felt cramped and uninviting.',
+      solution: 'Maximized space with a corner shower, floating vanity, and floor-to-ceiling tiles. Added skylight for natural light and premium fixtures throughout.',
+      results: 'Space feels 50% larger, natural light transformed the ambiance, and daily routines are now more enjoyable.',
+      clientName: 'Kavya Reddy',
+      testimonial: 'What seemed impossible in such a small space became reality. The bathroom now feels like a private spa retreat.',
       rating: 5,
       location: 'Chennai',
-      duration: '9 weeks',
-      budget: '₹7.5L'
-    },
-    {
-      id: 5,
-      category: 'kitchen',
-      title: 'Compact Modular Kitchen',
-      before: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800',
-      after: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800',
-      problem: 'A small apartment kitchen with limited space and no proper organization. The client needed maximum storage in minimal area.',
-      solution: 'Designed a smart modular system with pull-out pantries, corner carousel units, and vertical storage. Used light colors to make the space feel larger.',
-      results: 'Storage capacity tripled, workspace doubled, and the kitchen feels much more spacious despite the same footprint.',
-      clientName: 'Arjun Malhotra',
-      testimonial: 'I never thought my tiny kitchen could be so functional. Every inch is optimized. Brilliant space planning!',
-      rating: 5,
-      location: 'Pune',
-      duration: '5 weeks',
+      duration: '4 weeks',
       budget: '₹3.8L'
     },
     {
+      id: 5,
+      category: 'office',
+      title: 'Productive Home Office Design',
+      before: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800',
+      after: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
+      problem: 'Cluttered spare room serving as makeshift office. Poor lighting and no storage solutions affected productivity.',
+      solution: 'Custom built-in desk and shelving, ergonomic lighting setup, acoustic panels for video calls, and a dedicated storage wall.',
+      results: 'Productivity increased by 40%, video call quality improved, and work-life balance enhanced.',
+      clientName: 'Arjun Patel',
+      testimonial: 'My home office went from chaotic to inspiring. The design perfectly balances functionality with aesthetics.',
+      rating: 5,
+      location: 'Pune',
+      duration: '3 weeks',
+      budget: '₹2.5L'
+    },
+    {
       id: 6,
-      category: 'bedroom',
-      title: "Kids' Room Transformation",
+      category: 'dining-room',
+      title: 'Elegant Dining Room Makeover',
       before: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800',
-      after: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800',
-      problem: 'Two siblings sharing one room led to constant clutter and fights. Parents wanted a fun, organized space that both kids would love.',
-      solution: 'Created separate zones with loft beds, built-in study areas for each child, colorful storage solutions, and a small play area. Used durable, easy-to-clean materials.',
-      results: 'Kids now have their own space while sharing the room harmoniously. Homework completion improved, and tidying up became easier.',
-      clientName: 'Deepa & Suresh Patel',
-      testimonial: 'The kids absolutely love their new room! No more fights, and everything has its place. Bhargav made it fun and functional.',
+      after: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800',
+      problem: 'Formal dining room felt cold and unused. Family preferred eating in the kitchen due to poor ambiance.',
+      solution: 'Warm color scheme, statement chandelier, custom dining table, and cozy seating nook. Added art gallery wall and wine storage.',
+      results: 'Family dinners increased by 300%, space now used daily, and entertaining became a joy.',
+      clientName: 'Meera & Vikram Shah',
+      testimonial: 'Our dining room went from formal and cold to warm and inviting. We actually use it every day now!',
       rating: 5,
       location: 'Ahmedabad',
-      duration: '4 weeks',
-      budget: '₹2.9L'
+      duration: '5 weeks',
+      budget: '₹5.2L'
     }
   ];
 
   const categories = [
-    { id: 'all', label: 'All Projects', count: transformations.length },
-    { id: 'living-room', label: 'Living Rooms', count: transformations.filter(t => t.category === 'living-room').length },
-    { id: 'kitchen', label: 'Kitchens', count: transformations.filter(t => t.category === 'kitchen').length },
-    { id: 'bedroom', label: 'Bedrooms', count: transformations.filter(t => t.category === 'bedroom').length }
+    { id: 'all', label: 'All Transformations', icon: '🏠' },
+    { id: 'living-room', label: 'Living Room', icon: '🛋️' },
+    { id: 'kitchen', label: 'Kitchen', icon: '👨‍🍳' },
+    { id: 'bedroom', label: 'Bedroom', icon: '🛏️' },
+    { id: 'bathroom', label: 'Bathroom', icon: '🛁' },
+    { id: 'office', label: 'Home Office', icon: '💻' },
+    { id: 'dining-room', label: 'Dining Room', icon: '🍽️' }
   ];
 
   const filteredTransformations = activeFilter === 'all' 
@@ -121,11 +126,13 @@ const AllTransformations = () => {
     <div style={{ 
       minHeight: '100vh',
       backgroundColor: 'var(--background)',
-      paddingTop: '0px'
+      paddingTop: '0px',
+      paddingBottom: '64px',
+      color: 'var(--text-primary)'
     }}>
       {/* Hero Section */}
       <div style={{
-        background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
+        background: 'linear-gradient(135deg, #6B4E71 0%, #8B7355 100%)',
         padding: '60px 20px',
         textAlign: 'center',
         color: 'white',
@@ -158,7 +165,7 @@ const AllTransformations = () => {
           marginBottom: '20px',
           letterSpacing: '-0.02em'
         }}>
-          Complete Transformations
+          Amazing Transformations
         </h1>
         <p style={{
           fontSize: '1.2rem',
@@ -170,7 +177,7 @@ const AllTransformations = () => {
         </p>
       </div>
 
-      {/* Filter Tabs */}
+      {/* Filter Categories */}
       <div style={{
         maxWidth: '1200px',
         margin: '40px auto',
@@ -178,7 +185,7 @@ const AllTransformations = () => {
       }}>
         <div style={{
           display: 'flex',
-          gap: '15px',
+          gap: '12px',
           flexWrap: 'wrap',
           justifyContent: 'center',
           marginBottom: '40px'
@@ -187,11 +194,12 @@ const AllTransformations = () => {
             <button
               key={cat.id}
               onClick={() => setActiveFilter(cat.id)}
+              className="safe-hover-btn"
               style={{
                 padding: '12px 24px',
                 borderRadius: '30px',
                 border: activeFilter === cat.id 
-                  ? '2px solid var(--primary)' 
+                  ? 'none' 
                   : '2px solid var(--border)',
                 backgroundColor: activeFilter === cat.id 
                   ? 'var(--primary)' 
@@ -202,10 +210,13 @@ const AllTransformations = () => {
                 cursor: 'pointer',
                 fontSize: '1rem',
                 fontWeight: '500',
-                transition: 'all 0.3s ease'
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}
             >
-              {cat.label} ({cat.count})
+              <span>{cat.icon}</span>
+              {cat.label}
             </button>
           ))}
         </div>
@@ -213,20 +224,22 @@ const AllTransformations = () => {
         {/* Transformations Grid */}
         <div style={{
           display: 'grid',
-          gap: '40px'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          gap: '40px',
+          marginBottom: '60px'
         }}>
           {filteredTransformations.map(project => (
             <div
               key={project.id}
+              className="safe-hover-card"
               style={{
                 backgroundColor: 'var(--surface)',
-                borderRadius: '16px',
+                borderRadius: '20px',
                 overflow: 'hidden',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                transition: 'all 0.3s ease'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
               }}
             >
-              {/* Before & After Images */}
+              {/* Before/After Images */}
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -237,11 +250,13 @@ const AllTransformations = () => {
                   <img
                     src={project.before}
                     alt="Before"
+                    onClick={() => setLightboxImage(project.before)}
                     style={{
                       width: '100%',
                       height: '350px',
                       objectFit: 'cover',
-                      display: 'block'
+                      display: 'block',
+                      cursor: 'pointer'
                     }}
                   />
                   <div style={{
@@ -258,15 +273,18 @@ const AllTransformations = () => {
                     BEFORE
                   </div>
                 </div>
+                
                 <div style={{ position: 'relative' }}>
                   <img
                     src={project.after}
                     alt="After"
+                    onClick={() => setLightboxImage(project.after)}
                     style={{
                       width: '100%',
                       height: '350px',
                       objectFit: 'cover',
-                      display: 'block'
+                      display: 'block',
+                      cursor: 'pointer'
                     }}
                   />
                   <div style={{
@@ -285,129 +303,133 @@ const AllTransformations = () => {
                 </div>
               </div>
 
+              {/* Click to Enlarge Instruction */}
+              <div style={{
+                textAlign: 'center',
+                padding: '12px',
+                backgroundColor: 'var(--background)',
+                color: 'var(--text-secondary)',
+                fontSize: '14px',
+                fontStyle: 'italic',
+                borderBottom: '1px solid var(--border)'
+              }}>
+                💡 Click on any image above to enlarge and view details
+              </div>
+
               {/* Project Details */}
               <div style={{ padding: '30px' }}>
-                <h2 style={{
-                  fontSize: '1.8rem',
-                  color: 'var(--text-primary)',
-                  marginBottom: '20px',
-                  fontWeight: '700'
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: 'bold',
+                  marginBottom: '16px',
+                  color: 'var(--text-primary)'
                 }}>
                   {project.title}
-                </h2>
+                </h3>
 
-                {/* Quick Info */}
+                {/* Quick Stats */}
                 <div style={{
-                  display: 'flex',
-                  gap: '20px',
-                  flexWrap: 'wrap',
-                  marginBottom: '25px',
-                  padding: '15px',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+                  gap: '16px',
+                  marginBottom: '24px',
+                  padding: '16px',
                   backgroundColor: 'var(--background)',
-                  borderRadius: '8px'
+                  borderRadius: '12px'
                 }}>
-                  <div>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Location</span>
-                    <p style={{ margin: '4px 0 0 0', fontWeight: '600', color: 'var(--text-primary)' }}>{project.location}</p>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Duration</div>
+                    <div style={{ fontWeight: '600', color: 'var(--primary)' }}>{project.duration}</div>
                   </div>
-                  <div>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Duration</span>
-                    <p style={{ margin: '4px 0 0 0', fontWeight: '600', color: 'var(--text-primary)' }}>{project.duration}</p>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Budget</div>
+                    <div style={{ fontWeight: '600', color: 'var(--primary)' }}>{project.budget}</div>
                   </div>
-                  <div>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Investment</span>
-                    <p style={{ margin: '4px 0 0 0', fontWeight: '600', color: 'var(--text-primary)' }}>{project.budget}</p>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Location</div>
+                    <div style={{ fontWeight: '600', color: 'var(--primary)' }}>{project.location}</div>
                   </div>
                 </div>
 
-                {/* Problem */}
+                {/* The Challenge */}
                 <div style={{ marginBottom: '20px' }}>
-                  <h3 style={{
+                  <h4 style={{
                     fontSize: '1.1rem',
-                    color: 'var(--primary)',
-                    marginBottom: '10px',
-                    fontWeight: '600'
+                    fontWeight: '600',
+                    marginBottom: '8px',
+                    color: 'var(--text-primary)'
                   }}>
                     The Challenge
-                  </h3>
+                  </h4>
                   <p style={{
-                    color: 'var(--text-primary)',
-                    lineHeight: '1.7',
-                    fontSize: '1rem'
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.6'
                   }}>
                     {project.problem}
                   </p>
                 </div>
 
-                {/* Solution */}
+                {/* Our Solution */}
                 <div style={{ marginBottom: '20px' }}>
-                  <h3 style={{
+                  <h4 style={{
                     fontSize: '1.1rem',
-                    color: 'var(--primary)',
-                    marginBottom: '10px',
-                    fontWeight: '600'
+                    fontWeight: '600',
+                    marginBottom: '8px',
+                    color: 'var(--text-primary)'
                   }}>
                     Our Solution
-                  </h3>
+                  </h4>
                   <p style={{
-                    color: 'var(--text-primary)',
-                    lineHeight: '1.7',
-                    fontSize: '1rem'
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.6'
                   }}>
                     {project.solution}
                   </p>
                 </div>
 
-                {/* Results */}
-                <div style={{ marginBottom: '25px' }}>
-                  <h3 style={{
+                {/* The Results */}
+                <div style={{ marginBottom: '24px' }}>
+                  <h4 style={{
                     fontSize: '1.1rem',
-                    color: 'var(--primary)',
-                    marginBottom: '10px',
-                    fontWeight: '600'
+                    fontWeight: '600',
+                    marginBottom: '8px',
+                    color: 'var(--text-primary)'
                   }}>
                     The Results
-                  </h3>
+                  </h4>
                   <p style={{
-                    color: 'var(--text-primary)',
-                    lineHeight: '1.7',
-                    fontSize: '1rem'
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.6'
                   }}>
                     {project.results}
                   </p>
                 </div>
 
-                {/* Testimonial */}
+                {/* Client Testimonial */}
                 <div style={{
-                  backgroundColor: 'var(--background)',
                   padding: '20px',
+                  backgroundColor: 'var(--background)',
                   borderRadius: '12px',
-                  borderLeft: '4px solid var(--primary)'
+                  borderLeft: `4px solid var(--primary)`
                 }}>
-                  <div style={{
-                    display: 'flex',
-                    gap: '4px',
-                    marginBottom: '10px'
-                  }}>
-                    {[...Array(project.rating)].map((_, i) => (
-                      <Star key={i} size={18} fill="var(--primary)" color="var(--primary)" />
+                  <div style={{ display: 'flex', marginBottom: '8px' }}>
+                    {Array.from({ length: project.rating }).map((_, i) => (
+                      <Star key={i} size={16} fill="var(--primary)" color="var(--primary)" />
                     ))}
                   </div>
                   <p style={{
-                    fontSize: '1.05rem',
                     fontStyle: 'italic',
-                    color: 'var(--text-primary)',
-                    lineHeight: '1.7',
-                    marginBottom: '10px'
+                    marginBottom: '12px',
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.6'
                   }}>
                     "{project.testimonial}"
                   </p>
                   <p style={{
-                    fontSize: '0.95rem',
                     fontWeight: '600',
-                    color: 'var(--text-secondary)'
+                    color: 'var(--text-primary)'
                   }}>
-                    — {project.clientName}
+                    - {project.clientName}
                   </p>
                 </div>
               </div>
@@ -417,7 +439,6 @@ const AllTransformations = () => {
 
         {/* CTA Section */}
         <div style={{
-          marginTop: '60px',
           padding: '50px 30px',
           backgroundColor: 'var(--surface)',
           borderRadius: '16px',
@@ -438,9 +459,13 @@ const AllTransformations = () => {
             maxWidth: '600px',
             margin: '0 auto 30px auto'
           }}>
-            Let's discuss how we can transform your space into something extraordinary
+            Let's discuss your space and create something amazing together
           </p>
           <button
+            className="safe-hover-btn"
+            onClick={() => {
+              window.location.href = '/#contact';
+            }}
             style={{
               padding: '15px 40px',
               fontSize: '1.1rem',
@@ -449,14 +474,69 @@ const AllTransformations = () => {
               border: 'none',
               borderRadius: '30px',
               cursor: 'pointer',
-              fontWeight: '600',
-              transition: 'all 0.3s ease'
+              fontWeight: '600'
             }}
           >
-            Start Your Project
+            Start Your Transformation
           </button>
         </div>
       </div>
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div 
+          onClick={() => setLightboxImage(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.95)',
+            zIndex: 60,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setLightboxImage(null)}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255,255,255,0.2)',
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '24px',
+              zIndex: 10
+            }}
+          >
+            <X size={30} />
+          </button>
+
+          {/* Main Image */}
+          <img
+            src={lightboxImage}
+            alt="Enlarged view"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: '8px'
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
