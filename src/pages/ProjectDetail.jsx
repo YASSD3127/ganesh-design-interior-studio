@@ -1,30 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, X } from 'lucide-react';
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projectDetailsData } from '../data/projectDetails';
-import VideoSection from '../components/VideoSection';
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   
   const project = projectDetailsData[id];
 
-  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [id]);
+
+  const isMobile = windowWidth < 768;
+  const isSmall = windowWidth < 480;
+  const isTiny = windowWidth < 375;
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Project Not Found</h2>
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FAFAFA'
+      }}>
+        <div style={{ textAlign: 'center', padding: isMobile ? '20px' : '40px' }}>
+          <h2 style={{
+            fontSize: isTiny ? '1.5rem' : isSmall ? '1.7rem' : '2rem',
+            fontWeight: '100',
+            marginBottom: isTiny ? '16px' : '24px',
+            color: '#2A2A2A'
+          }}>
+            Project Not Found
+          </h2>
           <button
             onClick={() => navigate('/')}
-            className="font-semibold"
-            style={{ color: 'var(--primary)' }}
+            style={{
+              color: '#2A2A2A',
+              background: 'none',
+              border: 'none',
+              fontSize: isTiny ? '13px' : '14px',
+              fontWeight: '300',
+              cursor: 'pointer',
+              textDecoration: 'underline'
+            }}
           >
             Return to Home
           </button>
@@ -33,21 +60,15 @@ const ProjectDetail = () => {
     );
   }
 
-  const openLightbox = (index) => {
-    setLightboxIndex(index);
-  };
-
-  const closeLightbox = () => {
-    setLightboxIndex(null);
-  };
-
+  // Lightbox navigation functions
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
   const nextImage = (e) => {
     e.stopPropagation();
     setLightboxIndex((prev) => 
       prev === project.images.length - 1 ? 0 : prev + 1
     );
   };
-
   const prevImage = (e) => {
     e.stopPropagation();
     setLightboxIndex((prev) => 
@@ -56,195 +77,433 @@ const ProjectDetail = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--background)' }}>
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 shadow-sm"
-      style={{ backgroundColor: 'var(--surface)' }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div style={{ minHeight: '100vh', backgroundColor: '#FAFAFA' }}>
+      {/* Navigation - Same pattern as other pages */}
+      <nav 
+        className="fixed top-0 w-full z-40"
+        style={{ 
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          borderBottom: '1px solid #E5E5E5',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)'
+        }}
+      >
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: isTiny ? '16px 12px' : isSmall ? '20px 16px' : isMobile ? '24px 20px' : '24px 32px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}>
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 font-medium"
-            style={{ color: 'var(--text-primary)' }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: isTiny ? '8px' : '12px',
+              background: 'none',
+              border: 'none',
+              color: '#555',
+              fontSize: isTiny ? '12px' : isSmall ? '13px' : '14px',
+              fontWeight: '300',
+              cursor: 'pointer',
+              letterSpacing: '0.5px',
+              transition: 'color 0.3s ease'
+            }}
+            onMouseEnter={(e) => e.target.style.color = '#2A2A2A'}
+            onMouseLeave={(e) => e.target.style.color = '#555'}
           >
-            <ArrowLeft size={20} />
+            <ArrowLeft size={isTiny ? 14 : 16} />
             <span>Back to Portfolio</span>
           </button>
           
           <div 
-            className="text-xl font-bold cursor-pointer"
+            className="cursor-pointer"
             onClick={() => window.location.href = '/'}
+            style={{
+              fontSize: isTiny ? '11px' : isSmall ? '13px' : isMobile ? '14px' : '18px',
+              fontWeight: '300',
+              letterSpacing: isTiny ? '1px' : isSmall ? '1.5px' : isMobile ? '2px' : '3px',
+              color: '#2A2A2A'
+            }}
           >
-            <span style={{ color: 'var(--text-primary)' }}>GANESH</span>
-            <span style={{ color: 'var(--primary)' }}> STUDIO</span>
+            GANESH DESIGN STUDIO
           </div>
         </div>
       </nav>
 
-      {/* Hero Image */}
-      <div className="pt-28">
-        <div className="relative h-[60vh] overflow-hidden">
+      {/* Hero Image - Responsive */}
+      <div style={{ paddingTop: isTiny ? '80px' : '96px' }}>
+        <div style={{
+          position: 'relative',
+          height: isMobile ? '40vh' : '60vh',
+          overflow: 'hidden'
+        }}>
           <img
             src={project.images[0].url}
             alt={project.title}
-            className="w-full h-full object-cover"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-12 text-white">
-            <div className="max-w-7xl mx-auto">
-              <div className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4"
-              style={{ backgroundColor: 'var(--primary)' }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 40%, rgba(42,42,42,0.85) 100%)'
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            padding: isTiny ? '24px 12px' : isSmall ? '32px 16px' : isMobile ? '40px 20px' : '64px 32px',
+            color: '#FFFFFF'
+          }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{
+                display: 'inline-block',
+                padding: isTiny ? '6px 12px' : '8px 16px',
+                backgroundColor: 'rgba(255,255,255,0.2)',
+                borderRadius: '4px',
+                fontSize: isTiny ? '10px' : '11px',
+                fontWeight: '300',
+                letterSpacing: isTiny ? '1px' : '2px',
+                textTransform: 'uppercase',
+                marginBottom: isTiny ? '12px' : '24px',
+                backdropFilter: 'blur(8px)'
+              }}>
                 {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-4">{project.title}</h1>
-              <p className="text-xl text-white/90 max-w-3xl">{project.description}</p>
+              <h1 style={{
+                fontSize: isTiny ? '1.5rem' : isSmall ? '2rem' : isMobile ? '2.5rem' : 'clamp(2.5rem, 6vw, 4rem)',
+                fontWeight: '100',
+                marginBottom: isTiny ? '12px' : '24px',
+                lineHeight: '1.2',
+                letterSpacing: isTiny ? '-1px' : '-2px'
+              }}>
+                {project.title}
+              </h1>
+              <p style={{
+                fontSize: isTiny ? '14px' : isSmall ? '15px' : isMobile ? '16px' : '1.2rem',
+                color: 'rgba(255,255,255,0.9)',
+                maxWidth: '800px',
+                fontWeight: '300',
+                lineHeight: '1.6'
+              }}>
+                {project.description}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Project Info */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16 p-8 rounded-xl"
-        style={{ backgroundColor: 'var(--surface)' }}>
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-2"
-            style={{ color: 'var(--text-secondary)' }}>Location</h3>
-            <p className="text-lg font-semibold">{project.location}</p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-2"
-            style={{ color: 'var(--text-secondary)' }}>Year</h3>
-            <p className="text-lg font-semibold">{project.year}</p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-2"
-            style={{ color: 'var(--text-secondary)' }}>Size</h3>
-            <p className="text-lg font-semibold">{project.size}</p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-2"
-            style={{ color: 'var(--text-secondary)' }}>Duration</h3>
-            <p className="text-lg font-semibold">{project.duration}</p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-2"
-            style={{ color: 'var(--text-secondary)' }}>Style</h3>
-            <p className="text-lg font-semibold">{project.style}</p>
-          </div>
+      {/* Project Content */}
+      <div style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        padding: isTiny ? '48px 12px 32px' : isSmall ? '56px 16px 40px' : isMobile ? '64px 20px 48px' : '96px 32px 64px'
+      }}>
+        {/* Project Info Grid - Responsive */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile 
+            ? '1fr 1fr' 
+            : windowWidth < 1024
+              ? 'repeat(2, 1fr)'
+              : 'repeat(4, 1fr)',
+          gap: isTiny ? '24px' : isSmall ? '28px' : isMobile ? '32px' : '48px',
+          marginBottom: isTiny ? '48px' : isSmall ? '56px' : isMobile ? '64px' : '80px',
+          padding: isTiny ? '24px' : isSmall ? '28px' : isMobile ? '32px' : '40px',
+          backgroundColor: '#FFFFFF',
+          borderRadius: '4px'
+        }}>
+          {[
+            { label: 'Client', value: project.client },
+            { label: 'Location', value: project.location },
+            { label: 'Year', value: project.year },
+            { label: 'Size', value: project.size },
+            { label: 'Duration', value: project.duration },
+            { label: 'Budget', value: project.budgetRange },
+            { label: 'Style', value: project.style },
+            { label: 'Category', value: project.category }
+          ].slice(0, windowWidth < 768 ? 4 : 8).map((item, index) => (
+            <div key={index}>
+              <div style={{
+                fontSize: isTiny ? '10px' : '11px',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                color: '#555',
+                marginBottom: isTiny ? '6px' : '8px',
+                fontWeight: '300'
+              }}>
+                {item.label}
+              </div>
+              <div style={{
+                fontSize: isTiny ? '14px' : isSmall ? '15px' : '16px',
+                color: '#2A2A2A',
+                fontWeight: '300'
+              }}>
+                {item.value}
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Features - 3 COLUMNS */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Features List - Responsive */}
+        <div style={{
+          marginBottom: isTiny ? '48px' : isSmall ? '56px' : isMobile ? '64px' : '80px'
+        }}>
+          <h2 style={{
+            fontSize: isTiny ? '1.3rem' : isSmall ? '1.5rem' : isMobile ? '1.7rem' : '2rem',
+            fontWeight: '100',
+            marginBottom: isTiny ? '24px' : isSmall ? '28px' : '32px',
+            letterSpacing: '-1px'
+          }}>
+            Project Features
+          </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+            gap: isTiny ? '12px' : '16px'
+          }}>
             {project.features.map((feature, index) => (
-              <div key={index} className="flex items-start gap-2 p-4 rounded-lg"
-              style={{ backgroundColor: 'var(--surface)' }}>
-                <span className="text-xl mt-0.5 flex-shrink-0"
-                style={{ color: 'var(--primary)' }}>✓</span>
-                <span style={{ color: 'var(--text-secondary)' }}>{feature}</span>
+              <div
+                key={index}
+                style={{
+                  padding: isTiny ? '12px 16px' : '16px 20px',
+                  backgroundColor: '#F5F5F5',
+                  borderRadius: '4px',
+                  fontSize: isTiny ? '13px' : isSmall ? '14px' : '15px',
+                  color: '#555',
+                  fontWeight: '300',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: isTiny ? '10px' : '12px'
+                }}
+              >
+                <div style={{
+                  width: isTiny ? '6px' : '8px',
+                  height: isTiny ? '6px' : '8px',
+                  backgroundColor: '#2A2A2A',
+                  borderRadius: '50%',
+                  flexShrink: 0
+                }} />
+                {feature}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Image Gallery */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Project Gallery</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Image Gallery - Responsive Grid */}
+        <div style={{
+          marginBottom: isTiny ? '48px' : isSmall ? '56px' : isMobile ? '64px' : '80px'
+        }}>
+          <h2 style={{
+            fontSize: isTiny ? '1.3rem' : isSmall ? '1.5rem' : isMobile ? '1.7rem' : '2rem',
+            fontWeight: '100',
+            marginBottom: isTiny ? '24px' : isSmall ? '28px' : '32px',
+            letterSpacing: '-1px'
+          }}>
+            Project Gallery
+          </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+            gap: isTiny ? '16px' : isSmall ? '20px' : '24px'
+          }}>
             {project.images.map((image, index) => (
               <div
-                key={image.id}
-                className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
+                key={index}
                 onClick={() => openLightbox(index)}
+                style={{
+                  position: 'relative',
+                  height: isTiny ? '200px' : isSmall ? '240px' : isMobile ? '280px' : '320px',
+                  overflow: 'hidden',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  transition: 'transform 0.3s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
                 <img
                   src={image.url}
                   alt={image.caption}
-                  className="w-full h-full object-cover"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 flex items-center justify-center">
-                  <span className="text-white opacity-0 group-hover:opacity-100 text-4xl">🔍</span>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100">
-                  <p className="text-white text-sm">{image.caption}</p>
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: isTiny ? '12px' : '16px',
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+                  color: '#FFFFFF',
+                  fontSize: isTiny ? '12px' : isSmall ? '13px' : '14px',
+                  fontWeight: '300'
+                }}>
+                  {image.caption}
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Video Walkthrough */}
-        {project.videoUrl && (
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Project Walkthrough</h2>
-            <VideoSection 
-              videoUrl={project.videoUrl}
-              thumbnail={project.images[0].url}
-              title={`${project.title} - Virtual Tour`}
-            />
-          </div>
-        )}
-
-        {/* CTA Section */}
-        <div className="rounded-2xl p-12 text-center text-white"
-        style={{ backgroundColor: 'var(--charcoal-wood)' }}>
-          <h3 className="text-3xl font-bold mb-4">Interested in a Similar Project?</h3>
-          <p className="mb-8 text-lg max-w-2xl mx-auto opacity-90">
-            Let's discuss how we can bring your vision to life with our expert interior design services
-          </p>
-          <button 
+        {/* CTA Button */}
+        <div style={{ textAlign: 'center' }}>
+          <button
             onClick={() => {
               navigate('/');
               setTimeout(() => {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }, 100);
             }}
-            className="text-white px-8 py-4 rounded-full font-semibold"
-            style={{ backgroundColor: 'var(--primary)' }}
+            style={{
+              backgroundColor: '#2A2A2A',
+              color: '#FFFFFF',
+              padding: isTiny ? '14px 32px' : isSmall ? '16px 40px' : '18px 48px',
+              border: 'none',
+              borderRadius: '4px',
+              fontSize: isTiny ? '10px' : isSmall ? '11px' : '12px',
+              letterSpacing: isTiny ? '1.5px' : '2px',
+              textTransform: 'uppercase',
+              fontWeight: '400',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              width: isMobile ? '100%' : 'auto',
+              maxWidth: isMobile ? '280px' : 'none'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#000000';
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#2A2A2A';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = 'none';
+            }}
           >
-            Get Free Consultation
+            Start Your Own Project
           </button>
         </div>
       </div>
 
-      {/* Lightbox */}
+      {/* Lightbox with Touch-Friendly Navigation */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4" onClick={closeLightbox}>
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: isMobile ? '16px' : '32px',
+            zIndex: 50,
+            backgroundColor: 'rgba(0,0,0,0.95)'
+          }}
+          onClick={closeLightbox}
+        >
+          {/* Close Button */}
           <button
             onClick={closeLightbox}
-            className="absolute top-6 right-6 text-white z-10"
+            style={{
+              position: 'absolute',
+              top: isTiny ? '16px' : '32px',
+              right: isTiny ? '16px' : '32px',
+              color: '#FFFFFF',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              zIndex: 10,
+              padding: '8px'
+            }}
           >
-            <X size={32} />
-          </button>
-          
-          <button
-            onClick={prevImage}
-            className="absolute left-6 text-white text-6xl z-10 w-12 h-12 flex items-center justify-center"
-          >
-            ‹
-          </button>
-          
-          <button
-            onClick={nextImage}
-            className="absolute right-6 text-white text-6xl z-10 w-12 h-12 flex items-center justify-center"
-          >
-            ›
+            <X size={isTiny ? 20 : 24} />
           </button>
 
-          <div className="max-w-6xl max-h-[90vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+          {/* Previous Button */}
+          <button
+            onClick={prevImage}
+            style={{
+              position: 'absolute',
+              left: isTiny ? '8px' : '24px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#FFFFFF',
+              background: 'rgba(255,255,255,0.1)',
+              border: 'none',
+              borderRadius: '50%',
+              width: isTiny ? '36px' : isSmall ? '40px' : '48px',
+              height: isTiny ? '36px' : isSmall ? '40px' : '48px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              zIndex: 10
+            }}
+          >
+            <ChevronLeft size={isTiny ? 20 : 24} />
+          </button>
+
+          {/* Next Button */}
+          <button
+            onClick={nextImage}
+            style={{
+              position: 'absolute',
+              right: isTiny ? '8px' : '24px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#FFFFFF',
+              background: 'rgba(255,255,255,0.1)',
+              border: 'none',
+              borderRadius: '50%',
+              width: isTiny ? '36px' : isSmall ? '40px' : '48px',
+              height: isTiny ? '36px' : isSmall ? '40px' : '48px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              zIndex: 10
+            }}
+          >
+            <ChevronRight size={isTiny ? 20 : 24} />
+          </button>
+
+          {/* Image */}
+          <div onClick={(e) => e.stopPropagation()}>
             <img
               src={project.images[lightboxIndex].url}
               alt={project.images[lightboxIndex].caption}
-              className="max-w-full max-h-[75vh] object-contain rounded-lg"
+              style={{
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                objectFit: 'contain',
+                borderRadius: '4px'
+              }}
             />
-            <div className="mt-6 text-center">
-              <p className="text-white text-lg mb-2">
-                {project.images[lightboxIndex].caption}
-              </p>
-              <p className="text-gray-400 text-sm">
-                {lightboxIndex + 1} / {project.images.length}
-              </p>
+            {/* Caption */}
+            <div style={{
+              textAlign: 'center',
+              marginTop: isTiny ? '12px' : '16px',
+              color: '#FFFFFF',
+              fontSize: isTiny ? '12px' : isSmall ? '13px' : '14px',
+              fontWeight: '300'
+            }}>
+              {project.images[lightboxIndex].caption}
             </div>
           </div>
         </div>

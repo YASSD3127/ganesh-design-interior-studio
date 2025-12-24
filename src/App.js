@@ -84,11 +84,8 @@
 // export default App;
 
 
-
-
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
@@ -112,6 +109,7 @@ import MaterialLibrary from './pages/MaterialLibrary';
 import AllTransformations from './pages/AllTransformations';
 import BehindTheScenes from './pages/BehindTheScenes';
 import VideoDetail from './pages/VideoDetail';
+// import DarkModeToggle from './components/DarkModeToggle';
 
 // Scroll to top component
 function ScrollToTop() {
@@ -128,6 +126,7 @@ function ScrollToTop() {
 const HomePage = () => {
   return (
     <>
+      {/* <DarkModeToggle /> */}
       <Navigation />
       <Hero />
       <Portfolio />

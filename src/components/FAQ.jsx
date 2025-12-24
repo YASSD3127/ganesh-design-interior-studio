@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  const faqRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const faqs = [
     {
       question: 'How much does interior design cost?',
-      answer: 'Our interior design costs vary based on project scope, size, and requirements. We offer flexible packages: Budget-Friendly (₹500-1000/sq ft), Mid-Range (₹1000-1500/sq ft), and Premium (₹1500-3000/sq ft). Contact us for a detailed quote tailored to your specific needs.'
+      answer: 'Our interior design costs vary based on project scope, size, and requirements. We offer flexible packages: Budget-Friendly (₹500-1000/sq ft), Mid-Range (₹1000-1500/sq ft), and Premium (₹1500-3000/sq ft). Contact us for a detailed quote tailored to your specific needs and vision.'
     },
     {
       question: 'How long does a typical project take?',
@@ -27,7 +38,7 @@ const FAQ = () => {
     },
     {
       question: 'Do you provide warranties or after-sales service?',
-      answer: 'Yes, we provide a 1-year warranty on all workmanship and execution. We also offer complimentary after-sales support for minor adjustments within 3 months of project completion. For furniture and fixtures, manufacturer warranties apply.'
+      answer: 'Yes, we provide a 1-year warranty on all workmanship and execution. We also offer complimentary after-sales support for minor adjustments within 3 months of project completion. For furniture and fixtures, manufacturer warranties apply, and we assist with any warranty-related issues.'
     },
     {
       question: 'Can I see work in progress?',
@@ -39,90 +50,165 @@ const FAQ = () => {
     }
   ];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (faqRef.current && !faqRef.current.contains(event.target)) {
+        setOpenIndex(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleToggle = (clickedIndex) => {
+    if (openIndex === clickedIndex) {
+      setOpenIndex(null);
+    } else {
+      setOpenIndex(clickedIndex);
+    }
   };
 
-  return (
-    <section id="faq" style={{
-      padding: '96px 24px',
-      backgroundColor: 'var(--background)'
-    }}>
-      <div style={{ maxWidth: '896px', margin: '0 auto' }}>
-        <h2 style={{
-          fontSize: 'clamp(2.5rem, 5vw, 3rem)',
-          fontWeight: 'bold',
-          textAlign: 'center',
-          marginBottom: '16px',
-          color: 'var(--text-primary)'
-        }}>
-          Frequently Asked Questions
-        </h2>
-        <p style={{
-          textAlign: 'center',
-          color: 'var(--text-secondary)',
-          marginBottom: '48px',
-          fontSize: '18px'
-        }}>
-          Got questions? We've got answers. Can't find what you're looking for? Contact us!
-        </p>
+  const isMobile = windowWidth < 768;
+  const isSmall = windowWidth < 480;
+  const isTiny = windowWidth < 375;
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+  return (
+    <section style={{
+      padding: isTiny ? '40px 12px' : (isSmall ? '48px 16px' : (isMobile ? '64px 20px' : '96px 32px')),
+      backgroundColor: '#FFFFFF'
+    }}>
+      <div style={{ 
+        maxWidth: '900px', 
+        margin: '0 auto',
+        width: '100%'
+      }}>
+        {/* Section Header */}
+        <div style={{
+          textAlign: 'center',
+          marginBottom: isTiny ? '32px' : (isSmall ? '36px' : (isMobile ? '40px' : '64px'))
+        }}>
+          <div style={{
+            fontSize: isTiny ? '9px' : (isSmall ? '10px' : '11px'),
+            letterSpacing: isTiny ? '1px' : (isSmall ? '1.5px' : '2px'),
+            textTransform: 'uppercase',
+            color: '#555',
+            marginBottom: isTiny ? '8px' : (isSmall ? '10px' : '12px'),
+            fontWeight: '600'
+          }}>
+            FAQ — Questions
+          </div>
+          <h2 style={{
+            fontSize: isTiny ? '1.5rem' : (isSmall ? '1.75rem' : (isMobile ? '2rem' : 'clamp(2rem, 5vw, 3.5rem)')),
+            fontWeight: '100',
+            lineHeight: '1.2',
+            color: '#2A2A2A',
+            marginBottom: isTiny ? '12px' : (isSmall ? '14px' : '16px'),
+            letterSpacing: isTiny ? '-0.5px' : '-1px',
+            padding: '0 8px'
+          }}>
+            Frequently Asked
+            <br />
+            <span style={{ fontStyle: 'italic', fontWeight: '300' }}>Questions</span>
+          </h2>
+          <p style={{
+            fontSize: isTiny ? '13px' : (isSmall ? '14px' : (isMobile ? '15px' : '16px')),
+            lineHeight: '1.5',
+            color: '#555',
+            maxWidth: '600px',
+            margin: '0 auto',
+            fontWeight: '400',
+            padding: '0 12px'
+          }}>
+            Everything you need to know about our services
+          </p>
+        </div>
+
+        {/* FAQ List */}
+        <div ref={faqRef} style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: isTiny ? '10px' : (isSmall ? '12px' : (isMobile ? '14px' : '16px')),
+          marginBottom: isTiny ? '32px' : (isSmall ? '36px' : (isMobile ? '40px' : '64px'))
+        }}>
           {faqs.map((faq, index) => (
             <div
-              key={index}
+              key={`faq-${index}`}
               style={{
-                backgroundColor: 'var(--surface)',
-                borderRadius: '12px',
-                boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
+                backgroundColor: '#F5F5F5',
+                borderRadius: '4px',
+                border: openIndex === index ? '1px solid #2A2A2A' : '1px solid transparent',
+                transition: 'all 0.3s ease',
                 overflow: 'hidden'
               }}
             >
               <button
-                onClick={() => toggleFAQ(index)}
+                type="button"
+                onClick={() => handleToggle(index)}
+                aria-expanded={openIndex === index}
                 style={{
                   width: '100%',
-                  padding: '20px 24px',
+                  padding: isTiny ? '14px 16px' : (isSmall ? '16px 18px' : (isMobile ? '18px 20px' : '20px 24px')),
                   textAlign: 'left',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
-                  color: 'var(--text-primary)'
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'flex-start',
+                  gap: isTiny ? '8px' : (isSmall ? '10px' : '12px'),
+                  outline: 'none'
                 }}
               >
                 <span style={{
-                  fontWeight: 600,
-                  fontSize: '18px',
-                  paddingRight: '32px'
+                  fontSize: isTiny ? '13px' : (isSmall ? '13.5px' : (isMobile ? '14px' : '16px')),
+                  fontWeight: '400',
+                  color: '#2A2A2A',
+                  lineHeight: '1.4',
+                  textAlign: 'left',
+                  flex: 1,
+                  wordBreak: 'break-word',
+                  whiteSpace: 'normal',
+                  overflowWrap: 'break-word',
+                  hyphens: 'auto',
+                  WebkitHyphens: 'auto',
+                  MsHyphens: 'auto'
                 }}>
                   {faq.question}
                 </span>
-                <ChevronDown
-                  size={24}
-                  style={{
-                    color: 'var(--primary)',
-                    flexShrink: 0,
-                    transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
-                    transition: 'transform 0.3s ease'
-                  }}
-                />
+                <div style={{
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  paddingTop: '2px'
+                }}>
+                  <ChevronDown
+                    size={isTiny ? 16 : (isSmall ? 18 : (isMobile ? 20 : 22))}
+                    style={{
+                      color: '#555',
+                      transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                  />
+                </div>
               </button>
               
-              <div
-                style={{
-                  maxHeight: openIndex === index ? '400px' : '0',
-                  opacity: openIndex === index ? 1 : 0,
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease'
-                }}
-              >
+              <div style={{
+                maxHeight: openIndex === index ? '1000px' : '0',
+                overflow: 'hidden',
+                transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}>
                 <div style={{
-                  padding: '0 24px 20px 24px',
-                  color: 'var(--text-secondary)',
-                  lineHeight: '1.7'
+                  padding: isTiny ? '0 16px 16px 16px' : (isSmall ? '0 18px 18px 18px' : (isMobile ? '0 20px 20px 20px' : '0 24px 24px 24px')),
+                  fontSize: isTiny ? '12px' : (isSmall ? '12.5px' : (isMobile ? '13px' : '14px')),
+                  lineHeight: '1.6',
+                  color: '#555',
+                  fontWeight: '400',
+                  wordBreak: 'break-word',
+                  whiteSpace: 'normal',
+                  overflowWrap: 'break-word'
                 }}>
                   {faq.answer}
                 </div>
@@ -131,44 +217,116 @@ const FAQ = () => {
           ))}
         </div>
 
-        {/* Contact CTA */}
+        {/* CTA Section */}
         <div style={{
           textAlign: 'center',
-          marginTop: '48px',
-          padding: '32px',
-          backgroundColor: 'var(--surface)',
-          borderRadius: '12px',
-          border: `2px solid var(--primary)`
+          padding: isTiny ? '32px 16px' : (isSmall ? '36px 20px' : (isMobile ? '40px 24px' : '64px 40px')),
+          backgroundColor: '#F5F5F5',
+          borderRadius: '4px'
         }}>
           <h3 style={{
-            fontSize: '24px',
-            fontWeight: 'bold',
-            marginBottom: '16px',
-            color: 'var(--text-primary)'
+            fontSize: isTiny ? '1.2rem' : (isSmall ? '1.3rem' : (isMobile ? '1.4rem' : '1.8rem')),
+            fontWeight: '400',
+            color: '#2A2A2A',
+            marginBottom: isTiny ? '10px' : (isSmall ? '12px' : '14px'),
+            letterSpacing: '-0.5px',
+            padding: '0 8px'
           }}>
-            Still have questions?
+            Still Have Questions?
           </h3>
           <p style={{
-            color: 'var(--text-secondary)',
-            marginBottom: '24px'
+            fontSize: isTiny ? '12px' : (isSmall ? '13px' : (isMobile ? '14px' : '15px')),
+            lineHeight: '1.5',
+            color: '#555',
+            marginBottom: isTiny ? '24px' : (isSmall ? '28px' : (isMobile ? '32px' : '40px')),
+            maxWidth: '500px',
+            margin: `0 auto ${isTiny ? '24px' : (isSmall ? '28px' : (isMobile ? '32px' : '40px'))} auto`,
+            fontWeight: '400',
+            padding: '0 12px'
           }}>
-            We're here to help! Get in touch with our team for personalized answers.
+            We're here to help! Contact us for a free consultation
           </p>
-          <button
-            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            style={{
-              backgroundColor: 'var(--primary)',
-              color: 'white',
-              padding: '12px 32px',
-              borderRadius: '9999px',
-              fontWeight: 600,
-              border: 'none',
-              cursor: 'pointer',
-              fontSize: '16px'
-            }}
-          >
-            Contact Us
-          </button>
+          
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: isTiny ? '10px' : (isSmall ? '12px' : '14px'),
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '0 12px'
+          }}>
+            <button
+              type="button"
+              onClick={() => {
+                const element = document.getElementById('contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              style={{
+                backgroundColor: '#2A2A2A',
+                color: '#FFFFFF',
+                padding: isTiny ? '12px 24px' : (isSmall ? '14px 28px' : (isMobile ? '15px 32px' : '16px 40px')),
+                border: 'none',
+                borderRadius: '4px',
+                fontSize: isTiny ? '10px' : (isSmall ? '10.5px' : (isMobile ? '11px' : '12px')),
+                letterSpacing: isTiny ? '1px' : (isSmall ? '1.5px' : '2px'),
+                textTransform: 'uppercase',
+                fontWeight: '300',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                outline: 'none',
+                width: '100%',
+                maxWidth: isTiny ? '240px' : (isSmall ? '260px' : '280px')
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#000000';
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '#2A2A2A';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }}
+            >
+              Contact Us
+            </button>
+            
+            <button
+              type="button"
+              onClick={() => {
+                const url = `https://wa.me/919999999999?text=${encodeURIComponent('Hi! I have questions about your interior design services.')}`;
+                window.open(url, '_blank');
+              }}
+              style={{
+                backgroundColor: 'transparent',
+                color: '#2A2A2A',
+                padding: isTiny ? '12px 24px' : (isSmall ? '14px 28px' : (isMobile ? '15px 32px' : '16px 40px')),
+                border: '1px solid #2A2A2A',
+                borderRadius: '4px',
+                fontSize: isTiny ? '10px' : (isSmall ? '10.5px' : (isMobile ? '11px' : '12px')),
+                letterSpacing: isTiny ? '1px' : (isSmall ? '1.5px' : '2px'),
+                textTransform: 'uppercase',
+                fontWeight: '300',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                outline: 'none',
+                width: '100%',
+                maxWidth: isTiny ? '240px' : (isSmall ? '260px' : '280px')
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#2A2A2A';
+                e.target.style.color = '#FFFFFF';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.color = '#2A2A2A';
+              }}
+            >
+              WhatsApp Us
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,6 +12,15 @@ const ContactForm = () => {
     budgetRange: '',
     message: ''
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -33,254 +43,441 @@ const ContactForm = () => {
     });
   };
 
+  const isMobile = windowWidth < 768;
+  const isSmall = windowWidth < 480;
+  const isTiny = windowWidth < 375;
+
   return (
-    <section id="contact" className="py-24 px-6 text-white"
-    style={{ backgroundColor: '#000000' }}>
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Get In Touch</h2>
-        <p className="text-center mb-12 text-lg opacity-90">
-          Let's discuss your project and bring your vision to life
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-            <p className="mb-8 leading-relaxed opacity-90">
-              Ready to transform your space? Reach out to us for a free consultation. We serve clients across Gujarat and offer remote design services.
+    <>
+      <section 
+        id="contact"
+        style={{
+          padding: isTiny ? '40px 12px' : (isSmall ? '48px 16px' : (isMobile ? '64px 20px' : '96px 32px')),
+          backgroundColor: '#2A2A2A',
+          color: '#FFFFFF'
+        }}
+      >
+        <div style={{ 
+          maxWidth: '1200px', 
+          margin: '0 auto',
+          width: '100%'
+        }}>
+          {/* Section Header */}
+          <div style={{
+            textAlign: 'center',
+            marginBottom: isTiny ? '32px' : (isSmall ? '40px' : (isMobile ? '48px' : '64px'))
+          }}>
+            <div style={{
+              fontSize: isTiny ? '9px' : (isSmall ? '10px' : '11px'),
+              letterSpacing: isTiny ? '1px' : (isSmall ? '1.5px' : '2px'),
+              textTransform: 'uppercase',
+              color: 'rgba(255, 255, 255, 0.7)',
+              marginBottom: isTiny ? '8px' : (isSmall ? '10px' : '12px'),
+              fontWeight: '300'
+            }}>
+              Contact — Let's Connect
+            </div>
+            <h2 style={{
+              fontSize: isTiny ? '1.5rem' : (isSmall ? '1.75rem' : (isMobile ? '2rem' : 'clamp(2.5rem, 5vw, 3.5rem)')),
+              fontWeight: '100',
+              lineHeight: '1.2',
+              marginBottom: isTiny ? '12px' : (isSmall ? '14px' : '16px'),
+              letterSpacing: isTiny ? '-0.5px' : (isSmall ? '-1px' : '-2px'),
+              padding: '0 8px'
+            }}>
+              Start Your Design
+              <br />
+              <span style={{ fontStyle: 'italic', fontWeight: '300' }}>Journey Today</span>
+            </h2>
+            <p style={{
+              fontSize: isTiny ? '13px' : (isSmall ? '14px' : (isMobile ? '15px' : '16px')),
+              lineHeight: '1.5',
+              color: 'rgba(255, 255, 255, 0.8)',
+              maxWidth: '600px',
+              margin: '0 auto',
+              fontWeight: '300',
+              padding: '0 12px'
+            }}>
+              Ready to transform your space? Get in touch for a free consultation
             </p>
-            
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg"
-                style={{ backgroundColor: 'var(--primary)' }}>
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <div className="font-semibold mb-1">Phone</div>
-                  <div className="opacity-90">+91 XXXXX XXXXX</div>
-                  <div className="text-sm opacity-75 mt-1">Mon-Sat, 9:00 AM - 7:00 PM</div>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg"
-                style={{ backgroundColor: 'var(--primary)' }}>
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <div className="font-semibold mb-1">Email</div>
-                  <div className="opacity-90">info@ganeshstudio.com</div>
-                  <div className="text-sm opacity-75 mt-1">We'll respond within 24 hours</div>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg"
-                style={{ backgroundColor: 'var(--primary)' }}>
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <div className="font-semibold mb-1">Location</div>
-                  <div className="opacity-90">Gujarat, India</div>
-                  <div className="text-sm opacity-75 mt-1">Serving across Gujarat & remote consultations</div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Social Links */}
-            <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }}>
-              <div className="font-semibold mb-4">Follow Us</div>
-              <div className="flex gap-4">
-                <a href="#" className="safe-hover-btn p-3 rounded-lg flex items-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                  Instagram
-                </a>
-                <a href="#" className="safe-hover-btn p-3 rounded-lg flex items-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                  Facebook
-                </a>
-                <a href="#" className="safe-hover-btn p-3 rounded-lg flex items-center gap-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                  LinkedIn
-                </a>
-              </div>
-            </div>
           </div>
-          
-          {/* Contact Form */}
-          <div>
-            <div className="rounded-xl p-8" style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}>
-              <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
+
+          {/* Contact Content */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isTiny ? '32px' : (isSmall ? '40px' : (isMobile ? '48px' : '64px'))
+          }}>
+            {/* Contact Info */}
+            <div>
+              <h3 style={{
+                fontSize: isTiny ? '1.2rem' : (isSmall ? '1.3rem' : (isMobile ? '1.4rem' : '1.5rem')),
+                fontWeight: '100',
+                marginBottom: isTiny ? '20px' : (isSmall ? '24px' : '28px'),
+                letterSpacing: '-0.5px'
+              }}>
+                Get in Touch
+              </h3>
               
-              <div className="space-y-4">
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block mb-2 font-medium">Name *</label>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: isTiny ? '20px' : (isSmall ? '24px' : '28px'),
+                marginBottom: isTiny ? '28px' : (isSmall ? '32px' : '40px')
+              }}>
+                {/* Phone */}
+                <div style={{
+                  display: 'flex',
+                  gap: isTiny ? '12px' : '16px',
+                  alignItems: 'flex-start'
+                }}>
+                  <div style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    padding: isTiny ? '10px' : '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Phone size={isTiny ? 16 : (isSmall ? 18 : 20)} />
+                  </div>
+                  <div>
+                    <h4 style={{
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '16px'),
+                      fontWeight: '300',
+                      marginBottom: isTiny ? '4px' : '6px',
+                      color: 'rgba(255, 255, 255, 0.7)'
+                    }}>
+                      Phone
+                    </h4>
+                    <a
+                      href="tel:+919999999999"
+                      style={{
+                        color: '#FFFFFF',
+                        textDecoration: 'none',
+                        fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                        fontWeight: '300',
+                        transition: 'opacity 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                      onMouseLeave={(e) => e.target.style.opacity = '1'}
+                    >
+                      +91 99999 99999
+                    </a>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div style={{
+                  display: 'flex',
+                  gap: isTiny ? '12px' : '16px',
+                  alignItems: 'flex-start'
+                }}>
+                  <div style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    padding: isTiny ? '10px' : '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <Mail size={isTiny ? 16 : (isSmall ? 18 : 20)} />
+                  </div>
+                  <div>
+                    <h4 style={{
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '16px'),
+                      fontWeight: '300',
+                      marginBottom: isTiny ? '4px' : '6px',
+                      color: 'rgba(255, 255, 255, 0.7)'
+                    }}>
+                      Email
+                    </h4>
+                    <a
+                      href="mailto:hello@ganeshdesign.com"
+                      style={{
+                        color: '#FFFFFF',
+                        textDecoration: 'none',
+                        fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                        fontWeight: '300',
+                        transition: 'opacity 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+                      onMouseLeave={(e) => e.target.style.opacity = '1'}
+                    >
+                      hello@ganeshdesign.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div style={{
+                  display: 'flex',
+                  gap: isTiny ? '12px' : '16px',
+                  alignItems: 'flex-start'
+                }}>
+                  <div style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    padding: isTiny ? '10px' : '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <MapPin size={isTiny ? 16 : (isSmall ? 18 : 20)} />
+                  </div>
+                  <div>
+                    <h4 style={{
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '16px'),
+                      fontWeight: '300',
+                      marginBottom: isTiny ? '4px' : '6px',
+                      color: 'rgba(255, 255, 255, 0.7)'
+                    }}>
+                      Location
+                    </h4>
+                    <p style={{
+                      color: '#FFFFFF',
+                      margin: 0,
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                      lineHeight: '1.5',
+                      fontWeight: '300'
+                    }}>
+                      Ahmedabad, Gujarat, India
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Business Hours */}
+              <div>
+                <h4 style={{
+                  fontSize: isTiny ? '14px' : (isSmall ? '15px' : '16px'),
+                  fontWeight: '300',
+                  marginBottom: isTiny ? '12px' : '14px'
+                }}>
+                  Business Hours
+                </h4>
+                <div style={{
+                  fontSize: isTiny ? '12px' : (isSmall ? '13px' : '14px'),
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  fontWeight: '300',
+                  lineHeight: '1.6'
+                }}>
+                  <p style={{ margin: '0 0 8px 0' }}>Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                  <p style={{ margin: 0 }}>Sunday: By Appointment</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div>
+              <form onSubmit={handleSubmit}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                  gap: isTiny ? '12px' : (isSmall ? '14px' : '16px'),
+                  marginBottom: isTiny ? '12px' : (isSmall ? '14px' : '16px')
+                }}>
                   <input
                     type="text"
-                    id="name"
                     name="name"
+                    placeholder="Your Name *"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 rounded-lg text-white"
-                    style={{ 
-                      backgroundColor: 'rgba(0,0,0,0.5)',
-                      borderColor: 'rgba(255,255,255,0.2)'
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: isTiny ? '12px 14px' : (isSmall ? '14px 16px' : '16px'),
+                      color: '#FFFFFF',
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                      fontWeight: '300',
+                      outline: 'none',
+                      transition: 'border-color 0.3s ease'
                     }}
-                    placeholder="Your full name"
+                    onFocus={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)'}
+                    onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+                  />
+                  
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address *"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: isTiny ? '12px 14px' : (isSmall ? '14px 16px' : '16px'),
+                      color: '#FFFFFF',
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                      fontWeight: '300',
+                      outline: 'none',
+                      transition: 'border-color 0.3s ease'
+                    }}
+                    onFocus={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)'}
+                    onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
                   />
                 </div>
-                
-                {/* Email and Phone */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="email" className="block mb-2 font-medium">Email *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
-                      style={{ 
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        borderColor: 'rgba(255,255,255,0.2)'
-                      }}
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="phone" className="block mb-2 font-medium">Phone *</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
-                      style={{ 
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        borderColor: 'rgba(255,255,255,0.2)'
-                      }}
-                      placeholder="+91 XXXXX XXXXX"
-                    />
-                  </div>
-                </div>
-                
-                {/* Project Type */}
-                <div>
-                  <label htmlFor="projectType" className="block mb-2 font-medium">Project Type *</label>
+
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '4px',
+                    padding: isTiny ? '12px 14px' : (isSmall ? '14px 16px' : '16px'),
+                    color: '#FFFFFF',
+                    fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                    fontWeight: '300',
+                    outline: 'none',
+                    transition: 'border-color 0.3s ease',
+                    marginBottom: isTiny ? '12px' : (isSmall ? '14px' : '16px')
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+                />
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+                  gap: isTiny ? '12px' : (isSmall ? '14px' : '16px'),
+                  marginBottom: isTiny ? '12px' : (isSmall ? '14px' : '16px')
+                }}>
                   <select
-                    id="projectType"
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border-2 rounded-lg text-white"
-                    style={{ 
-                      backgroundColor: 'rgba(0,0,0,0.5)',
-                      borderColor: 'rgba(255,255,255,0.2)'
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: isTiny ? '12px 14px' : (isSmall ? '14px 16px' : '16px'),
+                      color: formData.projectType ? '#FFFFFF' : 'rgba(255, 255, 255, 0.5)',
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                      fontWeight: '300',
+                      outline: 'none',
+                      cursor: 'pointer',
+                      appearance: 'none',
+                      WebkitAppearance: 'none',
+                      MozAppearance: 'none',
+                      backgroundImage: 'url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'rgba(255,255,255,0.5)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e")',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 12px center',
+                      backgroundSize: '16px',
+                      paddingRight: '36px'
                     }}
                   >
-                    <option value="">Select project type</option>
-                    <option value="residential">Residential</option>
-                    <option value="commercial">Commercial</option>
-                    <option value="renovation">Renovation</option>
-                    <option value="consultation">Just Consultation</option>
+                    <option value="" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Project Type</option>
+                    <option value="residential" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Residential</option>
+                    <option value="commercial" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Commercial</option>
+                    <option value="consultation" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Consultation</option>
+                    <option value="renovation" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Renovation</option>
+                  </select>
+
+                  <select
+                    name="budgetRange"
+                    value={formData.budgetRange}
+                    onChange={handleChange}
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '4px',
+                      padding: isTiny ? '12px 14px' : (isSmall ? '14px 16px' : '16px'),
+                      color: formData.budgetRange ? '#FFFFFF' : 'rgba(255, 255, 255, 0.5)',
+                      fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                      fontWeight: '300',
+                      outline: 'none',
+                      cursor: 'pointer',
+                      appearance: 'none',
+                      WebkitAppearance: 'none',
+                      MozAppearance: 'none',
+                      backgroundImage: 'url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'rgba(255,255,255,0.5)\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e")',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 12px center',
+                      backgroundSize: '16px',
+                      paddingRight: '36px'
+                    }}
+                  >
+                    <option value="" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Budget Range</option>
+                    <option value="under-5L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Under ₹5 Lakhs</option>
+                    <option value="5L-10L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹5 - ₹10 Lakhs</option>
+                    <option value="10L-25L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹10 - ₹25 Lakhs</option>
+                    <option value="25L+" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹25 Lakhs+</option>
                   </select>
                 </div>
-                
-                {/* Property Type and Budget */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="propertyType" className="block mb-2 font-medium">Property Type</label>
-                    <select
-                      id="propertyType"
-                      name="propertyType"
-                      value={formData.propertyType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
-                      style={{ 
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        borderColor: 'rgba(255,255,255,0.2)'
-                      }}
-                    >
-                      <option value="">Select type</option>
-                      <option value="apartment">Apartment</option>
-                      <option value="villa">Villa</option>
-                      <option value="office">Office</option>
-                      <option value="retail">Retail/Shop</option>
-                      <option value="restaurant">Restaurant</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="budgetRange" className="block mb-2 font-medium">Budget Range</label>
-                    <select
-                      id="budgetRange"
-                      name="budgetRange"
-                      value={formData.budgetRange}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 rounded-lg text-white"
-                      style={{ 
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        borderColor: 'rgba(255,255,255,0.2)'
-                      }}
-                    >
-                      <option value="">Select budget</option>
-                      <option value="budget">Budget-Friendly</option>
-                      <option value="mid">Mid-Range</option>
-                      <option value="premium">Premium</option>
-                      <option value="discuss">Prefer to Discuss</option>
-                    </select>
-                  </div>
-                </div>
-                
-                {/* Message */}
-                <div>
-                  <label htmlFor="message" className="block mb-2 font-medium">Message *</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full px-4 py-3 border-2 rounded-lg resize-none text-white"
-                    style={{ 
-                      backgroundColor: 'rgba(0,0,0,0.5)',
-                      borderColor: 'rgba(255,255,255,0.2)'
-                    }}
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
-                
-                {/* Submit Button */}
+
+                <textarea
+                  name="message"
+                  placeholder="Tell us about your project... *"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={isTiny ? 4 : 5}
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '4px',
+                    padding: isTiny ? '12px 14px' : (isSmall ? '14px 16px' : '16px'),
+                    color: '#FFFFFF',
+                    fontSize: isTiny ? '13px' : (isSmall ? '14px' : '15px'),
+                    fontWeight: '300',
+                    outline: 'none',
+                    transition: 'border-color 0.3s ease',
+                    marginBottom: isTiny ? '20px' : (isSmall ? '24px' : '28px'),
+                    resize: 'vertical'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+                />
+
                 <button
-                  onClick={handleSubmit}
-                  className="w-full text-white py-4 rounded-lg font-semibold"
-                  style={{ backgroundColor: 'var(--primary)' }}
+                  type="submit"
+                  style={{
+                    width: '100%',
+                    backgroundColor: '#FFFFFF',
+                    color: '#2A2A2A',
+                    padding: isTiny ? '14px 24px' : (isSmall ? '16px 28px' : '18px 32px'),
+                    border: 'none',
+                    borderRadius: '4px',
+                    fontSize: isTiny ? '10px' : (isSmall ? '11px' : '12px'),
+                    fontWeight: '600',
+                    letterSpacing: isTiny ? '1.5px' : '2px',
+                    textTransform: 'uppercase',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    outline: 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = '#F0F0F0';
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 8px 24px rgba(255,255,255,0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = '#FFFFFF';
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = 'none';
+                  }}
                 >
                   Send Message
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

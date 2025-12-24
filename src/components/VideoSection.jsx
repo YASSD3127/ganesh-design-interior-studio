@@ -16,64 +16,139 @@ const VideoSection = ({ videoUrl, thumbnail, title }) => {
 
   if (!videoUrl) {
     return (
-      <div className="rounded-xl p-12 text-center"
-      style={{ backgroundColor: 'var(--surface)' }}>
-        <div className="text-6xl mb-4">🎬</div>
-        <p style={{ color: 'var(--text-secondary)' }}>Video coming soon for this project</p>
+      <div style={{
+        padding: '64px',
+        textAlign: 'center',
+        backgroundColor: '#F5F5F5',
+        borderRadius: '4px'
+      }}>
+        <div style={{ fontSize: '48px', marginBottom: '24px' }}>🎬</div>
+        <p style={{ 
+          color: '#555', 
+          fontSize: '16px',
+          fontWeight: '300'
+        }}>
+          Video coming soon for this project
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="relative">
+    <div style={{ position: 'relative' }}>
       {!isPlaying ? (
-        <div className="relative group cursor-pointer" onClick={() => setIsPlaying(true)}>
-          <div className="aspect-video rounded-xl overflow-hidden">
+        <div 
+          style={{
+            position: 'relative', 
+            cursor: 'pointer'
+          }} 
+          onClick={() => setIsPlaying(true)}
+        >
+          <div style={{
+            aspectRatio: '16/9',
+            borderRadius: '4px',
+            overflow: 'hidden',
+            backgroundColor: '#F5F5F5'
+          }}>
             <img
               src={thumbnail || 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200'}
               alt={title}
-              className="w-full h-full object-cover"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
             />
           </div>
           
-          <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-            <div className="rounded-full p-6 shadow-2xl"
-            style={{ backgroundColor: 'var(--primary)' }}>
-              <Play size={48} className="text-white fill-white ml-1" />
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgba(0,0,0,0.3)'
+          }}>
+            <div style={{
+              borderRadius: '50%',
+              padding: '24px',
+              backgroundColor: 'rgba(255,255,255,0.9)',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
+              transition: 'all 0.3s ease'
+            }}>
+              <Play size={48} fill="#2A2A2A" color="#2A2A2A" style={{ marginLeft: '4px' }} />
             </div>
           </div>
           
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-            <p className="text-white text-lg font-semibold">
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+            padding: '32px 24px 24px 24px'
+          }}>
+            <p style={{
+              color: '#FFFFFF',
+              fontSize: '16px',
+              fontWeight: '300',
+              margin: 0
+            }}>
               {title || 'Watch Project Video'}
             </p>
           </div>
         </div>
       ) : (
-        <div className="relative">
+        <div style={{ position: 'relative' }}>
           <button
             onClick={() => setIsPlaying(false)}
-            className="absolute -top-12 right-0 rounded-full p-2 shadow-lg"
-            style={{ backgroundColor: 'var(--surface)' }}
+            style={{
+              position: 'absolute',
+              top: '-48px',
+              right: '0',
+              borderRadius: '50%',
+              padding: '12px',
+              backgroundColor: '#FFFFFF',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              zIndex: 10
+            }}
           >
-            <X size={24} />
+            <X size={20} color="#2A2A2A" />
           </button>
           
-          <div className="aspect-video rounded-xl overflow-hidden shadow-2xl">
+          <div style={{
+            aspectRatio: '16/9',
+            borderRadius: '4px',
+            overflow: 'hidden',
+            backgroundColor: '#000',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
+          }}>
             {youtubeId ? (
               <iframe
                 src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
                 title={title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="w-full h-full"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none'
+                }}
               />
             ) : (
               <video
                 src={videoUrl}
                 controls
                 autoPlay
-                className="w-full h-full"
+                style={{
+                  width: '100%',
+                  height: '100%'
+                }}
               >
                 Your browser does not support the video tag.
               </video>
@@ -117,19 +192,49 @@ export const FeaturedVideos = () => {
   };
 
   return (
-    <section className="py-24 px-6" style={{ backgroundColor: 'var(--background)' }}>
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4"
-        style={{ color: 'var(--text-primary)' }}>
-          See Our Work in Action
-        </h2>
-        <p className="text-center mb-12 text-lg"
-        style={{ color: 'var(--text-secondary)' }}>
-          Virtual walkthroughs and project showcases
-        </p>
+    <section style={{ 
+      padding: '96px 32px',
+      backgroundColor: '#FAFAFA'
+    }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div style={{
+            fontSize: '11px',
+            letterSpacing: '2px',
+            textTransform: 'uppercase',
+            color: '#555',
+            marginBottom: '16px',
+            fontWeight: '300'
+          }}>
+            Videos — Featured Work
+          </div>
+          <h2 style={{
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: '100',
+            lineHeight: '1.2',
+            color: '#2A2A2A',
+            marginBottom: '24px',
+            letterSpacing: '-2px'
+          }}>
+            See Our Work
+            <br />
+            <span style={{ fontStyle: 'italic', fontWeight: '300' }}>In Action</span>
+          </h2>
+          <p style={{
+            fontSize: '18px',
+            lineHeight: '1.6',
+            color: '#555',
+            maxWidth: '600px',
+            margin: '0 auto',
+            fontWeight: '300'
+          }}>
+            Virtual walkthroughs and project showcases that bring our designs to life
+          </p>
+        </div>
 
         {selectedVideo ? (
-          <div className="max-w-5xl mx-auto mb-12">
+          <div style={{ maxWidth: '900px', margin: '0 auto 64px auto' }}>
             <VideoSection
               videoUrl={selectedVideo.videoUrl}
               thumbnail={selectedVideo.thumbnail}
@@ -137,65 +242,161 @@ export const FeaturedVideos = () => {
             />
             <button
               onClick={() => setSelectedVideo(null)}
-              className="mt-4 font-semibold"
-              style={{ color: 'var(--primary)' }}
+              style={{
+                marginTop: '24px',
+                background: 'none',
+                border: 'none',
+                color: '#555',
+                fontSize: '14px',
+                fontWeight: '300',
+                cursor: 'pointer',
+                letterSpacing: '0.5px',
+                transition: 'color 0.3s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#2A2A2A'}
+              onMouseLeave={(e) => e.target.style.color = '#555'}
             >
               ← Back to all videos
             </button>
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+              gap: '48px',
+              marginBottom: '64px'
+            }}>
               {displayedVideos.map((video) => (
                 <div
                   key={video.id}
-                  className="group cursor-pointer"
+                  style={{
+                    cursor: 'pointer',
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: '4px',
+                    overflow: 'hidden',
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
                   onClick={() => setSelectedVideo(video)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-8px)';
+                    e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+                  }}
                 >
-                  <div className="relative aspect-video rounded-xl overflow-hidden mb-4">
+                  <div style={{
+                    position: 'relative',
+                    aspectRatio: '16/9',
+                    overflow: 'hidden'
+                  }}>
                     <img
                       src={video.thumbnail}
                       alt={video.title}
-                      className="w-full h-full object-cover"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
                     />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                      <div className="rounded-full p-4"
-                      style={{ backgroundColor: 'var(--primary)' }}>
-                        <Play size={32} className="text-white fill-white ml-1" />
+                    <div style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'rgba(0,0,0,0.3)'
+                    }}>
+                      <div style={{
+                        borderRadius: '50%',
+                        padding: '16px',
+                        backgroundColor: 'rgba(255,255,255,0.9)'
+                      }}>
+                        <Play size={32} fill="#2A2A2A" color="#2A2A2A" style={{ marginLeft: '3px' }} />
                       </div>
                     </div>
-                    <div className="absolute bottom-2 right-2 bg-black/80 text-white px-2 py-1 rounded text-sm">
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '16px',
+                      right: '16px',
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      color: '#FFFFFF',
+                      padding: '6px 12px',
+                      borderRadius: '4px',
+                      fontSize: '13px',
+                      fontWeight: '400'
+                    }}>
                       {video.duration}
                     </div>
                   </div>
-                  <h3 className="font-semibold text-lg">{video.title}</h3>
+                  <div style={{ padding: '24px' }}>
+                    <h3 style={{
+                      fontSize: '1.1rem',
+                      fontWeight: '500',
+                      color: '#2A2A2A',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.5px'
+                    }}>
+                      {video.title}
+                    </h3>
+                  </div>
                 </div>
               ))}
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-6 mb-8">
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '32px',
+              marginBottom: '48px'
+            }}>
               <button
                 onClick={prevPage}
-                className="p-3 rounded-full"
-                style={{ backgroundColor: 'var(--surface)' }}
+                style={{
+                  backgroundColor: '#F5F5F5',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '48px',
+                  height: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#2A2A2A';
+                  e.target.style.color = '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = '#F5F5F5';
+                  e.target.style.color = '#2A2A2A';
+                }}
               >
-                <ChevronLeft size={24} />
+                <ChevronLeft size={20} />
               </button>
 
-              <div style={{ display: 'flex', gap: '8px' }}>
+              <div style={{ display: 'flex', gap: '12px' }}>
                 {Array.from({ length: totalPages }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentPage(index)}
                     style={{
-                      width: '12px',
+                      width: currentPage === index ? '32px' : '12px',
                       height: '12px',
-                      borderRadius: '9999px',
-                      backgroundColor: currentPage === index ? 'var(--primary)' : 'var(--border)',
+                      borderRadius: '6px',
+                      backgroundColor: currentPage === index ? '#2A2A2A' : '#E5E5E5',
                       border: 'none',
                       cursor: 'pointer',
-                      padding: 0
+                      transition: 'all 0.3s ease'
                     }}
                   />
                 ))}
@@ -203,21 +404,91 @@ export const FeaturedVideos = () => {
 
               <button
                 onClick={nextPage}
-                className="p-3 rounded-full"
-                style={{ backgroundColor: 'var(--surface)' }}
+                style={{
+                  backgroundColor: '#F5F5F5',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '48px',
+                  height: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#2A2A2A';
+                  e.target.style.color = '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = '#F5F5F5';
+                  e.target.style.color = '#2A2A2A';
+                }}
               >
-                <ChevronRight size={24} />
+                <ChevronRight size={20} />
               </button>
             </div>
 
-            {/* More Videos Button */}
-            <div className="text-center">
+             {/* More Videos Button */}
+            <div style={{ textAlign: 'center', display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <button
                 onClick={() => navigate('/all-videos')}
-                className="text-white px-8 py-4 rounded-full font-semibold shadow-lg"
-                style={{ backgroundColor: 'var(--primary)' }}
+                style={{
+                  backgroundColor: '#2A2A2A',
+                  color: '#FFFFFF',
+                  padding: '18px 48px',
+                  border: 'none',
+                  borderRadius: '4px',
+                  fontSize: '12px',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  fontWeight: '400',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#000000';
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = '#2A2A2A';
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = 'none';
+                }}
               >
                 View All {videos.length} Videos →
+              </button>
+              
+              <button
+                onClick={() => navigate('/behind-the-scenes')}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#2A2A2A',
+                  padding: '18px 48px',
+                  border: '1px solid #2A2A2A',
+                  borderRadius: '4px',
+                  fontSize: '12px',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  fontWeight: '400',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = '#2A2A2A';
+                  e.target.style.color = '#FFFFFF';
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = 'transparent';
+                  e.target.style.color = '#2A2A2A';
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = 'none';
+                }}
+              >
+                Behind The Scenes 🎬
               </button>
             </div>
           </>

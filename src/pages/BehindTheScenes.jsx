@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Play, ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Play } from 'lucide-react';
 
 const BehindTheScenes = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const isMobile = windowWidth < 768;
+  const isSmall = windowWidth < 480;
+  const isTiny = windowWidth < 375;
 
   const videos = [
     {
@@ -33,7 +41,7 @@ const BehindTheScenes = () => {
     {
       id: 3,
       category: 'shopping',
-      title: 'Sourcing Premium Materials at Ganesh Studio',
+      title: 'Sourcing Premium Materials',
       thumbnail: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800',
       duration: '4:15',
       description: 'Handpicking Italian marble, designer tiles, and custom hardware for our luxury kitchen project.',
@@ -89,55 +97,15 @@ const BehindTheScenes = () => {
       description: 'Weekly progress updates showing the dramatic transformation of a master bedroom.',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
       date: 'Nov 2024'
-    },
-    {
-      id: 9,
-      category: 'process',
-      title: 'Color & Material Selection',
-      thumbnail: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800',
-      duration: '4:30',
-      description: 'How we choose the perfect color palette and materials for each unique project.',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      date: 'Sep 2024'
-    },
-    {
-      id: 10,
-      category: 'site-visit',
-      title: 'Final Reveal & Client Reaction',
-      thumbnail: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800',
-      duration: '7:20',
-      description: 'The most rewarding moment - watching clients see their transformed space for the first time.',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      date: 'Nov 2024'
-    },
-    {
-      id: 11,
-      category: 'shopping',
-      title: 'Fabric & Upholstery Selection',
-      thumbnail: 'https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=800',
-      duration: '3:40',
-      description: 'Choosing luxurious fabrics and textures that bring comfort and style together.',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      date: 'Oct 2024'
-    },
-    {
-      id: 12,
-      category: 'construction',
-      title: 'Living Room Construction Update',
-      thumbnail: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800',
-      duration: '4:00',
-      description: 'From demolition to stunning finish - the complete journey of a living room makeover.',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      date: 'Nov 2024'
     }
   ];
 
   const categories = [
-    { id: 'all', label: 'All Videos', icon: '🎬' },
-    { id: 'site-visit', label: 'Site Visits', icon: '🏗️' },
-    { id: 'shopping', label: 'Material Shopping', icon: '🛍️' },
-    { id: 'process', label: 'Design Process', icon: '✏️' },
-    { id: 'construction', label: 'Construction', icon: '🔨' }
+    { id: 'all', label: 'All Videos' },
+    { id: 'site-visit', label: 'Site Visits' },
+    { id: 'shopping', label: 'Material Shopping' },
+    { id: 'process', label: 'Design Process' },
+    { id: 'construction', label: 'Construction' }
   ];
 
   const filteredVideos = activeFilter === 'all' 
@@ -151,134 +119,202 @@ const BehindTheScenes = () => {
   return (
     <div style={{ 
       minHeight: '100vh',
-      backgroundColor: 'var(--background)',
-      paddingTop: '0px',
-      paddingBottom: '64px',
-      color: 'var(--text-primary)'
+      backgroundColor: '#FAFAFA',
+      paddingTop: isTiny ? '80px' : '96px',
+      paddingBottom: isTiny ? '48px' : '64px',
+      color: '#2A2A2A'
     }}>
-      {/* Hero Section */}
-      <div style={{
-        background: 'linear-gradient(135deg, #6B4E71 0%, #8B7355 100%)',
-        padding: '60px 20px',
-        textAlign: 'center',
-        color: 'white',
-        position: 'relative'
-      }}>
-        <button
-          onClick={() => window.history.back()}
-          style={{
-            position: 'absolute',
-            left: '20px',
-            top: '20px',
-            background: 'rgba(255,255,255,0.2)',
-            border: 'none',
-            borderRadius: '50%',
-            width: '40px',
-            height: '40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            backdropFilter: 'blur(10px)'
-          }}
-        >
-          <ArrowLeft size={20} color="white" />
-        </button>
-        
-        <h1 style={{
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-          fontWeight: '700',
-          marginBottom: '20px',
-          letterSpacing: '-0.02em'
+      {/* Navigation */}
+      <nav 
+        className="fixed top-0 w-full z-50"
+        style={{ 
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          borderBottom: '1px solid #E5E5E5',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)'
+        }}
+      >
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: isTiny ? '16px 12px' : isSmall ? '20px 16px' : isMobile ? '24px 20px' : '24px 32px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
         }}>
-          Behind The Scenes
-        </h1>
-        <p style={{
-          fontSize: '1.2rem',
-          opacity: 0.95,
-          maxWidth: '700px',
-          margin: '0 auto'
-        }}>
-          See how we bring design visions to life, from concept to completion
-        </p>
-      </div>
+          <button
+            onClick={() => window.history.back()}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: isTiny ? '8px' : '12px',
+              background: 'none',
+              border: 'none',
+              color: '#555',
+              fontSize: isTiny ? '12px' : isSmall ? '13px' : '14px',
+              fontWeight: '300',
+              cursor: 'pointer',
+              letterSpacing: '0.5px',
+              transition: 'color 0.3s ease'
+            }}
+            onMouseEnter={(e) => e.target.style.color = '#2A2A2A'}
+            onMouseLeave={(e) => e.target.style.color = '#555'}
+          >
+            <ArrowLeft size={isTiny ? 14 : 16} />
+            <span>Back</span>
+          </button>
+          
+          <div 
+            className="cursor-pointer"
+            onClick={() => window.location.href = '/'}
+            style={{
+              fontSize: isTiny ? '11px' : isSmall ? '13px' : isMobile ? '14px' : '18px',
+              fontWeight: '300',
+              letterSpacing: isTiny ? '1px' : isSmall ? '1.5px' : isMobile ? '2px' : '3px',
+              color: '#2A2A2A'
+            }}
+          >
+            GANESH DESIGN STUDIO
+          </div>
+        </div>
+      </nav>
 
-      {/* Filter Categories */}
       <div style={{
         maxWidth: '1200px',
-        margin: '40px auto',
-        padding: '0 20px'
+        margin: '0 auto',
+        padding: isTiny ? '0 12px' : isSmall ? '0 16px' : isMobile ? '0 20px' : '0 32px'
       }}>
+        {/* Page Header */}
+        <div style={{ 
+          textAlign: 'center', 
+          marginBottom: isTiny ? '48px' : isSmall ? '56px' : isMobile ? '64px' : '80px'
+        }}>
+          <div style={{
+            fontSize: isTiny ? '9px' : isSmall ? '10px' : '11px',
+            letterSpacing: isTiny ? '1px' : '2px',
+            textTransform: 'uppercase',
+            color: '#555',
+            marginBottom: isTiny ? '12px' : isSmall ? '16px' : '24px',
+            fontWeight: '600'
+          }}>
+            Videos — Behind The Scenes
+          </div>
+          <h1 style={{
+            fontSize: isTiny ? '2rem' : isSmall ? '2.5rem' : isMobile ? '3rem' : 'clamp(3rem, 6vw, 4rem)',
+            fontWeight: '100',
+            lineHeight: '1.1',
+            marginBottom: isTiny ? '16px' : '24px',
+            letterSpacing: isTiny ? '-1px' : '-2px'
+          }}>
+            Behind The
+            <br />
+            <span style={{ fontStyle: 'italic', fontWeight: '300' }}>Scenes</span>
+          </h1>
+          <p style={{
+            fontSize: isTiny ? '15px' : isSmall ? '16px' : isMobile ? '17px' : '1.2rem',
+            color: '#555',
+            fontWeight: '300',
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: '1.6',
+            padding: isTiny ? '0 8px' : '0'
+          }}>
+            See how we bring design visions to life, from concept to completion
+          </p>
+        </div>
+
+        {/* Filter Categories */}
         <div style={{
           display: 'flex',
-          gap: '12px',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          marginBottom: '40px'
+          justifyContent: isMobile ? 'flex-start' : 'center',
+          marginBottom: isTiny ? '48px' : isSmall ? '56px' : isMobile ? '64px' : '80px',
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          paddingBottom: isMobile ? '8px' : '0'
         }}>
-          {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveFilter(cat.id)}
-              style={{
-                padding: '12px 24px',
-                borderRadius: '30px',
-                border: activeFilter === cat.id 
-                  ? '2px solid var(--primary)' 
-                  : '2px solid var(--border)',
-                backgroundColor: activeFilter === cat.id 
-                  ? 'var(--primary)' 
-                  : 'var(--surface)',
-                color: activeFilter === cat.id 
-                  ? 'white' 
-                  : 'var(--text-primary)',
-                cursor: 'pointer',
-                fontSize: '1rem',
-                fontWeight: '500',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
-            >
-              <span>{cat.icon}</span>
-              {cat.label}
-            </button>
-          ))}
+          <div style={{
+            display: 'flex',
+            gap: '0',
+            borderBottom: '1px solid #E5E5E5'
+          }}>
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveFilter(cat.id)}
+                style={{
+                  padding: isTiny ? '12px 16px' : isSmall ? '14px 20px' : isMobile ? '14px 24px' : '16px 32px',
+                  border: 'none',
+                  backgroundColor: 'transparent',
+                  color: activeFilter === cat.id ? '#2A2A2A' : '#555',
+                  fontSize: isTiny ? '11px' : isSmall ? '12px' : isMobile ? '13px' : '14px',
+                  letterSpacing: '1px',
+                  fontWeight: activeFilter === cat.id ? '400' : '300',
+                  textTransform: 'uppercase',
+                  cursor: 'pointer',
+                  borderBottom: activeFilter === cat.id ? '2px solid #2A2A2A' : '2px solid transparent',
+                  transition: 'all 0.3s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0
+                }}
+                onMouseEnter={(e) => {
+                  if (activeFilter !== cat.id) {
+                    e.target.style.color = '#2A2A2A';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeFilter !== cat.id) {
+                    e.target.style.color = '#555';
+                  }
+                }}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Video Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-          gap: '30px',
-          marginBottom: '60px'
+          gridTemplateColumns: isMobile 
+            ? '1fr' 
+            : windowWidth < 1024
+              ? 'repeat(2, 1fr)'
+              : 'repeat(3, 1fr)',
+          gap: isTiny ? '32px' : isSmall ? '36px' : isMobile ? '40px' : '48px',
+          marginBottom: isTiny ? '64px' : isSmall ? '72px' : isMobile ? '80px' : '96px'
         }}>
           {filteredVideos.map(video => (
             <div
               key={video.id}
               onClick={() => handleVideoClick(video.id)}
-              className="card"
               style={{
-                backgroundColor: 'var(--surface)',
-                borderRadius: '16px',
+                backgroundColor: '#FFFFFF',
+                borderRadius: '4px',
                 overflow: 'hidden',
                 cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px)';
+                e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
               }}
             >
               {/* Thumbnail */}
               <div style={{ 
                 position: 'relative',
-                paddingTop: '56.25%',
+                height: isTiny ? '180px' : isSmall ? '200px' : isMobile ? '220px' : '240px',
                 overflow: 'hidden'
               }}>
                 <img
                   src={video.thumbnail}
                   alt={video.title}
                   style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover'
@@ -294,61 +330,64 @@ const BehindTheScenes = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: 'rgba(0,0,0,0.4)'
+                  backgroundColor: 'rgba(0,0,0,0.3)'
                 }}>
                   <div style={{
-                    width: '60px',
-                    height: '60px',
+                    width: isTiny ? '48px' : isSmall ? '56px' : '64px',
+                    height: isTiny ? '48px' : isSmall ? '56px' : '64px',
                     borderRadius: '50%',
-                    backgroundColor: 'white',
+                    backgroundColor: 'rgba(255,255,255,0.9)',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    transition: 'all 0.3s ease'
                   }}>
-                    <Play size={28} fill="var(--primary)" color="var(--primary)" style={{ marginLeft: '4px' }} />
+                    <Play size={isTiny ? 18 : isSmall ? 20 : 24} fill="#2A2A2A" color="#2A2A2A" style={{ marginLeft: '3px' }} />
                   </div>
                 </div>
                 {/* Duration Badge */}
                 <div style={{
                   position: 'absolute',
-                  bottom: '10px',
-                  right: '10px',
+                  bottom: isTiny ? '12px' : '16px',
+                  right: isTiny ? '12px' : '16px',
                   backgroundColor: 'rgba(0,0,0,0.8)',
-                  color: 'white',
-                  padding: '4px 10px',
+                  color: '#FFFFFF',
+                  padding: isTiny ? '4px 8px' : '6px 12px',
                   borderRadius: '4px',
-                  fontSize: '0.85rem',
-                  fontWeight: '600'
+                  fontSize: isTiny ? '11px' : '13px',
+                  fontWeight: '400'
                 }}>
                   {video.duration}
                 </div>
               </div>
 
               {/* Video Info */}
-              <div style={{ padding: '20px' }}>
+              <div style={{ padding: isTiny ? '20px 16px' : isSmall ? '24px 20px' : '32px 24px' }}>
                 <div style={{
-                  fontSize: '0.85rem',
-                  color: 'var(--primary)',
-                  fontWeight: '600',
-                  marginBottom: '8px',
+                  fontSize: isTiny ? '10px' : '11px',
+                  color: '#555',
+                  fontWeight: '500',
                   textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  letterSpacing: '1px',
+                  marginBottom: isTiny ? '8px' : '12px'
                 }}>
                   {video.date}
                 </div>
                 <h3 style={{
-                  fontSize: '1.1rem',
-                  color: 'var(--text-primary)',
-                  marginBottom: '10px',
-                  fontWeight: '600',
-                  lineHeight: '1.4'
+                  fontSize: isTiny ? '1rem' : isSmall ? '1.1rem' : '1.2rem',
+                  color: '#2A2A2A',
+                  marginBottom: isTiny ? '12px' : '16px',
+                  fontWeight: '400',
+                  lineHeight: '1.4',
+                  letterSpacing: '-0.5px'
                 }}>
                   {video.title}
                 </h3>
                 <p style={{
-                  fontSize: '0.95rem',
-                  color: 'var(--text-secondary)',
-                  lineHeight: '1.6'
+                  fontSize: isTiny ? '13px' : isSmall ? '14px' : '15px',
+                  color: '#555',
+                  lineHeight: '1.6',
+                  fontWeight: '400'
                 }}>
                   {video.description}
                 </p>
@@ -357,27 +396,31 @@ const BehindTheScenes = () => {
           ))}
         </div>
 
-        {/* Info Section */}
+        {/* CTA Section */}
         <div style={{
-          padding: '50px 30px',
-          backgroundColor: 'var(--surface)',
-          borderRadius: '16px',
           textAlign: 'center',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+          padding: isTiny ? '40px 20px' : isSmall ? '48px 24px' : isMobile ? '56px 32px' : '80px 48px',
+          backgroundColor: '#2A2A2A',
+          color: '#FFFFFF',
+          borderRadius: '4px'
         }}>
-          <h2 style={{
-            fontSize: '2rem',
-            color: 'var(--text-primary)',
-            marginBottom: '15px'
+          <h3 style={{
+            fontSize: isTiny ? '1.3rem' : isSmall ? '1.5rem' : isMobile ? '1.7rem' : '2rem',
+            fontWeight: '100',
+            marginBottom: isTiny ? '16px' : '24px',
+            letterSpacing: '-1px'
           }}>
             Want to See Your Project Come to Life?
-          </h2>
+          </h3>
           <p style={{
-            fontSize: '1.1rem',
-            color: 'var(--text-secondary)',
-            marginBottom: '30px',
-            maxWidth: '600px',
-            margin: '0 auto 30px auto'
+            fontSize: isTiny ? '13px' : isSmall ? '14px' : isMobile ? '15px' : '16px',
+            marginBottom: isTiny ? '32px' : '48px',
+            maxWidth: '500px',
+            margin: `0 auto ${isTiny ? '32px' : '48px'} auto`,
+            color: 'rgba(255, 255, 255, 0.8)',
+            lineHeight: '1.6',
+            fontWeight: '300',
+            padding: isTiny ? '0 8px' : '0'
           }}>
             We document every step of the journey and keep you updated throughout the process
           </p>
@@ -389,14 +432,29 @@ const BehindTheScenes = () => {
               }, 100);
             }}
             style={{
-              padding: '15px 40px',
-              fontSize: '1.1rem',
-              backgroundColor: 'var(--primary)',
-              color: 'white',
+              backgroundColor: '#FFFFFF',
+              color: '#2A2A2A',
+              padding: isTiny ? '14px 32px' : isSmall ? '16px 40px' : '18px 48px',
               border: 'none',
-              borderRadius: '30px',
+              borderRadius: '4px',
+              fontSize: isTiny ? '10px' : isSmall ? '11px' : '12px',
+              letterSpacing: isTiny ? '1.5px' : '2px',
+              textTransform: 'uppercase',
+              fontWeight: '400',
               cursor: 'pointer',
-              fontWeight: '600'
+              transition: 'all 0.3s ease',
+              width: isMobile ? '100%' : 'auto',
+              maxWidth: isMobile ? '280px' : 'none'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 8px 24px rgba(255,255,255,0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#FFFFFF';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = 'none';
             }}
           >
             Start Your Project
