@@ -427,7 +427,7 @@ const Footer = () => {
             alignItems: 'center'
           }}>
             <a
-              href="#"
+              href="/some-page"
               style={{
                 color: 'rgba(255, 255, 255, 0.6)',
                 textDecoration: 'none',
@@ -441,7 +441,7 @@ const Footer = () => {
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="/some-page"
               style={{
                 color: 'rgba(255, 255, 255, 0.6)',
                 textDecoration: 'none',
