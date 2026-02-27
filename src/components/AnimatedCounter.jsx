@@ -17,13 +17,17 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "", prefix = "" }) => 
       { threshold: 0.5 }
     );
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    // Store the current ref value in a variable
+    const currentElement = counterRef.current;
+
+    if (currentElement) {
+      observer.observe(currentElement);
     }
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
+      // Use the stored variable in cleanup
+      if (currentElement) {
+        observer.unobserve(currentElement);
       }
     };
   }, [hasAnimated]);
