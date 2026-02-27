@@ -257,7 +257,7 @@ const AllProjects = () => {
               <div style={{ padding: isTiny ? '20px' : '24px' }}>
                 <h3 style={{
                   fontSize: isTiny ? '1rem' : isSmall ? '1.1rem' : '1.2rem',
-                  fontWeight: '100',
+                  fontWeight: '400',
                   color: '#2A2A2A',
                   marginBottom: isTiny ? '10px' : '12px',
                   letterSpacing: '-0.5px',

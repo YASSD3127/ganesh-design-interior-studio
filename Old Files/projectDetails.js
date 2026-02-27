@@ -1,89 +1,27 @@
-// src/data/projectDetails.js
 // Detailed project data with multiple images for each project
-import { getCloudinaryUrl } from '../utils/cloudinary';
 
-// ========================================
-// CLOUDINARY IMAGE PATHS
-// ========================================
-const DETAIL_IMAGES = {
-  // Project 1: Abdul Bhai Apartment (Your first upload!)
-  abdulbhai: {
-    img1: 'bedroom-hero_ftolsu.jpg',
-    img2: 'living-room_lc0wkm.jpg',
-    img3: 'kitchen1_rbeae0.jpg',
-    img4: 'gazzebo_gbv1uy.jpg',
-    img5: 'bedroom-2_waeqcy.jpg',
-    img6: 'bedroom-3_lnhyzl.jpg',
-  },
-  
-  // Project 2: Luxury Villa Surat
-  luxuryVilla: {
-    img1: 'Projects/residentials/LuxuryVilla-Surat/hero.jpg',
-    img2: 'Projects/residentials/LuxuryVilla-Surat/grand-living.jpg',
-    img3: 'Projects/residentials/LuxuryVilla-Surat/dining-area.jpg',
-    img4: 'Projects/residentials/LuxuryVilla-Surat/master-suite.jpg',
-    img5: 'Projects/residentials/LuxuryVilla-Surat/home-theater.jpg',
-    img6: 'Projects/residentials/LuxuryVilla-Surat/outdoor-patio.jpg',
-  },
-  
-  // Add more projects as you upload...
-};
-
-// ========================================
-// PROJECT DETAILS DATA
-// ========================================
 export const projectDetailsData = {
-  // ===== PROJECT 1 =====
   1: {
     id: 1,
     title: 'Modern 3BHK Apartment',
     category: 'residential',
     location: 'Ahmedabad, Gujarat',
-    year: '2024',
+    year: '2023',
     description: 'A stunning contemporary apartment featuring clean lines, smart storage solutions, and a neutral color palette. The design emphasizes natural light and creates a spacious, airy atmosphere perfect for modern living.',
     client: 'Private Residence',
-    size: '1,800 sq ft',
+    size: '2,000 sq ft',
     duration: '3 months',
     budgetRange: 'Mid-Range',
     style: 'Contemporary Modern',
-    
-    // Images array - Using Cloudinary
     images: [
-      { 
-        id: 1, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img1, { width: 1600 }), 
-        caption: 'Master bedroom design' 
-      },
-      { 
-        id: 2, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img2, { width: 1600 }), 
-        caption: 'Living room with modern furniture' 
-      },
-      { 
-        id: 3, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img3, { width: 1600 }), 
-        caption: 'Open kitchen and dining area' 
-      },
-      { 
-        id: 4, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img4, { width: 1600 }), 
-        caption: 'Terrace Gazzebo' 
-      },
-      { 
-        id: 5, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img5, { width: 1600 }), 
-        caption: '2nd Bedroom Design' 
-      },
-      { 
-        id: 6, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img6, { width: 1600 }), 
-        caption: '3rd Bedroom Design' 
-      }
+      { id: 1, url: 'https://res.cloudinary.com/dpoao3wqz/image/upload/v1772209435/JAY02769_mlngyo.jpg', caption: 'Living room with modern furniture' },
+      { id: 2, url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200', caption: 'Open kitchen and dining area' },
+      { id: 3, url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200', caption: 'Master bedroom design' },
+      { id: 4, url: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200', caption: 'Modern bathroom' },
+      { id: 5, url: 'https://images.unsplash.com/photo-600585154340-be6161a56a0c?w=1200', caption: 'Balcony view' },
+      { id: 6, url: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200', caption: 'Guest bedroom' }
     ],
-    
-    // YouTube video - Replace YOUR_VIDEO_ID with actual ID
     videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID',
-    
     features: [
       'Smart home automation system',
       'Energy-efficient LED lighting',
@@ -93,8 +31,6 @@ export const projectDetailsData = {
       'Built-in wardrobes'
     ]
   },
-  
-  // ===== PROJECT 2 =====
   2: {
     id: 2,
     title: 'Luxury Villa Interior',
@@ -107,25 +43,13 @@ export const projectDetailsData = {
     duration: '6 months',
     budgetRange: 'Premium',
     style: 'Luxury Contemporary',
-    
     images: [
-      // WHEN YOU UPLOAD: Replace with Cloudinary URLs
-      // { id: 1, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img1, { width: 1600 }), caption: 'Grand living room' },
-      // { id: 2, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img2, { width: 1600 }), caption: 'Luxury dining area' },
-      // { id: 3, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img3, { width: 1600 }), caption: 'Master suite' },
-      // { id: 4, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img4, { width: 1600 }), caption: 'Home theater' },
-      // { id: 5, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img5, { width: 1600 }), caption: 'Outdoor patio' },
-      
-      // TEMPORARY PLACEHOLDERS:
       { id: 1, url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200', caption: 'Grand living room' },
       { id: 2, url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200', caption: 'Luxury dining area' },
       { id: 3, url: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200', caption: 'Master suite' },
       { id: 4, url: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200', caption: 'Home theater' },
       { id: 5, url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200', caption: 'Outdoor patio' }
     ],
-    
-    videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID',
-    
     features: [
       'Imported Italian fixtures',
       'Custom-made furniture',
@@ -135,8 +59,6 @@ export const projectDetailsData = {
       'Infinity pool design'
     ]
   },
-  
-  // ===== PROJECT 3 =====
   3: {
     id: 3,
     title: 'Contemporary 2BHK',
@@ -164,8 +86,6 @@ export const projectDetailsData = {
       'Energy-efficient appliances'
     ]
   },
-  
-  // ===== PROJECT 4 =====
   4: {
     id: 4,
     title: 'Traditional Home Renovation',
@@ -193,8 +113,6 @@ export const projectDetailsData = {
       'Classic furniture restoration'
     ]
   },
-  
-  // ===== PROJECT 5 =====
   5: {
     id: 5,
     title: 'Corporate Office',
@@ -222,8 +140,6 @@ export const projectDetailsData = {
       'Breakout areas'
     ]
   },
-  
-  // ===== PROJECT 6 =====
   6: {
     id: 6,
     title: 'Boutique Retail Store',
@@ -251,8 +167,6 @@ export const projectDetailsData = {
       'Inventory storage'
     ]
   },
-  
-  // ===== PROJECT 7 =====
   7: {
     id: 7,
     title: 'Restaurant Interior',
@@ -280,8 +194,6 @@ export const projectDetailsData = {
       'Bar counter design'
     ]
   },
-  
-  // ===== PROJECT 8 =====
   8: {
     id: 8,
     title: 'Medical Clinic',
@@ -309,8 +221,6 @@ export const projectDetailsData = {
       'Calming color scheme'
     ]
   },
-  
-  // ===== PROJECT 9 =====
   9: {
     id: 9,
     title: 'Upcoming Villa Project',
@@ -339,8 +249,6 @@ export const projectDetailsData = {
       'Before construction approval'
     ]
   },
-  
-  // ===== PROJECT 10 =====
   10: {
     id: 10,
     title: 'Office Space Concept',
@@ -368,8 +276,6 @@ export const projectDetailsData = {
       'Client revisions'
     ]
   },
-  
-  // ===== PROJECT 11 =====
   11: {
     id: 11,
     title: 'Apartment Redesign Plan',
