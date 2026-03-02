@@ -11,22 +11,54 @@ import { getCloudinaryUrl, getThumbnailUrl } from '../utils/cloudinary';
 const PROJECT_IMAGES = {
   // Project 1: Abdul Bhai Apartment (Already uploaded!)
   abdulbhai: {
-    hero: 'bedroom-hero_ftolsu',
-    livingroom: 'living-room_lc0wkm',
-    bedroom: 'bedroom-2_waeqcy',
-    bedroom2:'bedroom-3_lnhyzl',
-    kitchen: 'kitchen1_rbeae0',
-    gazzebo:'gazzebo_gbv1uy'
+    ab_livingroom: 'living-room_lc0wkm',
+    ab_livingroom2: 'living-room-2_uizsfq',
+    ab_hero: 'bedroom-hero_ftolsu',
+    ab_hero1: 'bedroom-hero-1_j5gosp',
+    ab_bedroom2: 'bedroom-2_waeqcy',
+    ab_bedroom2_1: 'bedroom2-1_cytyru',
+    ab_bedroom3:'bedroom-3_lnhyzl',
+    ab_bedroom3_1: 'bedroom-3-side_ecuwf6',
+    ab_cbedroom: 'Bedroom-child_nckx4o',
+    ab_gazzebo:'gazzebo_gbv1uy',
+    ab_kitchen: 'kitchen1_rbeae0',
+    ab_kitchen1: 'kitchen2_vhi4tk',
+    ab_tv_unit: 'tv-unit_suywpo',
+    ab_main_door: 'Main_door_if4cff',
+    ab_out_sign: 'Outdoor_k51ugt',
   },
   
-  // Project 2: Luxury Villa - Surat
-  // WHEN YOU UPLOAD: Create folder 'Projects/residentials/LuxuryVilla-Surat/'
-  luxuryVillaSurat: {
-    hero: 'Projects/residentials/LuxuryVilla-Surat/hero.jpg',
-    living: 'Projects/residentials/LuxuryVilla-Surat/living-room.jpg',
-    dining: 'Projects/residentials/LuxuryVilla-Surat/dining-area.jpg',
-    master: 'Projects/residentials/LuxuryVilla-Surat/master-suite.jpg',
-    theater: 'Projects/residentials/LuxuryVilla-Surat/home-theater.jpg',
+  // Project 2: Neo Wooden Abode - Green City, Junagadh
+  neo_wooden_abode: {
+    nw_LR_hero: 'LR-hero_asqu6p',
+    nw_LR_hero2: 'LR-hero-2_knlpnz',
+    nw_LR_decor1: 'LR-decor_tv01r6',
+    nw_LR_decor2: 'LR-decor2_xvgonl',
+    nw_LR_swing: 'LR-swing_fdrsyr',
+    nw_LR_add: 'LR_m6zwfh',
+    nw_LR_add2: 'LR-2_chbugf',
+    nw_Kitchen_hero: 'Kitchen-hero_upvs17',
+    nw_kitchen1: 'Kitchen1_x4n2ic',
+    nw_kitchen2: 'Kitchen2_seqqpi',
+    nw_kitchen3: 'Kitchen3_c11m6c',
+    nw_DR: 'DR_i3lufc',
+    nw_BD1: 'BD1_rgo7zy',
+    nw_BD1_1: 'BD1-1_mxikae',
+    nw_BD1_work: 'BD1-work_fpkugs',
+    nw_BD1_door: 'BD1-Door_ihwfdf',
+    nw_BD2: 'BD2-Hero_n9rroz',
+    nw_BD2_1: 'BD2_oj3uzq',
+    nw_BD2_2: 'BD2-1_tzbzsh',
+    nw_BD2_3: 'BD2-2_tgfiex',
+    nw_BD2_decor: 'BD2-Decor_lamont',
+    nw_BD2_work: 'BD2-work_qdmzpe',
+    nw_BD3: 'BD3-hero_maqohl',
+    nw_BD3_1: 'BD3_atkpxp',
+    nw_BD3_decor: 'BD3-decor_tuszvz',
+    nw_BD4: 'BD4-hero_wz39jg',
+    nw_BD4_work: 'BD4-work_b2qkuz',
+    nw_BD4_decor: 'BD4-decor_ge8xql',
+    nw_stairs: 'Staricase_cky31c'
   },
   
   // Project 3: Contemporary 2BHK - Vadodara
@@ -117,32 +149,27 @@ export const projectsData = [
     type: 'Residential',
     
     // Card thumbnail (400x300) - Already works with your Cloudinary upload!
-    image: getThumbnailUrl(PROJECT_IMAGES.abdulbhai.hero, 400, 300),
+    image: getThumbnailUrl(PROJECT_IMAGES.abdulbhai.ab_hero, 400, 300),
     
     description: 'Contemporary interior design with minimalist aesthetics and functional spaces. Features open-concept living, Italian marble flooring, and smart home integration.',
     
     // Gallery images - Add more as you upload them
     images: [
-       {
-        url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.livingroom, { width: 1600 }),
-        caption: 'Living Room - Contemporary Design'
-       },
-       {
-         url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.bedroom, { width: 1600 }),
-         caption: 'Master Bedroom'
-       },
-       {
-         url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.bedroom2, { width: 1600 }),
-         caption: 'Modern Kitchen'
-       },
-       {
-         url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.kitchen, { width: 1600 }),
-         caption: 'Modern Kitchen'
-       },
-       {
-         url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.gazzebo, { width: 1600 }),
-         caption: 'Terrace Gazzebo'
-       }
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_livingroom, { width: 1600 }),caption: 'Living Room - Contemporary Design'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_livingroom2, { width: 1600 }),caption: 'Living Room - Contemporary Design'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_hero, { width: 1600 }),caption: 'Master Bedroom'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_hero1, { width: 1600 }),caption: 'Master Bedroom'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_bedroom2, { width: 1600 }),caption: '2nd Bedroom'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_bedroom2_1, { width: 1600 }),caption: '2nd Bedroom'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_bedroom3, { width: 1600 }),caption: '3rd Bedroom'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_bedroom3_1, { width: 1600 }),caption: '3rd Bedroom'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_cbedroom, { width: 1600 }),caption: 'Children Bedroom'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_gazzebo, { width: 1600 }),caption: 'Terrace Gazzebo'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_kitchen, { width: 1600 }),caption: 'Modern Kitchen'},
+       { url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_kitchen1, { width: 1600 }),caption: 'Modern Kitchen'},
+       { url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_tv_unit, { width: 1600 }), caption: 'TV Unit Decor' },
+       { url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_main_door, { width: 1600 }),caption: 'Enterance Door Design'},
+       { url: getCloudinaryUrl(PROJECT_IMAGES.abdulbhai.ab_out_sign, { width: 1600 }),caption: 'Entrance Name Sign' }
     ],
     
     // YouTube video - Replace with your actual video ID
@@ -163,7 +190,7 @@ export const projectsData = [
   // ===== PROJECT 2 =====
   {
     id: 2,
-    title: 'Luxury Villa Interior',
+    title: 'Neo Wooden Abode',
     category: 'residential',
     location: 'Surat',
     size: '4,500 sq ft',
@@ -171,8 +198,39 @@ export const projectsData = [
     type: 'Residential',
     
     // PLACEHOLDER: Replace with Cloudinary URL after upload
-    // image: getThumbnailUrl(PROJECT_IMAGES.luxuryVillaSurat.hero, 400, 300),
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
+    image: getThumbnailUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_hero, 400, 300),
+    images: [
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_hero, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_hero2, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_decor1, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_decor2, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_swing, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_add, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_LR_add2, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_Kitchen_hero, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_kitchen1, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_kitchen2, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_kitchen3, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_DR, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD1, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD1_1, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD1_work, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD1_door, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD1, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD2, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD2_1, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD2_2, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD2_3, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD2_decor, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD2_work, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD3, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD3_1, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD3_decor, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD4, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD4_work, { width: 1600 }), caption: 'Entrance Name Sign'},
+       {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_BD4_decor, { width: 1600 }), caption: 'Entrance Name Sign'},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.neo_wooden_abode.nw_stairs, { width: 1600 }), caption: 'Entrance Name Sign'},
+    ],
     
     description: 'Premium finishes with elegant design elements. Opulent villa showcasing luxury materials and bespoke furniture throughout.',
     

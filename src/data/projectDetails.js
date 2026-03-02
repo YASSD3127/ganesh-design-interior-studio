@@ -8,27 +8,58 @@ import { getCloudinaryUrl } from '../utils/cloudinary';
 const DETAIL_IMAGES = {
   // Project 1: Abdul Bhai Apartment (Your first upload!)
   abdulbhai: {
-    img1: 'bedroom-hero_ftolsu.jpg',
-    img2: 'living-room_lc0wkm.jpg',
-    img3: 'kitchen1_rbeae0.jpg',
-    img4: 'gazzebo_gbv1uy.jpg',
+    img1: 'living-room_lc0wkm.jpg',
+    img2: 'living-room-2_uizsfq.jpg',
+    img3: 'bedroom-hero_ftolsu.jpg',
+    img4: 'bedroom-hero-1_j5gosp.jpg',
     img5: 'bedroom-2_waeqcy.jpg',
-    img6: 'bedroom-3_lnhyzl.jpg',
+    img6: 'bedroom2-1_cytyru.jpg',
+    img7: 'bedroom-3_lnhyzl.jpg',
+    img8: 'bedroom-3-side_ecuwf6.jpg',
+    img9: 'Bedroom-child_nckx4o.jpg',
+    img10: 'gazzebo_gbv1uy.jpg',
+    img11: 'kitchen1_rbeae0.jpg',
+    img12: 'kitchen2_vhi4tk.jpg',
+    img13: 'tv-unit_suywpo.jpg',
+    img14: 'Main_door_if4cff.jpg',
+    img15: 'Outdoor_k51ugt.jpg',
   },
   
   // Project 2: Luxury Villa Surat
-  luxuryVilla: {
-    img1: 'Projects/residentials/LuxuryVilla-Surat/hero.jpg',
-    img2: 'Projects/residentials/LuxuryVilla-Surat/grand-living.jpg',
-    img3: 'Projects/residentials/LuxuryVilla-Surat/dining-area.jpg',
-    img4: 'Projects/residentials/LuxuryVilla-Surat/master-suite.jpg',
-    img5: 'Projects/residentials/LuxuryVilla-Surat/home-theater.jpg',
-    img6: 'Projects/residentials/LuxuryVilla-Surat/outdoor-patio.jpg',
+  neo_wooden_abode: {
+    img1: 'LR-hero_asqu6p.jpg',
+    img2: 'LR-hero-2_knlpnz.jpg',
+    img3: 'LR-decor_tv01r6.jpg',
+    img4: 'LR-decor2_xvgonl.jpg',
+    img5: 'LR-swing_fdrsyr.jpg',
+    img6: 'LR_m6zwfh.jpg',
+    img7: 'LR-2_chbugf.jpg',
+    img8: 'Kitchen-hero_upvs17.jpg',
+    img9: 'Kitchen1_x4n2ic.jpg',
+    img10: 'Kitchen2_seqqpi.jpg',
+    img11: 'Kitchen3_c11m6c.jpg',
+    img12: 'DR_i3lufc.jpg',
+    img13: 'BD1_rgo7zy.jpg',
+    img14: 'BD1-1_mxikae.jpg',
+    img15: 'BD1-work_fpkugs.jpg',
+    img16: 'BD1-Door_ihwfdf.jpg',
+    img17: 'BD2-Hero_n9rroz.jpg',
+    img18: 'BD2_oj3uzq.jpg',
+    img19: 'BD2-1_tzbzsh.jpg',
+    img20: 'BD2-2_tgfiex.jpg',
+    img21: 'BD2-Decor_lamont.jpg',
+    img22: 'BD2-work_qdmzpe.jpg',
+    img23: 'BD3-hero_maqohl.jpg',
+    img24: 'BD3_atkpxp.jpg',
+    img25: 'BD3-decor_tuszvz.jpg',
+    img26: 'BD4-hero_wz39jg.jpg',
+    img27: 'BD4-work_b2qkuz.jpg',
+    img28: 'BD4-decor_ge8xql.jpg',
+    img29: 'Staricase_cky31c.jpg',
   },
   
   // Add more projects as you upload...
 };
-
 // ========================================
 // PROJECT DETAILS DATA
 // ========================================
@@ -52,22 +83,22 @@ export const projectDetailsData = {
       { 
         id: 1, 
         url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img1, { width: 1600 }), 
-        caption: 'Master bedroom design' 
+        caption: 'Living Room' 
       },
       { 
         id: 2, 
         url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img2, { width: 1600 }), 
-        caption: 'Living room with modern furniture' 
+        caption: 'Living Room' 
       },
       { 
         id: 3, 
         url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img3, { width: 1600 }), 
-        caption: 'Open kitchen and dining area' 
+        caption: 'Bedroom 1' 
       },
       { 
         id: 4, 
         url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img4, { width: 1600 }), 
-        caption: 'Terrace Gazzebo' 
+        caption: 'Bedroom 1' 
       },
       { 
         id: 5, 
@@ -77,7 +108,52 @@ export const projectDetailsData = {
       { 
         id: 6, 
         url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img6, { width: 1600 }), 
+        caption: '2nd Bedroom Design' 
+      },
+      { 
+        id: 7, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img7, { width: 1600 }), 
         caption: '3rd Bedroom Design' 
+      },
+      { 
+        id: 8, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img8, { width: 1600 }), 
+        caption: '3rd Bedroom Design' 
+      },
+      { 
+        id: 9, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img9, { width: 1600 }), 
+        caption: 'Children Bedroom' 
+      },
+      { 
+        id: 10, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img10, { width: 1600 }), 
+        caption: 'Terrace Gazzebo' 
+      },
+      { 
+        id: 11, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img11, { width: 1600 }), 
+        caption: 'Open kitchen and dining area' 
+      },
+      { 
+        id: 12, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img12, { width: 1600 }), 
+        caption: 'Open kitchen and dining area' 
+      },
+      { 
+        id: 13, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img13, { width: 1600 }), 
+        caption: 'TV Unit Decor' 
+      },
+      { 
+        id: 14, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img14, { width: 1600 }), 
+        caption: 'Main Door' 
+      },
+      { 
+        id: 15, 
+        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img15, { width: 1600 }), 
+        caption: 'Out Door Sign' 
       }
     ],
     
@@ -97,31 +173,49 @@ export const projectDetailsData = {
   // ===== PROJECT 2 =====
   2: {
     id: 2,
-    title: 'Luxury Villa Interior',
+    title: 'Neo Wooden Abode',
     category: 'residential',
-    location: 'Surat, Gujarat',
-    year: '2023',
+    location: 'Junagadh, Gujarat',
+    year: '2024',
     description: 'An opulent villa interior showcasing premium finishes, elegant design elements, and bespoke furniture. Every detail has been carefully curated to create a luxurious yet comfortable living environment.',
-    client: 'Private Villa',
+    client: 'Private Residence',
     size: '4,500 sq ft',
     duration: '6 months',
-    budgetRange: 'Premium',
+    budgetRange: 'Premium - 30L ₹',
     style: 'Luxury Contemporary',
     
     images: [
-      // WHEN YOU UPLOAD: Replace with Cloudinary URLs
-      // { id: 1, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img1, { width: 1600 }), caption: 'Grand living room' },
-      // { id: 2, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img2, { width: 1600 }), caption: 'Luxury dining area' },
-      // { id: 3, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img3, { width: 1600 }), caption: 'Master suite' },
-      // { id: 4, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img4, { width: 1600 }), caption: 'Home theater' },
-      // { id: 5, url: getCloudinaryUrl(DETAIL_IMAGES.luxuryVilla.img5, { width: 1600 }), caption: 'Outdoor patio' },
-      
-      // TEMPORARY PLACEHOLDERS:
-      { id: 1, url: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200', caption: 'Grand living room' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200', caption: 'Luxury dining area' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200', caption: 'Master suite' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200', caption: 'Home theater' },
-      { id: 5, url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200', caption: 'Outdoor patio' }
+  
+       { id: 1, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img1, { width: 1600 }), caption: '' },
+       { id: 2, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img2, { width: 1600 }), caption: '' },
+       { id: 3, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img3, { width: 1600 }), caption: '' },
+       { id: 4, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img4, { width: 1600 }), caption: '' },
+       { id: 5, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img5, { width: 1600 }), caption: '' },
+       { id: 6, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img6, { width: 1600 }), caption: '' },
+       { id: 7, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img7, { width: 1600 }), caption: '' },
+       { id: 8, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img8, { width: 1600 }), caption: '' },
+       { id: 9, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img9, { width: 1600 }), caption: '' },
+       { id: 10, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img10, { width: 1600 }), caption: '' },
+       { id: 11, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img11, { width: 1600 }), caption: '' },
+       { id: 12, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img12, { width: 1600 }), caption: '' },
+       { id: 13, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img13, { width: 1600 }), caption: '' },
+       { id: 14, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img14, { width: 1600 }), caption: '' },
+       { id: 15, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img15, { width: 1600 }), caption: '' },
+       { id: 16, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img16, { width: 1600 }), caption: '' },
+       { id: 17, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img17, { width: 1600 }), caption: '' },
+       { id: 18, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img18, { width: 1600 }), caption: '' },
+       { id: 19, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img19, { width: 1600 }), caption: '' },
+       { id: 20, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img20, { width: 1600 }), caption: '' },
+       { id: 21, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img21, { width: 1600 }), caption: '' },
+       { id: 22, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img22, { width: 1600 }), caption: '' },
+       { id: 23, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img23, { width: 1600 }), caption: '' },
+       { id: 24, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img24, { width: 1600 }), caption: '' },
+       { id: 25, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img25, { width: 1600 }), caption: '' },
+       { id: 26, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img26, { width: 1600 }), caption: '' },
+       { id: 27, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img27, { width: 1600 }), caption: '' },
+       { id: 28, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img28, { width: 1600 }), caption: '' },
+       { id: 29, url: getCloudinaryUrl(DETAIL_IMAGES.neo_wooden_abode.img29, { width: 1600 }), caption: '' },
+
     ],
     
     videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID',
