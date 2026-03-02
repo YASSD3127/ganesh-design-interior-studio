@@ -240,7 +240,7 @@ const ProjectDetail = () => {
                 letterSpacing: '1px',
                 color: '#555',
                 marginBottom: isTiny ? '6px' : '8px',
-                fontWeight: '300'
+                fontWeight: '600'
               }}>
                 {item.label}
               </div>
@@ -261,7 +261,7 @@ const ProjectDetail = () => {
         }}>
           <h2 style={{
             fontSize: isTiny ? '1.3rem' : isSmall ? '1.5rem' : isMobile ? '1.7rem' : '2rem',
-            fontWeight: '100',
+            fontWeight: '300',
             marginBottom: isTiny ? '24px' : isSmall ? '28px' : '32px',
             letterSpacing: '-1px'
           }}>
@@ -306,7 +306,7 @@ const ProjectDetail = () => {
         }}>
           <h2 style={{
             fontSize: isTiny ? '1.3rem' : isSmall ? '1.5rem' : isMobile ? '1.7rem' : '2rem',
-            fontWeight: '100',
+            fontWeight: '300',
             marginBottom: isTiny ? '24px' : isSmall ? '28px' : '32px',
             letterSpacing: '-1px'
           }}>

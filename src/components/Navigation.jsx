@@ -91,9 +91,9 @@ const Navigation = () => {
               { label: 'Services', action: () => scrollToSection('services') },
               // { label: 'Process', action: () => scrollToSection('process') },
               { label: 'About', action: () => navigate('/about-designer') },
-              { label: 'Materials', action: () => navigate('/materials') },
-              { label: 'Transformations', action: () => navigate('/all-transformations') },
-              { label: 'Behind the Scenes', action: () => { navigate('/behind-the-scenes'); setIsOpen(false); } },
+              // { label: 'Materials', action: () => navigate('/materials') },
+              // { label: 'Transformations', action: () => navigate('/all-transformations') },
+              // { label: 'Behind the Scenes', action: () => { navigate('/behind-the-scenes'); setIsOpen(false); } },
               { label: 'Contact', action: () => scrollToSection('contact') }
             ].map((item, index) => (
               <li 

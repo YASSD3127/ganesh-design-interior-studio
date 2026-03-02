@@ -410,10 +410,10 @@ const ContactForm = () => {
                     }}
                   >
                     <option value="" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Budget Range</option>
-                    <option value="under-5L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Under ₹5 Lakhs</option>
+                    <option value="under-2L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>Under ₹2 Lakhs</option>
+                    <option value="2L-5L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹2 - ₹5 Lakhs</option>
                     <option value="5L-10L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹5 - ₹10 Lakhs</option>
-                    <option value="10L-25L" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹10 - ₹25 Lakhs</option>
-                    <option value="25L+" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹25 Lakhs+</option>
+                    <option value="10L+" style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}>₹10 Lakhs+</option>
                   </select>
                 </div>
 

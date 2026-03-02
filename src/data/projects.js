@@ -192,9 +192,9 @@ export const projectsData = [
     id: 2,
     title: 'Neo Wooden Abode',
     category: 'residential',
-    location: 'Surat',
+    location: 'Junagadh',
     size: '4,500 sq ft',
-    year: '2023',
+    year: '2024',
     type: 'Residential',
     
     // PLACEHOLDER: Replace with Cloudinary URL after upload
