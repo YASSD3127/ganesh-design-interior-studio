@@ -58,6 +58,32 @@ const DETAIL_IMAGES = {
     img29: 'Staricase_cky31c.jpg',
   },
   
+    drashtant_home: {
+    img1: 'BD1-hero_jjgqbs.jpg',
+    img2: 'BD1-1_hh5jpb.jpg',
+    img3: 'BD1-2_qoe2ys.jpg',
+    img4: 'BD1-3_idzlrl.jpg',
+    img5: 'BD1-4_mv8cu0.jpg',
+    img6: 'BD1-5_x2uqvh.jpg',
+    img7: 'BD1-6_qqt54w.jpg',
+    img8: 'BD1-7_k9ijwq.jpg',
+    img9: 'Templ1_dmp6jh.jpg',
+    img10: 'Temple2_pgvfjx.jpg',
+    img11: 'Temple3_fh7uvp.jpg',
+    img12: 'Temple4_aa7opj.jpg',
+    img13: 'BD2-hero_i2701m.jpg',
+    img14: 'BD2-hero-light_e90xdq.jpg',
+    img15: 'BD2-1_yxt85z.jpg',
+    img16: 'BD2-light-1_dincne.jpg',
+    img17: 'BD2-2_vx1avh.jpg',
+    img18: 'BD2-3_c8e6mi.jpg',
+    img19: 'BD2-desk_clj7e1.jpg',
+    img20: 'BD2-desk1_n4xs0g.jpg',
+    img21: 'BD2-desk-light_jwsptk.jpg',
+    img22: 'Bath2_untadp.jpg',
+    img23: 'Bathroom1_bmhbzv.jpg',
+    img24: 'Bathroom2_ah5mi5.jpg'
+  }
   // Add more projects as you upload...
 };
 // ========================================
@@ -233,7 +259,7 @@ export const projectDetailsData = {
   // ===== PROJECT 3 =====
   3: {
     id: 3,
-    title: 'Contemporary 2BHK',
+    title: 'Drashtants Home',
     category: 'residential',
     location: 'Vadodara, Gujarat',
     year: '2024',
@@ -244,10 +270,31 @@ export const projectDetailsData = {
     budgetRange: 'Budget-Friendly',
     style: 'Minimalist Modern',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200', caption: 'Compact living room' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200', caption: 'Space-saving kitchen' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200', caption: 'Bedroom with storage' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200', caption: 'Modern bathroom' }
+       { id: 1, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img1, { width: 1600 }), caption: '' },
+       { id: 2, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img2, { width: 1600 }), caption: '' },
+       { id: 3, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img3, { width: 1600 }), caption: '' },
+       { id: 4, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img4, { width: 1600 }), caption: '' },
+       { id: 5, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img5, { width: 1600 }), caption: '' },
+       { id: 6, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img6, { width: 1600 }), caption: '' },
+       { id: 7, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img7, { width: 1600 }), caption: '' },
+       { id: 8, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img8, { width: 1600 }), caption: '' },
+       { id: 9, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img9, { width: 1600 }), caption: '' },
+       { id: 10, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img10, { width: 1600 }), caption: '' },
+       { id: 11, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img11, { width: 1600 }), caption: '' },
+       { id: 12, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img12, { width: 1600 }), caption: '' },
+       { id: 13, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img13, { width: 1600 }), caption: '' },
+       { id: 14, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img14, { width: 1600 }), caption: '' },
+       { id: 15, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img15, { width: 1600 }), caption: '' },
+       { id: 16, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img16, { width: 1600 }), caption: '' },
+       { id: 17, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img17, { width: 1600 }), caption: '' },
+       { id: 18, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img18, { width: 1600 }), caption: '' },
+       { id: 19, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img19, { width: 1600 }), caption: '' },
+       { id: 20, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img20, { width: 1600 }), caption: '' },
+       { id: 21, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img21, { width: 1600 }), caption: '' },
+       { id: 22, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img22, { width: 1600 }), caption: '' },
+       { id: 23, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img23, { width: 1600 }), caption: '' },
+       { id: 24, url: getCloudinaryUrl(DETAIL_IMAGES.drashtant_home.img24, { width: 1600 }), caption: '' },
+
     ],
     features: [
       'Space optimization',

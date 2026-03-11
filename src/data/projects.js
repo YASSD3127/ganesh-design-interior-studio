@@ -62,75 +62,71 @@ const PROJECT_IMAGES = {
   },
   
   // Project 3: Contemporary 2BHK - Vadodara
-  contemporary2bhkVadodara: {
-    hero: 'Projects/residentials/Contemporary2BHK-Vadodara/hero.jpg',
-    living: 'Projects/residentials/Contemporary2BHK-Vadodara/living-room.jpg',
-    kitchen: 'Projects/residentials/Contemporary2BHK-Vadodara/kitchen.jpg',
-    bedroom: 'Projects/residentials/Contemporary2BHK-Vadodara/bedroom.jpg',
+  drashtant_home: {
+    dh_BD1_hero: 'BD1-hero_jjgqbs',
+    dh_BD1_1: 'BD1-1_hh5jpb',
+    dh_BD1_2: 'BD1-2_qoe2ys',
+    dh_BD1_3: 'BD1-3_idzlrl',
+    dh_BD1_4: 'BD1-4_mv8cu0',
+    dh_BD1_5: 'BD1-5_x2uqvh',
+    dh_BD1_6: 'BD1-6_qqt54w',
+    dh_BD1_7: 'BD1-7_k9ijwq',
+    dh_t1: 'Templ1_dmp6jh',
+    dh_t2: 'Temple2_pgvfjx',
+    dh_t3: 'Temple3_fh7uvp',
+    dh_t4: 'Temple4_aa7opj',
+    dh_BD2_hero: 'BD2-hero_i2701m',
+    dh_BD2_hero_l: 'BD2-hero-light_e90xdq',
+    dh_BD2_1: 'BD2-1_yxt85z',
+    dh_BD2_l: 'BD2-light-1_dincne',
+    dh_BD2_2: 'BD2-2_vx1avh',
+    dh_BD2_3: 'BD2-3_c8e6mi',
+    dh_desk1: 'BD2-desk_clj7e1',
+    dh_desk2: 'BD2-desk1_n4xs0g',
+    dh_desk3: 'BD2-desk-light_jwsptk',
+    dh_bath: 'Bath2_untadp',
+    dh_bath1: 'Bathroom1_bmhbzv',
+    dh_bath2: 'Bathroom2_ah5mi5'
   },
   
   // Project 4: Traditional Home - Rajkot
   traditionalHomeRajkot: {
-    hero: 'Projects/residentials/TraditionalHome-Rajkot/hero.jpg',
-    living: 'Projects/residentials/TraditionalHome-Rajkot/living-room.jpg',
-    kitchen: 'Projects/residentials/TraditionalHome-Rajkot/kitchen.jpg',
-    bedroom: 'Projects/residentials/TraditionalHome-Rajkot/bedroom.jpg',
+
   },
   
   // Project 5: Corporate Office - Ahmedabad
   corporateOfficeAhmedabad: {
-    hero: 'Projects/commercial/CorporateOffice-Ahmedabad/hero.jpg',
-    workspace: 'Projects/commercial/CorporateOffice-Ahmedabad/open-workspace.jpg',
-    conference: 'Projects/commercial/CorporateOffice-Ahmedabad/conference-room.jpg',
-    reception: 'Projects/commercial/CorporateOffice-Ahmedabad/reception.jpg',
+  
   },
   
   // Project 6: Boutique Store - Surat
   boutiqueStoreSurat: {
-    hero: 'Projects/commercial/BoutiqueStore-Surat/hero.jpg',
-    entrance: 'Projects/commercial/BoutiqueStore-Surat/store-entrance.jpg',
-    display: 'Projects/commercial/BoutiqueStore-Surat/display-area.jpg',
-    fitting: 'Projects/commercial/BoutiqueStore-Surat/fitting-rooms.jpg',
+
   },
   
   // Project 7: Restaurant - Gandhinagar
   restaurantGandhinagar: {
-    hero: 'Projects/commercial/Restaurant-Gandhinagar/hero.jpg',
-    dining: 'Projects/commercial/Restaurant-Gandhinagar/main-dining.jpg',
-    bar: 'Projects/commercial/Restaurant-Gandhinagar/bar-section.jpg',
-    private: 'Projects/commercial/Restaurant-Gandhinagar/private-dining.jpg',
+
   },
   
   // Project 8: Medical Clinic - Vadodara
   medicalClinicVadodara: {
-    hero: 'Projects/commercial/MedicalClinic-Vadodara/hero.jpg',
-    waiting: 'Projects/commercial/MedicalClinic-Vadodara/waiting-area.jpg',
-    consultation: 'Projects/commercial/MedicalClinic-Vadodara/consultation-room.jpg',
-    reception: 'Projects/commercial/MedicalClinic-Vadodara/reception-desk.jpg',
+
   },
   
   // Project 9: 3D Render - Villa Ahmedabad
   render3dVillaAhmedabad: {
-    hero: 'Projects/3d-renders/Villa-Ahmedabad/hero.jpg',
-    exterior: 'Projects/3d-renders/Villa-Ahmedabad/exterior-render.jpg',
-    living: 'Projects/3d-renders/Villa-Ahmedabad/living-room-render.jpg',
-    bedroom: 'Projects/3d-renders/Villa-Ahmedabad/bedroom-render.jpg',
+ 
   },
   
   // Project 10: 3D Render - Office Surat
   render3dOfficeSurat: {
-    hero: 'Projects/3d-renders/Office-Surat/hero.jpg',
-    layout: 'Projects/3d-renders/Office-Surat/office-layout.jpg',
-    workstation: 'Projects/3d-renders/Office-Surat/workstation-design.jpg',
-    meeting: 'Projects/3d-renders/Office-Surat/meeting-room.jpg',
+ 
   },
   
   // Project 11: 3D Render - Apartment Vadodara
   render3dApartmentVadodara: {
-    hero: 'Projects/3d-renders/Apartment-Vadodara/hero.jpg',
-    before: 'Projects/3d-renders/Apartment-Vadodara/before-render.jpg',
-    after: 'Projects/3d-renders/Apartment-Vadodara/after-concept.jpg',
-    room: 'Projects/3d-renders/Apartment-Vadodara/room-redesign.jpg',
+  
   }
 };
 
@@ -257,8 +253,34 @@ export const projectsData = [
     type: 'Residential',
     
     // PLACEHOLDER: Replace with Cloudinary URL after upload
-    // image: getThumbnailUrl(PROJECT_IMAGES.contemporary2bhkVadodara.hero, 400, 300),
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800',
+    image: getThumbnailUrl(PROJECT_IMAGES.drashtant_home.dh_BD2_hero_l, 400, 300),
+    images: [
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_hero, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_1, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_2, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_3, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_4, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_5, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_6, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD1_7, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_t1, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_t2, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_t3, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_t4, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD2_hero, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD2_hero_l, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD2_1, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD2_l, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD2_2, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_BD2_3, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_desk1, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_desk2, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_desk3, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_bath, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_bath1, { width: 1600 }), caption: ''},
+        {url: getCloudinaryUrl(PROJECT_IMAGES.drashtant_home.dh_bath2, { width: 1600 }), caption: ''},
+
+    ],
     
     description: 'Minimalist design with functional spaces. Clean lines and clever storage solutions maximize every square foot.',
     
