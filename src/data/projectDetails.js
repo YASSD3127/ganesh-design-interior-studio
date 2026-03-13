@@ -83,6 +83,49 @@ const DETAIL_IMAGES = {
     img22: 'Bath2_untadp.jpg',
     img23: 'Bathroom1_bmhbzv.jpg',
     img24: 'Bathroom2_ah5mi5.jpg'
+  },
+
+  bharatbhai_home: {
+    img1: 'LR_hero_pgbuox.jpg',
+    img2: 'LR_hero1_hyobha.jpg',
+    img3: 'LR_swing-hero_z33mvl.jpg',
+    img4: 'LR_swing-hero1_oh4ei0.jpg',
+    img5: 'LR_swing2_daugbs.jpg',
+    img6: 'LR-tv_set_qr2bdz.jpg',
+    img7: 'LR_decor_xvyef7.jpg',
+    img8: 'LR_decor1_dhgh2g.jpg',
+    img9: 'LR_decor1_dhgh2g.jpg',
+    img10: 'Basin_f7ovb6.jpg',
+    img11: 'BD1-hero_rsb8cd.jpg',
+    img12: 'BD1-1_ox6e0z.jpg',
+    img13: 'BD1-2_in5hp7.jpg',
+    img14: 'BD1-3_b5i9pw.jpg',
+    img15: 'BD1-4_ojutzm.jpg',
+    img16: 'BD1-5_nxjmik.jpg',
+    img17: 'BD2-hero_hof84f.jpg',
+    img18: 'BD2-1_pnt8n8.jpg',
+    img19: 'BD2-2_jdxs1k.jpg',
+    img20: 'BD2-3_doqvzj.jpg',
+    img21: 'BD2-4_vl4uht.jpg',
+    img22: 'BD2-5_qowjpy.jpg',
+    img23: 'BD3-hero_mtvfin.jpg',
+    img24: 'BD3-1_evo1wv.jpg',
+    img25: 'BD3-2_lts96h.jpg',
+    img26: 'BD3-3_wz8yoi.jpg',
+    img27: 'BD3-4_zsudbk.jpg',
+    img28: 'BD3-5_f7fkvg.jpg',
+    img29: 'Kitchen-hero_tkdo5o.jpg',
+    img30: 'kitchen2_u5c8kz.jpg',
+    img31: 'kitchen3_fbskwa.jpg',
+    img32: 'kitchen4_kjixyi.jpg',
+    img33: 'dining_hero_u1kljs.jpg',
+    img34: 'dining1_xblpq8.jpg',
+    img35: 'dining2_uwbk1e.jpg',
+    img36: 'Elevator_pqbopz.jpg',
+    img37: 'Temple1_m9othj.jpg',
+    img38: 'Temple2_yhjah8.jpg',
+    img39: 'Main_door_lonfno.jpg',
+    img40: 'Stairs_c7vju9.jpg'
   }
   // Add more projects as you upload...
 };
@@ -106,81 +149,21 @@ export const projectDetailsData = {
     
     // Images array - Using Cloudinary
     images: [
-      { 
-        id: 1, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img1, { width: 1600 }), 
-        caption: 'Living Room' 
-      },
-      { 
-        id: 2, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img2, { width: 1600 }), 
-        caption: 'Living Room' 
-      },
-      { 
-        id: 3, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img3, { width: 1600 }), 
-        caption: 'Bedroom 1' 
-      },
-      { 
-        id: 4, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img4, { width: 1600 }), 
-        caption: 'Bedroom 1' 
-      },
-      { 
-        id: 5, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img5, { width: 1600 }), 
-        caption: '2nd Bedroom Design' 
-      },
-      { 
-        id: 6, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img6, { width: 1600 }), 
-        caption: '2nd Bedroom Design' 
-      },
-      { 
-        id: 7, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img7, { width: 1600 }), 
-        caption: '3rd Bedroom Design' 
-      },
-      { 
-        id: 8, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img8, { width: 1600 }), 
-        caption: '3rd Bedroom Design' 
-      },
-      { 
-        id: 9, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img9, { width: 1600 }), 
-        caption: 'Children Bedroom' 
-      },
-      { 
-        id: 10, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img10, { width: 1600 }), 
-        caption: 'Terrace Gazzebo' 
-      },
-      { 
-        id: 11, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img11, { width: 1600 }), 
-        caption: 'Open kitchen and dining area' 
-      },
-      { 
-        id: 12, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img12, { width: 1600 }), 
-        caption: 'Open kitchen and dining area' 
-      },
-      { 
-        id: 13, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img13, { width: 1600 }), 
-        caption: 'TV Unit Decor' 
-      },
-      { 
-        id: 14, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img14, { width: 1600 }), 
-        caption: 'Main Door' 
-      },
-      { 
-        id: 15, 
-        url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img15, { width: 1600 }), 
-        caption: 'Out Door Sign' 
-      }
+      { id: 1, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img1, { width: 1600 }), caption: 'Living Room' },
+      { id: 2, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img2, { width: 1600 }), caption: 'Living Room' },
+      { id: 3, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img3, { width: 1600 }), caption: 'Bedroom 1' },
+      { id: 4, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img4, { width: 1600 }), caption: 'Bedroom 1' },
+      { id: 5, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img5, { width: 1600 }), caption: '2nd Bedroom Design' },
+      { id: 6, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img6, { width: 1600 }), caption: '2nd Bedroom Design' },
+      { id: 7, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img7, { width: 1600 }), caption: '3rd Bedroom Design' },
+      { id: 8, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img8, { width: 1600 }), caption: '3rd Bedroom Design' },
+      { id: 9, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img9, { width: 1600 }), caption: 'Children Bedroom' },
+      { id: 10, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img10, { width: 1600 }), caption: 'Terrace Gazzebo' },
+      { id: 11, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img11, { width: 1600 }), caption: 'Open kitchen and dining area' },
+      { id: 12, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img12, { width: 1600 }), caption: 'Open kitchen and dining area' },
+      { id: 13, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img13, { width: 1600 }), caption: 'TV Unit Decor' },
+      { id: 14, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img14, { width: 1600 }), caption: 'Main Door' },
+      { id: 15, url: getCloudinaryUrl(DETAIL_IMAGES.abdulbhai.img15, { width: 1600 }), caption: 'Out Door Sign' },
     ],
     
     // YouTube video - Replace YOUR_VIDEO_ID with actual ID
@@ -320,10 +303,46 @@ export const projectDetailsData = {
     budgetRange: 'Mid-Range',
     style: 'Traditional Contemporary',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=1200', caption: 'Traditional living room' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200', caption: 'Updated kitchen' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200', caption: 'Classic bedroom' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200', caption: 'Renovated bathroom' }
+      { id: 1, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img1, { width: 1600 }), caption: '' },
+      { id: 2, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img2, { width: 1600 }), caption: '' },
+      { id: 3, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img3, { width: 1600 }), caption: '' },
+      { id: 4, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img4, { width: 1600 }), caption: '' },
+      { id: 5, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img5, { width: 1600 }), caption: '' },
+      { id: 6, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img6, { width: 1600 }), caption: '' },
+      { id: 7, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img7, { width: 1600 }), caption: '' },
+      { id: 8, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img8, { width: 1600 }), caption: '' },
+      { id: 9, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img9, { width: 1600 }), caption: '' },
+      { id: 10, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img10, { width: 1600 }), caption: '' },
+      { id: 11, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img11, { width: 1600 }), caption: '' },
+      { id: 12, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img12, { width: 1600 }), caption: '' },
+      { id: 13, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img13, { width: 1600 }), caption: '' },
+      { id: 14, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img14, { width: 1600 }), caption: '' },
+      { id: 15, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img15, { width: 1600 }), caption: '' },
+      { id: 16, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img16, { width: 1600 }), caption: '' },
+      { id: 17, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img17, { width: 1600 }), caption: '' },
+      { id: 18, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img18, { width: 1600 }), caption: '' },
+      { id: 19, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img19, { width: 1600 }), caption: '' },
+      { id: 20, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img20, { width: 1600 }), caption: '' },
+      { id: 21, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img21, { width: 1600 }), caption: '' },
+      { id: 22, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img22, { width: 1600 }), caption: '' },
+      { id: 23, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img23, { width: 1600 }), caption: '' },
+      { id: 24, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img24, { width: 1600 }), caption: '' },
+      { id: 25, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img25, { width: 1600 }), caption: '' },
+      { id: 26, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img26, { width: 1600 }), caption: '' },
+      { id: 27, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img27, { width: 1600 }), caption: '' },
+      { id: 28, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img28, { width: 1600 }), caption: '' },
+      { id: 29, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img29, { width: 1600 }), caption: '' },
+      { id: 30, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img30, { width: 1600 }), caption: '' },
+      { id: 31, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img31, { width: 1600 }), caption: '' },
+      { id: 32, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img32, { width: 1600 }), caption: '' },
+      { id: 33, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img33, { width: 1600 }), caption: '' },
+      { id: 34, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img34, { width: 1600 }), caption: '' },
+      { id: 35, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img35, { width: 1600 }), caption: '' },
+      { id: 36, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img36, { width: 1600 }), caption: '' },
+      { id: 37, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img37, { width: 1600 }), caption: '' },
+      { id: 38, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img38, { width: 1600 }), caption: '' },
+      { id: 39, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img39, { width: 1600 }), caption: '' },
+      { id: 40, url: getCloudinaryUrl(DETAIL_IMAGES.bharatbhai_home.img40, { width: 1600 }), caption: '' },
     ],
     features: [
       'Heritage preservation',

@@ -90,8 +90,47 @@ const PROJECT_IMAGES = {
   },
   
   // Project 4: Traditional Home - Rajkot
-  traditionalHomeRajkot: {
-
+  bharatbhai_home: {
+  bb_LR_hero: 'LR_hero_pgbuox',
+  bb_LR_hero1: 'LR_hero1_hyobha',
+  bb_LR_swing_hero: 'LR_swing-hero_z33mvl',
+  bb_LR_swing_hero1: 'LR_swing-hero1_oh4ei0',
+  bb_LR_swing2: 'LR_swing2_daugbs',
+  bb_LR_tv_set: 'LR-tv_set_qr2bdz',
+  bb_LR_decor: 'LR_decor_xvyef7',
+  bb_LR_decor1: 'LR_decor1_dhgh2g',
+  bb_LR_decor1_dup: 'LR_decor1_dhgh2g',
+  bb_Basin: 'Basin_f7ovb6',
+  bb_BD1_hero: 'BD1-hero_rsb8cd',
+  bb_BD1_1: 'BD1-1_ox6e0z',
+  bb_BD1_2: 'BD1-2_in5hp7',
+  bb_BD1_3: 'BD1-3_b5i9pw',
+  bb_BD1_4: 'BD1-4_ojutzm',
+  bb_BD1_5: 'BD1-5_nxjmik',
+  bb_BD2_hero: 'BD2-hero_hof84f',
+  bb_BD2_1: 'BD2-1_pnt8n8',
+  bb_BD2_2: 'BD2-2_jdxs1k',
+  bb_BD2_3: 'BD2-3_doqvzj',
+  bb_BD2_4: 'BD2-4_vl4uht',
+  bb_BD2_5: 'BD2-5_qowjpy',
+  bb_BD3_hero: 'BD3-hero_mtvfin',
+  bb_BD3_1: 'BD3-1_evo1wv',
+  bb_BD3_2: 'BD3-2_lts96h',
+  bb_BD3_3: 'BD3-3_wz8yoi',
+  bb_BD3_4: 'BD3-4_zsudbk',
+  bb_BD3_5: 'BD3-5_f7fkvg',
+  bb_Kitchen_hero: 'Kitchen-hero_tkdo5o',
+  bb_Kitchen_2: 'kitchen2_u5c8kz',
+  bb_Kitchen_3: 'kitchen3_fbskwa',
+  bb_Kitchen_4: 'kitchen4_kjixyi',
+  bb_Dining_hero: 'dining_hero_u1kljs',
+  bb_Dining_1: 'dining1_xblpq8',
+  bb_Dining_2: 'dining2_uwbk1e',
+  bb_Elevator: 'Elevator_pqbopz',
+  bb_Temple_1: 'Temple1_m9othj',
+  bb_Temple_2: 'Temple2_yhjah8',
+  bb_Main_door: 'Main_door_lonfno',
+  bb_Stairs: 'Stairs_c7vju9'
   },
   
   // Project 5: Corporate Office - Ahmedabad
@@ -306,10 +345,60 @@ export const projectsData = [
     year: '2023',
     type: 'Residential',
     
-    // PLACEHOLDER: Replace with Cloudinary URL after upload
-    // image: getThumbnailUrl(PROJECT_IMAGES.traditionalHomeRajkot.hero, 400, 300),
-    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800',
     
+    image: getThumbnailUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_hero, 400, 300),
+    images: [
+      {url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_hero, { width: 1600 }), caption: ''},
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_hero1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_swing_hero, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_swing_hero1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_swing2, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_tv_set, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_decor, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_decor1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_LR_decor1_dup, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Basin, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD1_hero, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD1_1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD1_2, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD1_3, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD1_4, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD1_5, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD2_hero, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD2_1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD2_2, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD2_3, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD2_4, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD2_5, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD3_hero, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD3_1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD3_2, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD3_3, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD3_4, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_BD3_5, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Kitchen_hero, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Kitchen_2, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Kitchen_3, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Kitchen_4, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Dining_hero, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Dining_1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Dining_2, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Elevator, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Temple_1, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Temple_2, { width: 1600 }), caption: '' },
+
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Main_door, { width: 1600 }), caption: '' },
+      { url: getCloudinaryUrl(PROJECT_IMAGES.bharatbhai_home.bb_Stairs, { width: 1600 }), caption: '' }
+    ],
+
     description: 'Classic design meets modern comfort. Blend of traditional architecture with contemporary amenities.',
     
     features: [
