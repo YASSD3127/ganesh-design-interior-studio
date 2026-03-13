@@ -126,7 +126,30 @@ const DETAIL_IMAGES = {
     img38: 'Temple2_yhjah8.jpg',
     img39: 'Main_door_lonfno.jpg',
     img40: 'Stairs_c7vju9.jpg'
+  },
+
+    hiteshbhai_jnd: {
+    img1: 'LR-hero_gcy5kn.jpg',
+    img2: 'LR-tv_set_qvl9bo.jpg',
+    img3: 'LR-1_fxcr8v.jpg',
+    img4: 'LR-2_vszufb.jpg',
+    img5: 'BD1-hero_l0qj6z.jpg',
+    img6: 'BD1-1_rbphmu.jpg',
+    img7: 'BD1-2_lnlcfu.jpg',
+    img8: 'BD1-3_jctdz7.jpg',
+    img9: 'BD2-hero_qxevkq.jpg',
+    img10: 'BD2-1_gmaxlf.jpg',
+    img11: 'BD2-2_sxe0o6.jpg',
+    img12: 'BD2-3_q9hu55.jpg',
+    img13: 'Kitchen-hero_kbsy8l.jpg',
+    img14: 'kitchen2_p6bbk6.jpg',
+    img15: 'dining_ta0p9f.jpg',
+    img16: 'dining1_umjngt.jpg',
+    img17: 'dining_decor_erilfj.jpg',
+    img18: 'P2-6_nr2ldu.jpg',
+    img19: 'out_name_xcbnoa.jpg'
   }
+
   // Add more projects as you upload...
 };
 // ========================================
@@ -357,21 +380,36 @@ export const projectDetailsData = {
   // ===== PROJECT 5 =====
   5: {
     id: 5,
-    title: 'Corporate Office',
-    category: 'commercial',
-    location: 'Ahmedabad, Gujarat',
+    title: 'Exquesite 2BHK Flat',
+    category: 'residential',
+    location: 'Junagadh, Gujarat',
     year: '2023',
-    description: 'A professional workspace designed to enhance productivity and collaboration. Features include open work areas, private meeting rooms, and a modern aesthetic that reflects the company\'s brand.',
+    description: '',
     client: 'Tech Company',
     size: '5,000 sq ft',
     duration: '4 months',
     budgetRange: 'Premium',
-    style: 'Corporate Modern',
+    style: 'residential Modern',
     images: [
-      { id: 1, url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200', caption: 'Open office space' },
-      { id: 2, url: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200', caption: 'Conference room' },
-      { id: 3, url: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200', caption: 'Reception area' },
-      { id: 4, url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200', caption: 'Break room' }
+    { id: 1, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img1, { width: 1600 }), caption: '' },
+    { id: 2, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img2, { width: 1600 }), caption: '' },
+    { id: 3, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img3, { width: 1600 }), caption: '' },
+    { id: 4, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img4, { width: 1600 }), caption: '' },
+    { id: 5, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img5, { width: 1600 }), caption: '' },
+    { id: 6, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img6, { width: 1600 }), caption: '' },
+    { id: 7, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img7, { width: 1600 }), caption: '' },
+    { id: 8, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img8, { width: 1600 }), caption: '' },
+    { id: 9, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img9, { width: 1600 }), caption: '' },
+    { id: 10, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img10, { width: 1600 }), caption: '' },
+    { id: 11, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img11, { width: 1600 }), caption: '' },
+    { id: 12, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img12, { width: 1600 }), caption: '' },
+    { id: 13, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img13, { width: 1600 }), caption: '' },
+    { id: 14, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img14, { width: 1600 }), caption: '' },
+    { id: 15, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img15, { width: 1600 }), caption: '' },
+    { id: 16, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img16, { width: 1600 }), caption: '' },
+    { id: 17, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img17, { width: 1600 }), caption: '' },
+    { id: 18, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img18, { width: 1600 }), caption: '' },
+    { id: 19, url: getCloudinaryUrl(DETAIL_IMAGES.hiteshbhai_jnd.img19, { width: 1600 }), caption: '' },
     ],
     features: [
       'Ergonomic workstations',

@@ -133,9 +133,34 @@ const PROJECT_IMAGES = {
   bb_Stairs: 'Stairs_c7vju9'
   },
   
-  // Project 5: Corporate Office - Ahmedabad
-  corporateOfficeAhmedabad: {
   
+ 
+  hiteshbhai_jnd: {
+  hb_LR_hero: 'LR-hero_gcy5kn',
+  hb_LR_tv_set: 'LR-tv_set_qvl9bo',
+  hb_LR_1: 'LR-1_fxcr8v',
+  hb_LR_2: 'LR-2_vszufb',
+
+  hb_BD1_hero: 'BD1-hero_l0qj6z',
+  hb_BD1_1: 'BD1-1_rbphmu',
+  hb_BD1_2: 'BD1-2_lnlcfu',
+  hb_BD1_3: 'BD1-3_jctdz7',
+
+  hb_BD2_hero: 'BD2-hero_qxevkq',
+  hb_BD2_1: 'BD2-1_gmaxlf',
+  hb_BD2_2: 'BD2-2_sxe0o6',
+  hb_BD2_3: 'BD2-3_q9hu55',
+
+  hb_Kitchen_hero: 'Kitchen-hero_kbsy8l',
+  hb_Kitchen_2: 'kitchen2_p6bbk6',
+
+  hb_Dining: 'dining_ta0p9f',
+  hb_Dining_1: 'dining1_umjngt',
+  hb_Dining_decor: 'dining_decor_erilfj',
+
+  hb_P2_6: 'P2-6_nr2ldu',
+  hb_out_name: 'out_name_xcbnoa'
+
   },
   
   // Project 6: Boutique Store - Surat
@@ -416,16 +441,41 @@ export const projectsData = [
   // ===== PROJECT 5 =====
   {
     id: 5,
-    title: 'Corporate Office',
-    category: 'commercial',
-    location: 'Ahmedabad',
-    size: '5,000 sq ft',
+    title: 'Exquesite 2BHK Flat',
+    category: 'residential',
+    location: 'Junagadh',
+    size: '2,000 sq ft',
     year: '2023',
-    type: 'Commercial',
+    type: 'Residential',
     
-    // PLACEHOLDER: Replace with Cloudinary URL after upload
-    // image: getThumbnailUrl(PROJECT_IMAGES.corporateOfficeAhmedabad.hero, 400, 300),
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
+    image: getThumbnailUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_LR_hero, 400, 300),
+
+    images: [
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_LR_hero, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_LR_tv_set, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_LR_1, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_LR_2, { width: 1600 }), caption: '' },
+
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD1_hero, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD1_1, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD1_2, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD1_3, { width: 1600 }), caption: '' },
+
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD2_hero, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD2_1, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD2_2, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_BD2_3, { width: 1600 }), caption: '' },
+
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_Kitchen_hero, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_Kitchen_2, { width: 1600 }), caption: '' },
+
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_Dining, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_Dining_1, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_Dining_decor, { width: 1600 }), caption: '' },
+
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_P2_6, { width: 1600 }), caption: '' },
+      {url: getCloudinaryUrl(PROJECT_IMAGES.hiteshbhai_jnd.hb_out_name, { width: 1600 }), caption: '' }
+    ],
     
     description: 'Professional workspace with collaborative zones. Modern aesthetic designed for productivity.',
     
